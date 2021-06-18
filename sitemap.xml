@@ -2,8 +2,11 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://jeroentrimbach.com/categories/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
+            <loc>http://jeroentrimbach.com/tags/configuration/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
+            <loc>http://jeroentrimbach.com/categories/documentation/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
+            <loc>http://jeroentrimbach.com/tags/installation/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
             <loc>http://jeroentrimbach.com/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
             <loc>http://jeroentrimbach.com/posts/my-first-post-18062021/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
             <loc>http://jeroentrimbach.com/posts/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
-            <loc>http://jeroentrimbach.com/categories/</loc></url><url>
-            <loc>http://jeroentrimbach.com/tags/</loc></url></urlset>
+            <loc>http://jeroentrimbach.com/tags/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url></urlset>

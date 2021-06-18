@@ -1,9 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Jeroen Trimbach&#39;s blog thing</title>
-        <link>http://jeroentrimbach.com/posts/</link>
-        <description>All Posts | Jeroen Trimbach&#39;s blog thing</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</lastBuildDate><atom:link href="http://jeroentrimbach.com/posts/" rel="self" type="application/rss+xml" /><item>
+        <title>installation - Tag - Jeroen Trimbach&#39;s blog thing</title>
+        <link>http://jeroentrimbach.com/tags/installation/</link>
+        <description>installation - Tag - Jeroen Trimbach&#39;s blog thing</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</lastBuildDate><atom:link href="http://jeroentrimbach.com/tags/installation/" rel="self" type="application/rss+xml" /><item>
     <title>Jeroen&#39;s First Post</title>
     <link>http://jeroentrimbach.com/posts/my-first-post-18062021/</link>
     <pubDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</pubDate>
