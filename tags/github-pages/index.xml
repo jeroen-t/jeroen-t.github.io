@@ -5,10 +5,10 @@
         <description>GitHub Pages - Tag - Jeroen Trimbach</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/github-pages/" rel="self" type="application/rss+xml" /><item>
     <title>How to create a website using Hugo and GitHub Pages</title>
-    <link>https://jeroentrimbach.com/2021/06/index.md/</link>
+    <link>https://jeroentrimbach.com/2021/06/site-setup/</link>
     <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate>
     <author>Jeroen Trimbach</author>
-    <guid>https://jeroentrimbach.com/2021/06/index.md/</guid>
+    <guid>https://jeroentrimbach.com/2021/06/site-setup/</guid>
     <description><![CDATA[<p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>]]></description>
 </item></channel>
 </rss>
