@@ -1,16 +1,16 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Jeroen Trimbach&#39;s blog thing</title>
-        <link>http://jeroentrimbach.com/</link>
+        <link>https://jeroentrimbach.com/</link>
         <description>Jeroen Trimbach&#39;s site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</lastBuildDate>
-            <atom:link href="http://jeroentrimbach.com/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://jeroentrimbach.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>Jeroen&#39;s First Post</title>
-    <link>http://jeroentrimbach.com/posts/my-first-post-18062021/</link>
+    <link>https://jeroentrimbach.com/posts/my-first-post-18062021/</link>
     <pubDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://jeroentrimbach.com/posts/my-first-post-18062021/</guid>
+    <guid>https://jeroentrimbach.com/posts/my-first-post-18062021/</guid>
     <description><![CDATA[<p>First post. Trying to figure out what the <strong>uBlogger</strong> theme is all about and the core-concepts behind it.</p>]]></description>
 </item></channel>
 </rss>
