@@ -2,12 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://jeroentrimbach.com/tags/blog/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/categories/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/categories/documentation/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/tags/domain/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/tags/github-pages/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/posts/site-setup/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/posts/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/tags/setup/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
+            <loc>https://jeroentrimbach.com/tags/</loc><lastmod>2021-06-19T16:03:42&#43;02:00</lastmod></url><url>
             <loc>https://jeroentrimbach.com/about/</loc><lastmod>2021-06-18T23:30:25&#43;02:00</lastmod></url><url>
-            <loc>https://jeroentrimbach.com/categories/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
             <loc>https://jeroentrimbach.com/tags/configuration/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
-            <loc>https://jeroentrimbach.com/categories/documentation/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
             <loc>https://jeroentrimbach.com/tags/installation/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
-            <loc>https://jeroentrimbach.com/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
-            <loc>https://jeroentrimbach.com/posts/my-first-post-18062021/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
-            <loc>https://jeroentrimbach.com/posts/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url><url>
-            <loc>https://jeroentrimbach.com/tags/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url></urlset>
+            <loc>https://jeroentrimbach.com/posts/my-first-post-18062021/</loc><lastmod>2021-06-18T19:52:21&#43;02:00</lastmod></url></urlset>

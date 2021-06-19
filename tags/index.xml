@@ -1,7 +1,49 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tags - Tag - Jeroen Trimbach&#39;s blog thing</title>
-        <link>http://jeroentrimbach.com/tags/</link>
-        <description>Tags - Tag - Jeroen Trimbach&#39;s blog thing</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="http://jeroentrimbach.com/tags/" rel="self" type="application/rss+xml" /></channel>
+        <title>Tags - Tag - Jeroen Trimbach</title>
+        <link>https://jeroentrimbach.com/tags/</link>
+        <description>Tags - Tag - Jeroen Trimbach</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Blog</title>
+    <link>https://jeroentrimbach.com/tags/blog/</link>
+    <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>https://jeroentrimbach.com/tags/blog/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Domain</title>
+    <link>https://jeroentrimbach.com/tags/domain/</link>
+    <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>https://jeroentrimbach.com/tags/domain/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>GitHub Pages</title>
+    <link>https://jeroentrimbach.com/tags/github-pages/</link>
+    <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>https://jeroentrimbach.com/tags/github-pages/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Setup</title>
+    <link>https://jeroentrimbach.com/tags/setup/</link>
+    <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>https://jeroentrimbach.com/tags/setup/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>configuration</title>
+    <link>https://jeroentrimbach.com/tags/configuration/</link>
+    <pubDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>https://jeroentrimbach.com/tags/configuration/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>installation</title>
+    <link>https://jeroentrimbach.com/tags/installation/</link>
+    <pubDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>https://jeroentrimbach.com/tags/installation/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
 </rss>

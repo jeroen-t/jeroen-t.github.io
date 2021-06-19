@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>configuration - Tag - Jeroen Trimbach&#39;s blog thing</title>
+        <title>configuration - Tag - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/tags/configuration/</link>
-        <description>configuration - Tag - Jeroen Trimbach&#39;s blog thing</description>
+        <description>configuration - Tag - Jeroen Trimbach</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Jun 2021 19:52:21 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/configuration/" rel="self" type="application/rss+xml" /><item>
     <title>Jeroen&#39;s First Post</title>
     <link>https://jeroentrimbach.com/posts/my-first-post-18062021/</link>
