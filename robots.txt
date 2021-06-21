@@ -114,4 +114,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://jeroentrimbach.com/sitemap.xml
+Sitemap: https://www.jeroentrimbach.com/sitemap.xml
