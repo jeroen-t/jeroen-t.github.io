@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Jeroen Trimbach</title>
+        <title>All Jeroen Trimbach &#39;s posts - Jeroen Trimbach</title>
         <link>https://www.jeroentrimbach.com/posts/</link>
-        <description>All Posts | Jeroen Trimbach</description>
+        <description>All Jeroen Trimbach &#39;s posts | Jeroen Trimbach</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</lastBuildDate><atom:link href="https://www.jeroentrimbach.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>How to create a website using Hugo and GitHub Pages</title>
     <link>https://www.jeroentrimbach.com/2021/06/site-setup/</link>
