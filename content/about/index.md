@@ -47,16 +47,16 @@ license: ""
 
 ---
 
+## EXPERIENCE
 
-<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="nl_NL" data-type="horizontal" data-theme="light" data-vanity="jeroen-trimbach"><a class="LI-simple-link" href='https://nl.linkedin.com/in/jeroen-trimbach?trk=profile-badge'>Jeroen Trimbach</a></div>
+### Deloitte | Azure Cloud Engineer
 
-<!-- ## EXPERIENCE
+July 2021 - Present
 
 ### Deloitte | SQL DBA Azure Engineer
 
 March 2019 - Present
-
+<!-- 
 - Install and configure new database servers
 - Configure data access and permissions
 - Configure and troubleshoot High Availability (HA) solutions: Always-On Availability Groups and Failover Cluster Instances (FCI)
@@ -65,7 +65,7 @@ March 2019 - Present
 - Configure monitoring utilities to minimize false alerts
 - Deploying database change scripts
 - Working Agile using a Azure DevOps Kanban board
-
+-->
 ### Deloitte | SQL Database Administrator
 
 September 2018 -  March 2019
@@ -81,7 +81,7 @@ July 2018 - March 2019
 
 2013 - 2018
 
-Bachelor of Science (BSc.), Mathematical Engineer -->
+Bachelor of Science (BSc.), Mathematical Engineer
 
 
 #### Certifications & Exams
