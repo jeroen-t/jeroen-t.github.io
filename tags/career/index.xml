@@ -1,15 +1,20 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Career - Tag - Jeroen Trimbach</title>
-        <link>https://www.jeroentrimbach.com/tags/career/</link>
+        <link>https://jeroentrimbach.com/tags/career/</link>
         <description>Career - Tag - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Jun 2021 23:30:25 &#43;0200</lastBuildDate><atom:link href="https://www.jeroentrimbach.com/tags/career/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Jun 2021 23:30:25 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/career/" rel="self" type="application/rss+xml" /><item>
     <title>About Me</title>
-    <link>https://www.jeroentrimbach.com/about/</link>
+    <link>https://jeroentrimbach.com/about/</link>
     <pubDate>Fri, 18 Jun 2021 23:30:25 &#43;0200</pubDate>
     <author>Jeroen Trimbach</author>
-    <guid>https://www.jeroentrimbach.com/about/</guid>
-    <description><![CDATA[todo
-Jeroen Trimbach --Certifications &amp; Exams]]></description>
+    <guid>https://jeroentrimbach.com/about/</guid>
+    <description><![CDATA[EXPERIENCEDeloitte | Azure Cloud EngineerJuly 2021 - Present
+Deloitte | SQL DBA Azure EngineerMarch 2019 - Present
+Deloitte | SQL Database AdministratorSeptember 2018 - March 2019
+Didacticum Groep | SQL DBA TraineeJuly 2018 - March 2019
+EducationAmsterdam University of Applied Sciences2013 - 2018
+Bachelor of Science (BSc.), Mathematical Engineer
+Certifications &amp; Exams]]></description>
 </item></channel>
 </rss>

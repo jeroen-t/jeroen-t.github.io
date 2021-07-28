@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions! | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jeroentrimbach.com/2021/07/powershell-module-ci/featured-image.png"/>
+<meta name="twitter:title" content="Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!"/>
+<meta name="twitter:description" content="A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"/><meta name="Description" content="A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"><meta property="og:title" content="Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!" />
+<meta property="og:description" content="A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jeroentrimbach.com/2021/07/powershell-module-ci/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/07/powershell-module-ci/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-28T19:06:05&#43;02:00" />
+<meta property="article:modified_time" content="2021-07-28T19:06:05&#43;02:00" />
+
+<meta name="application-name" content="jTrimbach">
+<meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2021/07/powershell-module-ci/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><meta name="google-site-verification" content="G-NZDT366YND" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/featured-image.png",
+                            "width":  796 ,
+                            "height":  238 
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  1305 ,
+        "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/","datePublished": "2021-07-28T19:06:05+02:00","dateModified": "2021-07-28T19:06:05+02:00","description": "A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"
+    }
+    </script><script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https:\/\/jeroentrimbach.com\/"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Documentation",
+            "item": "https://jeroentrimbach.com/categories/documentation/"
+        },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!"
+            }]
+    }
+</script></head>
+    <body data-header-desktop="" data-header-mobile=""><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jeroen Trimbach" class="header-logo logo-svg">Jeroen Trimbach</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/"> Tags </a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/"> Categories </a>
+                        </li><li>
+                            <a class="menu-item" href="/about/"> About </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="Jeroen Trimbach" class="header-logo">Jeroen Trimbach</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li><li>
+                            <a class="menu-item" href="/tags/" title="">Tags</a>
+                        </li><li>
+                            <a class="menu-item" href="/categories/" title="">Categories</a>
+                        </li><li>
+                            <a class="menu-item" href="/about/" title="">About</a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div></header><main class="main">
+<div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li><a href="/categories/documentation/">Documentation </a></li><li>Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</h1><h2 class="single-subtitle">A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</h2><div class="post-meta summary-post-meta"><span class="post-category meta-item">
+                                <a href="/categories/documentation/"><span class="svg-icon icon-folder"></span>Documentation</a>&nbsp;<a href="/categories/learning/"><span class="svg-icon icon-folder"></span>Learning</a>
+                            </span><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-28">28-07-2021</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>1305 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>7 minutes
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="image-theme-classic">
+                        <img src="https://jeroentrimbach.com/2021/07/powershell-module-ci/featured-image.png" style="width: 100%">
+                    </div><div class="details toc" id="toc-static"  data-kept="">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a>
+      <ul>
+        <li><a href="#github-account">GitHub Account</a></li>
+        <li><a href="#git-in-powershell">Git in PowerShell</a></li>
+        <li><a href="#pester">Pester</a></li>
+        <li><a href="#optional-visual-studio-code">(Optional) Visual Studio code</a></li>
+      </ul>
+    </li>
+    <li><a href="#prepare-your-git-repository">Prepare your Git repository</a></li>
+    <li><a href="#prepare-your-powershell-repository">Prepare your PowerShell repository</a></li>
+    <li><a href="#a-sample-function">A sample function</a></li>
+    <li><a href="#a-sample-module">A sample module</a></li>
+    <li><a href="#the-manifest-file">The manifest file</a></li>
+    <li><a href="#running-pester-tests">Running Pester tests</a></li>
+    <li><a href="#powershellgallery">PowerShellGallery</a></li>
+    <li><a href="#build-script--pipeline--actions">Build script / Pipeline / Actions</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+                    </div><p>A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</p>
+<p>You might be like me. Use PowerShell daily. Oneliners most of the time. For more advanced tasks you write a script and perhaps schedule those by using Task Scheduler, the SQL Server Agent or something similar. But creating a PowerShell module? Publishing it to the PowerShellGallery? Crazy!</p>
+<p>I&rsquo;m by no means an expert but I got it working. So if you are interested then try to follow along. You might learn something new. I sure did! 😎</p>
+<h2 id="prerequisites" class="headerLink"><a href="#prerequisites" class="header-mark"></a>Prerequisites</h2><h3 id="github-account" class="headerLink"><a href="#github-account" class="header-mark"></a>GitHub Account</h3><p>I&rsquo;m hosting the source code of my module in a Git repository on GitHub. If you are interested in doing the same you should create a GitHub account if you don&rsquo;t already have one. They have a free plan available and the process is straight forward. Just go to their <a href="https://github.com/" target="_blank" rel="noopener noreffer">site</a> to sign up.</p>
+<h3 id="git-in-powershell" class="headerLink"><a href="#git-in-powershell" class="header-mark"></a>Git in PowerShell</h3><p>The posh-git package that provides integration between Git and PowerShell. It will display Git status summary information in your PowerShell prompt and provides support for tab completion when working with Git commands, branches, paths, etc. I want it 🤗</p>
+<p>Follow the process as described on their <a href="https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-PowerShell" target="_blank" rel="noopener noreffer">site</a> on how to install it.</p>
+<h3 id="pester" class="headerLink"><a href="#pester" class="header-mark"></a>Pester</h3><p>Pester is available on Windows 10 or later by default.<br>
+You can check whether you have this module installed by running:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-Module</span> <span class="n">Pester</span> <span class="n">-ListAvailable</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The 3.4.0 version ships as part of Windows 10 and is a bit problematic. To avoid headaches I would suggest updating it right away. Unfortunately updating the module using the Update-Module cmdlet won&rsquo;t work. So you will have to install the latest version of Pester side-by-side using the follow tactic. Open PowerShell as Admin and run the following command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">Pester</span> <span class="n">-Force</span> <span class="n">-SkipPublisherCheck</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now if you run the following command again:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-Module</span> <span class="n">Pester</span> <span class="n">-ListAvailable</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>It will display both the shipping and the latest version of Pester.</p>
+<h3 id="optional-visual-studio-code" class="headerLink"><a href="#optional-visual-studio-code" class="header-mark"></a>(Optional) Visual Studio code</h3><p>I highly suggest using a code editor. My editor of choice is Visual Studio Code.</p>
+<p>To install VS Code run:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualStudioCode</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip">
+        <div class="details-summary admonition-title "><i class="icon admonition-icon icon-tip"></i>the winget tool<i class="details-icon  admonition-icon admonition-icon-arrow-right"></i></div>
+        <div class="details-content">
+            <div class="admonition-content">The winget tool is the client interface to the Windows Package Manager service. You can use it to search for and/or install applications. It also has some other commands in store that allow you to display installed packages, export/import, validate and a bunch of more useful stuff. Once you have it installed simply run <code>winget</code> to see all commands that are available. You can read more about winget <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/" target="_blank" rel="noopener noreffer">here</a></div>
+        </div>
+    </div>
+<p>And of course if you prefer a different editor yourself than you can use that one instead.</p>
+<h2 id="prepare-your-git-repository" class="headerLink"><a href="#prepare-your-git-repository" class="header-mark"></a>Prepare your Git repository</h2><p>I hope you have read through the prerequisites and signed up for GitHub because <a href="https://github.com/" target="_blank" rel="noopener noreffer">GitHub</a> is where we start.
+We are going to set up the Git repository (repo) for our module.</p>
+<p>Click on your profile in the top right of the page. A menu will open. Click on <code>Your repositories</code>. We are going to create a new repository so click on <code>New</code>.</p>
+<p>Provide a meaningful name for your repository. I provided the name of the module I created.
+Optionally you can give a description for you repository as well.</p>
+<p>Another decision you will have to make is whether you want your repository publicly visible or not. Set your repo to either:</p>
+<ul>
+<li>Public: Anyone on the internet can see this repository. You choose who can commit.</li>
+<li>Private: You choose who can see and commit to this repository.</li>
+</ul>
+<p>You can always change this in the settings of your repository later as well.</p>
+<p>Additionaly you can select whether you want to initialize your repository with a README file, a .gitignore file and a license.</p>
+<p>Once you have provided all the necessary information press the button <code>Create repository</code> at the bottom of the page.</p>
+<p>Congrats on your Repo!</p>
+<p>Now go back to the page that lists all your repositories and open the repository that you have just created. There should be a green button named <code>Code</code>. Press that button and copy the provided URL. Open PowerShell on your machine and browse to your working folder. For this example I am using my home directory.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">cd </span><span class="nv">$home</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>clone your Repository by running the following command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/&lt;</span><span class="n">username</span><span class="p">&gt;/&lt;</span><span class="n">repository</span><span class="p">&gt;.</span><span class="n">git</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>replace the URL with the one you have copied earlier. Or just replace the tokens with your own details.</p>
+<p>There you go! You have your repository locally now. Awesome! I think? A bit empty though..? Hmm, lets work on that!</p>
+<h2 id="prepare-your-powershell-repository" class="headerLink"><a href="#prepare-your-powershell-repository" class="header-mark"></a>Prepare your PowerShell repository</h2><p>// describe what it will look like</p>
+<p>e.g.</p>
+<ul>
+<li>design patterns / folder structure</li>
+<li>run Tree utility to show what mine looks like</li>
+<li>describe what comes later. E.g. .Github workflow, maybe .vscode/.devcontainer? (or out of scope?)</li>
+</ul>
+<p>First we will have to think about how we design our repository. We want an ordered folder structure. I have looked at what others have done and most of them have a similar structure as the one that I have used below.</p>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title "><i class="icon admonition-icon icon-tip"></i>the tree command<i class="details-icon  admonition-icon admonition-icon-arrow-right"></i></div>
+        <div class="details-content">
+            <div class="admonition-content"><p>The tree command displays the directory structure of a path or of the disk in a drive graphically. It&rsquo;s a very useful tool to quickly get a grasp on how the folder structure is.</p>
+<p>Read more about this command <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree" target="_blank" rel="noopener noreffer">here</a></p>
+<p>For the example below I ran the command: <code>tree . /F</code>. Where . is the current directory I&rsquo;m in and /F to display files as well.</p>
+</div>
+        </div>
+    </div>
+<p>In the root of the repository I have a README and License file. The README file is an important part of your repository. Actually, mine should get some love! 😅</p>
+<p>The <code>.github</code> and <code>build_scripts</code> folders can be ignored for now. We will cover this later once we start working on our pipeline.</p>
+<p>For now create a directory with the name of your module. This is where we are going to create our module and manifest files for our PowerShell moduule. Within the directory we just created, create another folder with the name <code>functions</code>. This is where we are going to place all our functions.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">JTAZ
+│   LICENSE
+│   README.md
+│   Unit.Tests.xml
+│
+├───.github
+│   └───workflows
+│           main.yml
+│
+├───build_scripts
+│       build.ps1
+│
+└───jtAz
+    │   jtAz.psd1
+    │   jtAz.psm1
+    │   jtAz.Test.ps1
+    │
+    └───functions
+            Get-jtAzProviderNamespace.ps1
+            Get-jtAzResourceTypes.ps1
+            Get-jtAzTemplate.ps1
+</code></pre></td></tr></table>
+</div>
+</div><p>Now that we have a skeleton of our PowerShell repository lets commit and push these changes to our repository on GitHub. To do this run the commands:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;first commit&#34;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now if you check your repository on GitHub your code will be there as well.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Uh oh - this looks a bit empty. I am planning to work on that.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="a-sample-function" class="headerLink"><a href="#a-sample-function" class="header-mark"></a>A sample function</h2><p>// either create a sample function or just show my own code</p>
+<p>tbd</p>
+<h2 id="a-sample-module" class="headerLink"><a href="#a-sample-module" class="header-mark"></a>A sample module</h2><p>// either create a sample function or just show my own code</p>
+<p>tbd</p>
+<h2 id="the-manifest-file" class="headerLink"><a href="#the-manifest-file" class="header-mark"></a>The manifest file</h2><p>// either create a sample function or just show my own code</p>
+<p>tbd</p>
+<h2 id="running-pester-tests" class="headerLink"><a href="#running-pester-tests" class="header-mark"></a>Running Pester tests</h2><p>// simple tests</p>
+<p>tbd</p>
+<h2 id="powershellgallery" class="headerLink"><a href="#powershellgallery" class="header-mark"></a>PowerShellGallery</h2><p>// PSGallery manual stuff</p>
+<ul>
+<li>Account creation</li>
+<li>API Key</li>
+<li>NuGet package</li>
+</ul>
+<h2 id="build-script--pipeline--actions" class="headerLink"><a href="#build-script--pipeline--actions" class="header-mark"></a>Build script / Pipeline / Actions</h2><ul>
+<li>prepare build</li>
+<li>yaml stuff</li>
+<li>tasks</li>
+<li>don&rsquo;t forget secret!</li>
+</ul>
+<h2 id="conclusion" class="headerLink"><a href="#conclusion" class="header-mark"></a>Conclusion</h2><ul>
+<li>summary of what we have done/learned</li>
+<li>what can be done next</li>
+</ul>
+<p>If you want to learn more about PowerShell then I highly recommend reading through the two books that I have mentioned below. The books are very well written and I have learned a lot from them. Whenever I want to do something in PowerShell but not sure what the correct approach is I try to search in those books first. I will pick up something new most of the times as well.</p>
+<ul>
+<li>Learn PowerShell in a Month of Lunches - Don Jones, Jeffery Hicks</li>
+<li>Learn PowerShell Scripting in a Month of Lunches - Don Jones, Jeffery Hicks</li>
+</ul></div><footer>
+                        <div class="post">
+
+
+<div class="post-share"><div class="share-link">
+        <a class="share-icon share-twitter" href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2021/07/powershell-module-ci/" data-title="Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!" data-hashtags="Blog,PowerShell,Module,GitHub Actions,YAML,CICD"><span class="svg-social-icon icon-twitter"></span></a>
+    </div><div class="share-link">
+        <a class="share-icon share-facebook" href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2021/07/powershell-module-ci/" data-hashtag="Blog"><span class="svg-social-icon icon-facebook"></span></a>
+    </div><div class="share-link">
+        <a class="share-icon share-linkedin" href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2021/07/powershell-module-ci/"><span class="svg-social-icon icon-linkedin"></span></a>
+    </div><div class="share-link">
+        <a class="share-icon share-whatsapp" href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2021/07/powershell-module-ci/" data-title="Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!" data-web><span class="svg-social-icon icon-whatsapp"></span></a>
+    </div><div class="share-link">
+        <a class="share-icon share-reddit" href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2021/07/powershell-module-ci/"><span class="svg-social-icon icon-reddit"></span></a>
+    </div></div>
+
+
+
+
+
+
+<div class="post-tags"><a href="/tags/blog/" class="tag">Blog</a><a href="/tags/powershell/" class="tag">PowerShell</a><a href="/tags/module/" class="tag">Module</a><a href="/tags/github-actions/" class="tag">GitHub Actions</a><a href="/tags/yaml/" class="tag">YAML</a><a href="/tags/cicd/" class="tag">CICD</a></div></div>
+                </footer></div>
+
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://jeroentrimbach.com/&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
+                </div><div class="footer-line"><i class="svg-icon icon-copyright"></i><span>2021</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/prismjs/prism.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10}};</script><script src="/js/theme.min.js"></script><script>
+                window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+                gtag('config', '276260495', { 'anonymize_ip': true });
+            </script><script src="https://www.googletagmanager.com/gtag/js?id=276260495" async></script></body>
+</html>
