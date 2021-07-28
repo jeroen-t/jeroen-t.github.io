@@ -1,4 +1,4 @@
-baseURL = "https://jeroentrimbach.com/"
+baseURL = "https://www.jeroentrimbach.com/"
 # [en, zh-cn, fr, ...] determines default content language
 defaultContentLanguage = "en"
 # language code
@@ -83,26 +83,26 @@ enableRobotsTXT = true
     # site keywords
     keywords = ["Theme", "Hugo", "Tech", "SQL", "DBA", "Azure", "DevOps", "Engineer", "Cloud", "Blog", "CV", "PowerShell"]
       # Search config
-    #   [params.search]
-    #     enable = true
-    #     # type of search engine ("lunr", "algolia")
-    #     type = "algolia"
-    #     # max index length of the chunked content
-    #     contentLength = 4000
-    #     # placeholder of the search bar
-    #     placeholder = ""
-    #     # max number of results length
-    #     maxResultLength = 10
-    #     # snippet length of the result
-    #     snippetLength = 30
-    #     # HTML tag name of the highlight part in results
-    #     highlightTag = "em"
-    #     # whether to use the absolute URL based on the baseURL in search index
-    #     absoluteURL = false
-    #     [languages.en.params.search.algolia]
-    #       index = "index.en"
-    #       appID = "PASDMWALPK"
-    #       searchKey = "b42948e51daaa93df92381c8e2ac0f93"
+      [params.search]
+        enable = true
+        # type of search engine ("lunr", "algolia")
+        type = "lunr"
+        # max index length of the chunked content
+        contentLength = 4000
+        # placeholder of the search bar
+        placeholder = ""
+        # max number of results length
+        maxResultLength = 10
+        # snippet length of the result
+        snippetLength = 30
+        # HTML tag name of the highlight part in results
+        highlightTag = "em"
+        # whether to use the absolute URL based on the baseURL in search index
+        absoluteURL = false
+        # [search.algolia]
+        #   index = "index"
+        #   appID = "PASDMWALPK"
+        #   searchKey = "b42948e51daaa93df92381c8e2ac0f93"
       # Home page config
       [params.home]
         # amount of RSS pages
@@ -198,8 +198,8 @@ enableRobotsTXT = true
             # amount of RSS pages
             rss = 10
         # # Comment config
-        # [params.comment]
-        #     enable = true
+        [params.comment]
+             enable = true
         #     [params.comment.remark42]
         #     enable = true
         #     host = "https://comments.upagge.ru"
@@ -211,33 +211,33 @@ enableRobotsTXT = true
         #     # Disqus shortname to use Disqus in posts
         #     shortname = ""
         #     # Gitalk comment config (https://github.com/gitalk/gitalk)
-        #     [params.comment.gitalk]
-        #     enable = false
-        #     owner = ""
-        #     repo = ""
-        #     clientId = ""
-        #     clientSecret = ""
-        #     # Valine comment config (https://github.com/xCss/Valine)
-        #     [params.comment.valine]
-        #     enable = false
-        #     appId = "QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI"
-        #     appKey = "WBmoGyJtbqUswvfLh6L8iEBr"
-        #     placeholder = ""
-        #     avatar = "mp"
-        #     meta= ""
-        #     pageSize = 10
-        #     lang = ""
-        #     visitor = true
-        #     recordIP = true
-        #     highlight = true
-        #     enableQQ = false
-        #     serverURLs = "https://"
-        #     # emoji data file name, default is "google.yml"
-        #     # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
-        #     # located in "themes/uBlogger/assets/data/emoji/" directory
-        #     # you can store your own data files in the same path under your project:
-        #     # "assets/data/emoji/"
-        #     emoji = ""
+              # [params.comment.gitalk]
+              # enable = true
+              # owner = "jeroen-t"
+              # repo = "https://github.com/jeroen-t/gitalkcomments.git"
+              # clientId = "af13e32b9a2ab81c4025"
+              # clientSecret = "7693161c2a17eb678008c5dd525abd3bcd2f8f72"
+            # Valine comment config (https://github.com/xCss/Valine)
+            # [params.comment.valine]
+            # enable = false
+            # appId = "QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI"
+            # appKey = "WBmoGyJtbqUswvfLh6L8iEBr"
+            # placeholder = ""
+            # avatar = "mp"
+            # meta= ""
+            # pageSize = 10
+            # lang = ""
+            # visitor = true
+            # recordIP = true
+            # highlight = true
+            # enableQQ = false
+            # serverURLs = "https://"
+            # # emoji data file name, default is "google.yml"
+            # # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
+            # # located in "themes/uBlogger/assets/data/emoji/" directory
+            # # you can store your own data files in the same path under your project:
+            # # "assets/data/emoji/"
+            # emoji = ""
         #     # Facebook comment config (https://developers.facebook.com/docs/plugins/comments)
         #     [params.comment.facebook]
         #     enable = false
@@ -259,14 +259,14 @@ enableRobotsTXT = true
         #     [params.comment.commento]
         #     enable = false
         #     # Utterances comment config (https://utteranc.es/)
-        #     [params.comment.utterances]
-        #     enable = false
-        #     # owner/repo
-        #     repo = ""
-        #     issueTerm = "pathname"
-        #     label = ""
-        #     lightTheme = "github-light"
-        #     darkTheme = "github-dark"
+            [params.comment.utterances]
+            enable = true
+            # owner/repo
+            repo = "jeroen-t/utterances-comments"
+            issueTerm = "pathname"
+            label = "comment"
+            lightTheme = "github-light"
+            darkTheme = "github-dark"
         # Page config
         # 文章页面配置
         [params.page]
@@ -472,9 +472,9 @@ enableRobotsTXT = true
 #     privacyEnhanced = true
 
 # Options to make output .md files
-# [mediaTypes]
-#   [mediaTypes."text/plain"]
-#     suffixes = ["md"]
+[mediaTypes]
+  [mediaTypes."text/plain"]
+    suffixes = ["md"]
 
 # Options to make output .md files
 [outputFormats.MarkDown]
