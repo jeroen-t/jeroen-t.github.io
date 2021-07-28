@@ -5,7 +5,7 @@ author: "Jeroen Trimbach"
 description: "whoami"
 # subtitle: ""
 date: 2021-06-18T23:30:25+02:00
-lastmod: 2021-07-28T22:30:42+02:00
+# lastmod: 2021-06-19T22:22:42+02:00
 draft: false
 
 # upd: ""
@@ -29,8 +29,8 @@ hiddenFromSearch: false
 
 #1000x500
 # resources:
-# - name: "banner"
-#   src: "banner.png"
+# - name: "featured-image"
+#   src: "featured-image.png"
 
 
 #featuredImage: ""
@@ -40,7 +40,7 @@ hiddenFromSearch: false
 toc:
   enable: false
 math:
-  enable: true
+  enable: false
 
 license: ""
 
@@ -48,19 +48,14 @@ license: ""
 ---
 
 
-<!-- <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="nl_NL" data-type="horizontal" data-theme="dark" data-vanity="jeroen-trimbach"><a class="LI-simple-link" href='https://nl.linkedin.com/in/jeroen-trimbach?trk=profile-badge'>Jeroen Trimbach</a></div> -->
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+<div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="nl_NL" data-type="horizontal" data-theme="light" data-vanity="jeroen-trimbach"><a class="LI-simple-link" href='https://nl.linkedin.com/in/jeroen-trimbach?trk=profile-badge'>Jeroen Trimbach</a></div>
 
-## EXPERIENCE
-
-### Deloitte | Azure Cloud Engineer
-
-July 2021 - Present
+<!-- ## EXPERIENCE
 
 ### Deloitte | SQL DBA Azure Engineer
 
 March 2019 - Present
-<!--
 
 - Install and configure new database servers
 - Configure data access and permissions
@@ -70,7 +65,7 @@ March 2019 - Present
 - Configure monitoring utilities to minimize false alerts
 - Deploying database change scripts
 - Working Agile using a Azure DevOps Kanban board
--->
+
 ### Deloitte | SQL Database Administrator
 
 September 2018 -  March 2019
@@ -84,9 +79,9 @@ July 2018 - March 2019
 
 ### Amsterdam University of Applied Sciences
 
-Bachelor of Science (BSc.), Mathematical Engineer
-
 2013 - 2018
+
+Bachelor of Science (BSc.), Mathematical Engineer -->
 
 
 #### Certifications & Exams
