@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Jeroen Trimbach</title>
+        <title>All Jeroen Trimbach &#39;s posts - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/posts/</link>
-        <description>All Posts | Jeroen Trimbach</description>
+        <description>All Jeroen Trimbach &#39;s posts | Jeroen Trimbach</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</title>
     <link>https://jeroentrimbach.com/2021/07/powershell-module-ci/</link>
