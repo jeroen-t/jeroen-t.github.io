@@ -31,7 +31,7 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  1505 ,
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  2702 ,
         "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/","datePublished": "2021-07-28T19:06:05+02:00","dateModified": "2021-07-31T13:34:05+02:00","description": "A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"
     }
     </script><script type="application/ld+json">
@@ -171,10 +171,10 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-28">28-07-2021</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>1505 words
+                                <span class="svg-icon icon-pencil"></span>2702 words
                             </span>
                             <span class="post-meta-reading meta-item">
-                                <span class="svg-icon icon-stopwatch"></span>8 minutes
+                                <span class="svg-icon icon-stopwatch"></span>13 minutes
                             </span>
                         </div>
 
@@ -209,7 +209,6 @@
     <li><a href="#u-functions">⚡ Functions!</a></li>
     <li><a href="#u-psmodule">📦 A sample module</a></li>
     <li><a href="#u-psmanifest">📄 The manifest file</a></li>
-    <li><a href="#u-pester">📝 Running Pester tests</a></li>
     <li><a href="#u-psgallery">🖼 PowerShellGallery</a></li>
     <li><a href="#u-githubactions">🔩 Build script / Pipeline / Actions</a></li>
     <li><a href="#u-conclusion">💡 Conclusion</a></li>
@@ -325,6 +324,154 @@ Optionally you can give a description for you repository as well.</p>
 <p>In the root of the repository I have a README and License file. The README file is an important part of your repository. Actually, mine should get some love! 😅</p>
 <p>The <code>.github</code> and <code>build_scripts</code> folders can be ignored for now. We will cover this later once we start working on our pipeline.</p>
 <p>For now create a directory with the name of your module. This is where we are going to create our module and manifest files for our PowerShell module. Within the directory we just created, create another folder with the name <code>functions</code>. This is where we are going to place all our functions.</p>
+<pre><code>JTAZ
+│   LICENSE
+│   README.md
+│   Unit.Tests.xml
+│
+├───.github
+│   └───workflows
+│           main.yml
+│
+├───build_scripts
+│       build.ps1
+│
+└───jtAz
+    │   jtAz.psd1
+    │   jtAz.psm1
+    │   jtAz.Test.ps1
+    │
+    └───functions
+            Get-jtAzProviderNamespace.ps1
+            Get-jtAzResourceTypes.ps1
+            Get-jtAzTemplate.ps1
+</code></pre><p>Now that we have a skeleton of our PowerShell repository lets commit and push these changes to our repository on GitHub. To do this run the commands:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;first commit&#34;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now if you check your repository on GitHub your code will be there as well.</p>
+<h2 id="u-functions" class="headerLink"><a href="#u-functions" class="header-mark"></a>⚡ Functions!</h2><p>When you are creating a PowerShell module you are going to need to have one or more scripts/functions first.</p>
+<p>If you are new to functions have a look at this <a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/09-functions?view=powershell-7.1" target="_blank" rel="noopener noreffer">documentation</a>.
+It might sound intimidating at first but it is a really straight forward process.
+Maybe you already have a script available that you might want to turn into a function (because you are using running that script quite often now that you think of it 🤔). Give it a shot! And if you don&rsquo;t have anything existing yet try to come up with something and try doing it with PowerShell. I found myself looking at the <a href="https://docs.microsoft.com/en-us/azure/templates/" target="_blank" rel="noopener noreffer">Azure ARM template documentation</a> quite often but usually need to only have a quick look for reference. So I thought maybe I can create a <a href="https://github.com/jeroen-t/jtAz/blob/main/jtAz/functions/Get-jtAzTemplate.ps1" target="_blank" rel="noopener noreffer">function</a> that will just return the ARM (or Bicep) template from the docs onto my terminal window. So it doesn&rsquo;t have to be revolutionary just try something that sounds useful to you. Dive in. That is how we learn 👍</p>
+<p>Once you have created your function save them in the <code>.\&lt;modulename&gt;\functions\</code> folder. Now we can have a look what that psm1 file is all about. 🐱‍🏍</p>
+<h2 id="u-psmodule" class="headerLink"><a href="#u-psmodule" class="header-mark"></a>📦 A sample module</h2><p>Next up we have our script module file. As described in the <a href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/understanding-a-windows-powershell-module?view=powershell-7.1#module-cmdlets-and-variables" target="_blank" rel="noopener noreffer">Microsoft documentation</a> a module is:</p>
+<p>&ldquo;A <em>module</em> is a set of related Windows PowerShell functionalities, grouped together as a convenient unit (usually saved in a single directory). By defining a set of related script files, assemblies, and related resources as a module, you can reference, load, persist, and share your code much easier than you would otherwise.&rdquo;</p>
+<p>Create a file with the name of your module and save it with the <code>.psm1</code> extension in the folder that also has your module name. Now we could have saved the code of our function in this module file and that would have been a valid and working approach. However, as you can imagine that might become quite cumbersome once you start adding additional functions and/or have to modify them. So instead of doing this we are going to use the functions subfolder, dot source each of our functions and export them.</p>
+<p>Save the following code in your module file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-StrictMode</span> <span class="n">-Version</span> <span class="n">Latest</span>
+
+<span class="nv">$functions</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$PSScriptRoot</span><span class="p">\</span><span class="n">functions</span><span class="p">\*.</span><span class="n">ps1</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$import</span> <span class="k">in</span> <span class="nv">$functions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nb">Write-Verbose</span> <span class="s2">&#34;Importing </span><span class="p">$(</span><span class="nv">$import</span><span class="p">.</span><span class="n">FullName</span><span class="p">)</span><span class="s2">&#34;</span>
+        <span class="p">.</span> <span class="nv">$import</span><span class="p">.</span><span class="n">FullName</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+        <span class="nb">Write-Error</span> <span class="s2">&#34;Failed to import function </span><span class="p">$(</span><span class="nv">$import</span><span class="p">.</span><span class="n">FullName</span><span class="p">)</span><span class="s2">: $_&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="c">#foreach</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$file</span> <span class="k">in</span> <span class="nv">$functions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Export-ModuleMember</span> <span class="n">-Function</span> <span class="nv">$file</span><span class="p">.</span><span class="n">BaseName</span>
+<span class="p">}</span> <span class="c">#foreach</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>dot sourcing the functions will load the functions into memory without executing the code.</p>
+<h2 id="u-psmanifest" class="headerLink"><a href="#u-psmanifest" class="header-mark"></a>📄 The manifest file</h2><p>We are also going to create a manifest file (the one with the .psd1 extension). This is a file that will contain a hashtable with keys and values that describes everything about the module. Think prerequisites, what scripts need to be processed, metadata, versions, etc. We can simply create this file using the <code>New-ModuleManifest</code> PowerShell cmdlet.</p>
+<p>Checking the help for this cmdlet will give you all the details:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-Help</span> <span class="nb">New-ModuleManifest</span> <span class="n">-Full</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now that we know what we can specify. Lets create one ourselves. Replace <code>SomeModule</code> with the name of your module and replace the values with your own. You can provide additional parameter if you want to.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$ModuleName</span> <span class="p">=</span> <span class="s1">&#39;SomeModule&#39;</span>
+<span class="nv">$props</span> <span class="p">=</span> <span class="p">@{</span>
+    <span class="n">Path</span> <span class="p">=</span> <span class="s2">&#34;$ModuleName.psd1&#34;</span>
+    <span class="n">RootModule</span> <span class="p">=</span> <span class="s2">&#34;$ModuleName.psm1&#34;</span>
+    <span class="n">GUID</span> <span class="p">=</span> <span class="s2">&#34;</span><span class="p">$(</span><span class="nb">New-Guid</span><span class="p">)</span><span class="s2">&#34;</span>
+    <span class="n">Author</span> <span class="p">=</span> <span class="s1">&#39;Jeroen Trimbach&#39;</span>
+    <span class="n">CompanyName</span> <span class="p">=</span> <span class="s1">&#39;N/A&#39;</span>
+    <span class="n">Description</span> <span class="p">=</span> <span class="s2">&#34;beep boop I&#39;m backing up&#34;</span>
+    <span class="n">ModuleVersion</span> <span class="p">=</span> <span class="s1">&#39;9.9.9&#39;</span> <span class="c"># Leave as is!</span>
+    <span class="n">FunctionsToExport</span> <span class="p">=</span> <span class="p">@(</span><span class="s1">&#39;&lt;FunctionsToExport&gt;&#39;</span><span class="p">)</span> <span class="c"># leave as is!</span>
+    <span class="n">CmdletsToExport</span> <span class="p">=</span> <span class="p">@()</span>
+    <span class="n">VariablesToExport</span> <span class="p">=</span> <span class="p">@()</span>
+    <span class="n">AliasesToExport</span> <span class="p">=</span> <span class="p">@()</span>
+<span class="p">}</span>
+<span class="nb">New-ModuleManifest</span> <span class="nv">@props</span>
+
+<span class="p">((</span><span class="nb">Get-content</span> <span class="n">-path</span> <span class="s2">&#34;.\</span><span class="p">$(</span><span class="nv">$ModuleName</span><span class="p">)</span><span class="s2">.psd1&#34;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;9.9.9&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;ModuleVersion&gt;&#39;</span><span class="p">)</span> <span class="p">|</span>
+    <span class="nb">Set-Content</span> <span class="n">-path</span> <span class="s2">&#34;.\</span><span class="p">$(</span><span class="nv">$ModuleName</span><span class="p">)</span><span class="s2">.psd1&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Have a check at the content of your newly created file. Uncomment keys that seem useful to you and provide values where required. We have not given any function names and module version intentionally. We are going to replace these in our actions workflow because as mentioned earlier whenever we create a new function we want our module to pick that up as well without having to edit the manifest file ourselves. This same idea applies to the ModuleVersion key.</p>
+<!-- 
+## 📝 Running Pester tests {#u-pester}
+
+>> Future content :-) -->
+<h2 id="u-psgallery" class="headerLink"><a href="#u-psgallery" class="header-mark"></a>🖼 PowerShellGallery</h2><p>The plan is that we are going to publish our module to the <a href="www.powershellgallery.com" rel="">PowerShell Gallery</a>. This is a free website maintained by Microsoft.</p>
+<p>Register on the website. Once you have an account in the Gallery we want to create a API key. Because whenever we want to publish any package to the PowerShell Gallery we are going to provide this key.</p>
+<p>Click on your Profile. It will show a button named <code>API Keys</code>. This will take you to the API Keys page. Click on <code>Create</code>. Provide a name for your key and give an amount of days until the key will expire. The default is 365 days. Now click on <code>Create</code> again at the bottom of the page. Copy the key that is displayed on the screen.</p>
+<p>Now we are going to store this key in a safe location from where we can use it in our next steps. Go to your Github repository and click on settings. There will be a menu item called <code>Secrets</code>. This will take you to the <code>Actions secrets</code> page. Click on <code>New repository secret</code> at the top right of the page. Provide a name for your secret (e.g. PSGALLERYAPIKEY) and provide your key. Click on <code>save</code>.</p>
+<p>Now we are completely set. Time for <em>Actions</em>! 💥</p>
+<h2 id="u-githubactions" class="headerLink"><a href="#u-githubactions" class="header-mark"></a>🔩 Build script / Pipeline / Actions</h2><p>Oh, one more step. Remember the values we were going to replace in our manifest file?<br>
+Lets do that now. Create a directory in the root of your repository with the name <code>build_scripts</code> or something similar if you haven&rsquo;t already done so. Create a file in there with the name <code>build.ps1</code>. Set the content of that file to:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -348,85 +495,120 @@ Optionally you can give a description for you repository as well.</p>
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">JTAZ
-│   LICENSE
-│   README.md
-│   Unit.Tests.xml
-│
-├───.github
-│   └───workflows
-│           main.yml
-│
-├───build_scripts
-│       build.ps1
-│
-└───jtAz
-    │   jtAz.psd1
-    │   jtAz.psm1
-    │   jtAz.Test.ps1
-    │
-    └───functions
-            Get-jtAzProviderNamespace.ps1
-            Get-jtAzResourceTypes.ps1
-            Get-jtAzTemplate.ps1
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$Global:ErrorActionPreference</span> <span class="p">=</span> <span class="s1">&#39;Stop&#39;</span>
+<span class="nv">$Global:VerbosePreference</span> <span class="p">=</span> <span class="s1">&#39;SilentlyContinue&#39;</span>
+
+<span class="nv">$buildVersion</span> <span class="p">=</span> <span class="nv">$env:BUILDVER</span>
+<span class="nv">$manifestPath</span> <span class="p">=</span> <span class="s2">&#34;./jtAz/jtAz.psd1&#34;</span>
+<span class="nv">$publicFuncFolderPath</span> <span class="p">=</span> <span class="s1">&#39;./jtAz/functions&#39;</span>
+
+
+<span class="k">if</span> <span class="p">(!(</span><span class="nb">Get-PackageProvider</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-eq</span> <span class="s1">&#39;NuGet&#39;</span> <span class="p">}))</span> <span class="p">{</span>
+    <span class="nb">Install-PackageProvider</span> <span class="n">-Name</span> <span class="n">NuGet</span> <span class="n">-force</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+<span class="p">}</span>
+<span class="nb">Import-PackageProvider</span> <span class="n">-Name</span> <span class="n">NuGet</span> <span class="n">-force</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+
+<span class="k">if</span> <span class="p">((</span><span class="nb">Get-PSRepository</span> <span class="n">-Name</span> <span class="n">PSGallery</span><span class="p">).</span><span class="n">InstallationPolicy</span> <span class="o">-ne</span> <span class="s1">&#39;Trusted&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Set-PSRepository</span> <span class="n">-Name</span> <span class="n">PSGallery</span> <span class="n">-InstallationPolicy</span> <span class="n">Trusted</span>
+<span class="p">}</span>
+
+<span class="nv">$manifestContent</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="nv">$manifestPath</span> <span class="n">-Raw</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;&lt;ModuleVersion&gt;&#39;</span><span class="p">,</span> <span class="nv">$buildVersion</span>
+
+<span class="k">if</span> <span class="p">((</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$publicFuncFolderPath</span><span class="p">)</span> <span class="o">-and</span> <span class="p">(</span><span class="nv">$publicFunctionNames</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$publicFuncFolderPath</span> <span class="n">-Filter</span> <span class="s1">&#39;*.ps1&#39;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">BaseName</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$funcStrings</span> <span class="p">=</span> <span class="s2">&#34;&#39;</span><span class="p">$(</span><span class="nv">$publicFunctionNames</span> <span class="n">-join</span> <span class="s2">&#34;&#39;,&#39;&#34;</span><span class="p">)</span><span class="s2">&#39;&#34;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$funcStrings</span> <span class="p">=</span> <span class="nv">$null</span>
+<span class="p">}</span>
+
+<span class="nv">$manifestContent</span> <span class="p">=</span> <span class="nv">$manifestContent</span> <span class="o">-replace</span> <span class="s2">&#34;&#39;&lt;FunctionsToExport&gt;&#39;&#34;</span><span class="p">,</span> <span class="nv">$funcStrings</span>
+<span class="nv">$manifestContent</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="nv">$manifestPath</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>Now that we have a skeleton of our PowerShell repository lets commit and push these changes to our repository on GitHub. To do this run the commands:</p>
+</div><p>Now in your Github repository open the <code>Actions</code> menu. Click on the <code>New workflow</code> button. It will prompt you to choose a workflow template. We will go for <code>set up a workflow yourself</code>. This will open up a file called <code>main.yml</code> in <code>&lt;repo&gt;/.github/workflows/</code>. Replace the contents of that file with the following workflow:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;first commit&#34;</span>
-<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># This is a basic workflow to help you get started with Actions</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CI</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Controls when the workflow will run</span><span class="w">
+</span><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># Triggers the workflow on push or pull request events but only for the main branch</span><span class="w">
+</span><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">main ]</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="c"># Allows you to run this workflow manually from the Actions tab</span><span class="w">
+</span><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span><span class="w">
+</span><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">publish-to-gallery</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v2</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and publish</span><span class="w">
+</span><span class="w">      </span><span class="c"># API key generated in PSGallery</span><span class="w">
+</span><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">NUGET_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PSGALLERYAPIKEY }}</span><span class="w">
+</span><span class="w">          </span><span class="nt">BUILDVER</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1.0.0&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">pwsh</span><span class="w">
+</span><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">          ./build_scripts/build.ps1
+</span><span class="sd">          Publish-Module -path ./jtAz -NuGetApiKey $env:NUGET_KEY -Verbose</span><span class="w">          
+</span></code></pre></td></tr></table>
 </div>
-</div><p>Now if you check your repository on GitHub your code will be there as well.</p>
-<h2 id="u-functions" class="headerLink"><a href="#u-functions" class="header-mark"></a>⚡ Functions!</h2><p>When you are creating a PowerShell module you are going to need to have one or more scripts/functions first.</p>
-<p>If you are new to functions have a look at this <a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/09-functions?view=powershell-7.1" target="_blank" rel="noopener noreffer">documentation</a>.
-It might sound intimidating at first but it is a really straight forward process.
-Maybe you already have a script available that you might want to turn into a function (because you are using running that script quite often now that you think of it 🤔). Give it a shot! And if you don&rsquo;t have anything existing yet try to come up with something and try doing it with PowerShell. I found myself looking at the <a href="https://docs.microsoft.com/en-us/azure/templates/" target="_blank" rel="noopener noreffer">Azure ARM template documentation</a> quite often but usually need to only have a quick look for reference. So I thought maybe I can create a <a href="https://github.com/jeroen-t/jtAz/blob/main/jtAz/functions/Get-jtAzTemplate.ps1" target="_blank" rel="noopener noreffer">function</a> that will just return the ARM (or Bicep) template from the docs onto my terminal window. So it doesn&rsquo;t have to be revolutionary just try something that sounds useful to you. Dive in. That is how we learn 👍</p>
-<p>Once you have created your function save them in the <code>.\functions\</code> folder. Now we can have a look what that psm1 file is all about. 🐱‍🏍</p>
-<h2 id="u-psmodule" class="headerLink"><a href="#u-psmodule" class="header-mark"></a>📦 A sample module</h2><blockquote>
-<blockquote>
-<blockquote>
-<p>Uh oh - this looks a bit empty. I am planning to work on that.</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>// either create a sample function or just show my own code
-<a href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/understanding-a-windows-powershell-module?view=powershell-7.1#module-cmdlets-and-variables">https://docs.microsoft.com/en-us/powershell/scripting/developer/module/understanding-a-windows-powershell-module?view=powershell-7.1#module-cmdlets-and-variables</a></p>
-<p>tbd</p>
-<h2 id="u-psmanifest" class="headerLink"><a href="#u-psmanifest" class="header-mark"></a>📄 The manifest file</h2><p>// either create a sample function or just show my own code</p>
-<p>tbd</p>
-<h2 id="u-pester" class="headerLink"><a href="#u-pester" class="header-mark"></a>📝 Running Pester tests</h2><p>// simple tests</p>
-<p>tbd</p>
-<h2 id="u-psgallery" class="headerLink"><a href="#u-psgallery" class="header-mark"></a>🖼 PowerShellGallery</h2><p>// PSGallery manual stuff</p>
-<ul>
-<li>Account creation</li>
-<li>API Key</li>
-<li>NuGet package</li>
-</ul>
-<h2 id="u-githubactions" class="headerLink"><a href="#u-githubactions" class="header-mark"></a>🔩 Build script / Pipeline / Actions</h2><ul>
-<li>prepare build</li>
-<li>yaml stuff</li>
-<li>tasks</li>
-<li>don&rsquo;t forget secret!</li>
-</ul>
-<h2 id="u-conclusion" class="headerLink"><a href="#u-conclusion" class="header-mark"></a>💡 Conclusion</h2><ul>
-<li>summary of what we have done/learned</li>
-<li>what can be done next</li>
-</ul>
+</div><p>Additionaly it might be a good idea to add a job that will run tests on your code first. For PowerShell using Pester is an excellent way to do that. Especially since it is automatic. I will update this post later to include some unit tests and how you can use them in your workflow.</p>
+<p>Now click on <code>start commit</code>. Select your workflow and <code>Run workflow</code>! Now it&rsquo;s time to sit back and relax 🍿</p>
+<p>Your workflow will run and if all goes well it will show a green checkmark ✅ Which also means that you now have your module published to the PowerShell Gallery. They will also send you mail upon succes.</p>
+<p>If you get a failure message well then you know what that means.. troubleshoot time. This may or may not have happened to me a few times.. 🙂</p>
+<h2 id="u-conclusion" class="headerLink"><a href="#u-conclusion" class="header-mark"></a>💡 Conclusion</h2><p>In this post we have learned how we can create a PowerShell module using functions that we have stored in separate ps1 files. We have started using a bit of git. And we know now how we can publish our modules to the PS Gallery by using a GitHub Actions workflow.</p>
+<p>There is still a lot of room for improvement. We definitely need some tests in there else we are stuck doing that manually and we don&rsquo;t want that.</p>
 <p>If you want to learn more about PowerShell then I highly recommend reading through the two books that I have mentioned below. The books are very well written and I have learned a lot from them. Whenever I want to do something in PowerShell but not sure what the correct approach is I try to search in those books first. I will pick up something new most of the times as well.</p>
 <ul>
 <li>Learn PowerShell in a Month of Lunches - Don Jones, Jeffery Hicks</li>
 <li>Learn PowerShell Scripting in a Month of Lunches - Don Jones, Jeffery Hicks</li>
-</ul></div><footer>
+</ul>
+<p>Good luck learning 👍</p></div><footer>
                         <div class="post">
 
 
