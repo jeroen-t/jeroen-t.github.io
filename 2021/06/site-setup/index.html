@@ -31,7 +31,7 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Setup, GitHub Pages","wordCount":  2676 ,
+                        }],"genre": "posts","keywords": "Blog, Setup, GitHub Pages","wordCount":  2688 ,
         "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/","datePublished": "2021-06-19T16:03:42+02:00","dateModified": "2021-06-19T22:22:42+02:00","description": "A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages."
     }
     </script><script type="application/ld+json">
@@ -167,7 +167,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-06-19">19-06-2021</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>2676 words
+                                <span class="svg-icon icon-pencil"></span>2688 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>13 minutes
@@ -192,48 +192,48 @@
                         </div>
                         <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#pre-requisites">Pre-Requisites</a>
+    <li><a href="#u-prerequisites">📋 Prerequisites</a>
       <ul>
-        <li><a href="#chocolatey">Chocolatey</a></li>
-        <li><a href="#hugo">Hugo</a></li>
-        <li><a href="#git">GIT</a></li>
-        <li><a href="#optional">Optional</a>
+        <li><a href="#u-chocolatey">[✔] Chocolatey</a></li>
+        <li><a href="#u-hugo">[✔] Hugo</a></li>
+        <li><a href="#u-git">[✔] GIT</a></li>
+        <li><a href="#u-optionalreqs">(✔) Optional</a>
           <ul>
-            <li><a href="#1-domain-name">1. Domain Name</a></li>
-            <li><a href="#2-github-account">2. GitHub Account</a></li>
-            <li><a href="#3-visual-studio-code">3. Visual Studio Code</a></li>
+            <li><a href="#u-domainname">[✔] 1. Domain Name</a></li>
+            <li><a href="#u-githubaccount">[✔] 2. GitHub Account</a></li>
+            <li><a href="#u-vscode">[✔] 3. Visual Studio Code</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#create-a-hugo-site">Create a Hugo site</a>
+    <li><a href="#u-hugosite">➕ Create a Hugo site</a>
       <ul>
-        <li><a href="#1-create-a-site-folder">1. Create a site folder</a></li>
-        <li><a href="#2-add-a-theme-for-your-site">2. Add a theme for your site</a></li>
-        <li><a href="#3-some-more-theme-changes">3. Some more theme changes</a></li>
-        <li><a href="#4-lets-create-a-post">4. Let&rsquo;s create a post</a></li>
+        <li><a href="#u-sitefolder">1. Create a site folder</a></li>
+        <li><a href="#u-sitetheme">2. Add a theme for your site</a></li>
+        <li><a href="#u-themechanges">3. Some more theme changes</a></li>
+        <li><a href="#u-firstpost">4. Let&rsquo;s create a post</a></li>
       </ul>
     </li>
-    <li><a href="#hosting-your-site-on-github">Hosting your site (on GitHub)</a>
+    <li><a href="#u-sitehosting">🌐 Hosting your site (on GitHub)</a>
       <ul>
-        <li><a href="#1-build-the-static-pages">1. Build the static pages</a></li>
-        <li><a href="#2-create-your-sites-github-repository">2. Create your site&rsquo;s GitHub repository</a></li>
-        <li><a href="#3-push-our-sites-static-pages-to-our-repo">3. Push our site&rsquo;s static pages to our repo</a></li>
-        <li><a href="#4-add-your-own-domain-name">4. Add your own domain name</a>
+        <li><a href="#u-buildstaticpages">1. Build the static pages</a></li>
+        <li><a href="#u-creategithubrepo">2. Create your site&rsquo;s GitHub repository</a></li>
+        <li><a href="#u-pushpagestorepo">3. Push our site&rsquo;s static pages to our repo</a></li>
+        <li><a href="#u-domainregistration">4. Add your own domain name</a>
           <ul>
             <li><a href="#-github">@ GitHub</a></li>
             <li><a href="#-your-domain-registrar">@ your Domain Registrar</a></li>
             <li><a href="#-github-1">@ GitHub</a></li>
           </ul>
         </li>
-        <li><a href="#5-pull-the-cname-file-to-your-site-locally">5. Pull the CNAME file to your site locally</a></li>
+        <li><a href="#u-gitpull">5. Pull the CNAME file to your site locally</a></li>
       </ul>
     </li>
-    <li><a href="#basic-flow-for-writing-and-publishing-a-new-post">Basic flow for writing and publishing a new post</a></li>
+    <li><a href="#u-conclusion">💡 Conclusion</a></li>
   </ul>
 </nav></div>
                     </div><p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>
-<h2 id="pre-requisites" class="headerLink"><a href="#pre-requisites" class="header-mark"></a>Pre-Requisites</h2><h3 id="chocolatey" class="headerLink"><a href="#chocolatey" class="header-mark"></a>Chocolatey</h3><p>I have used chocolatey for installing all pre-reqs. If you are also interested in using a package manager and don&rsquo;t have Chocolatey installed yet you can do so by following the instructions on their website <a href="https://chocolatey.org/install">https://chocolatey.org/install</a>.</p>
+<h2 id="u-prerequisites" class="headerLink"><a href="#u-prerequisites" class="header-mark"></a>📋 Prerequisites</h2><h3 id="u-chocolatey" class="headerLink"><a href="#u-chocolatey" class="header-mark"></a>[✔] Chocolatey</h3><p>I have used chocolatey for installing all pre-reqs. If you are also interested in using a package manager and don&rsquo;t have Chocolatey installed yet you can do so by following the instructions on their website <a href="https://chocolatey.org/install">https://chocolatey.org/install</a>.</p>
 <p>Or you can just open PowerShell as Admin and run the following script:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -243,7 +243,7 @@
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="n">3072</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="hugo" class="headerLink"><a href="#hugo" class="header-mark"></a>Hugo</h3><p>Now lets put Chocolatey to use.. ;)</p>
+</div><h3 id="u-hugo" class="headerLink"><a href="#u-hugo" class="header-mark"></a>[✔] Hugo</h3><p>Now lets put Chocolatey to use.. ;)</p>
 <p>From Powershell run the following install command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -263,7 +263,7 @@ We can verify this by running the command:</p>
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">version</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="git" class="headerLink"><a href="#git" class="header-mark"></a>GIT</h3><p>And again using chocolatey we can simply install git by running:</p>
+</div><h3 id="u-git" class="headerLink"><a href="#u-git" class="header-mark"></a>[✔] GIT</h3><p>And again using chocolatey we can simply install git by running:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -274,13 +274,13 @@ We can verify this by running the command:</p>
 </div>
 </div><p>And once that is done we have everyting we need.
 The following are optional requirements but I do suggest having a look at them.</p>
-<h3 id="optional" class="headerLink"><a href="#optional" class="header-mark"></a>Optional</h3><h4 id="1-domain-name" class="headerLink"><a href="#1-domain-name" class="header-mark"></a>1. Domain Name</h4><p>The only cost we will have is having to buy a domain name.
+<h3 id="u-optionalreqs" class="headerLink"><a href="#u-optionalreqs" class="header-mark"></a>(✔) Optional</h3><h4 id="u-domainname" class="headerLink"><a href="#u-domainname" class="header-mark"></a>[✔] 1. Domain Name</h4><p>The only cost we will have is having to buy a domain name.
 Unless of course you are ok with your site ending with github.io.
 We can always change this afterwards as well.</p>
 <p>You can buy a domain at any domain registrar.
 I bought my domain at Namecheap.</p>
-<h4 id="2-github-account" class="headerLink"><a href="#2-github-account" class="header-mark"></a>2. GitHub Account</h4><p>I am using GitHub pages to host my site. If you are interested in doing the same you should create a GitHub account if you don&rsquo;t already have one. They have a free plan available and the process is straight forward. Just go to their site to sign up.</p>
-<h4 id="3-visual-studio-code" class="headerLink"><a href="#3-visual-studio-code" class="header-mark"></a>3. Visual Studio Code</h4><p>I highly suggest using a code editor. My editor of choice is Visual Studio Code.</p>
+<h4 id="u-githubaccount" class="headerLink"><a href="#u-githubaccount" class="header-mark"></a>[✔] 2. GitHub Account</h4><p>I am using GitHub pages to host my site. If you are interested in doing the same you should create a GitHub account if you don&rsquo;t already have one. They have a free plan available and the process is straight forward. Just go to their site to sign up.</p>
+<h4 id="u-vscode" class="headerLink"><a href="#u-vscode" class="header-mark"></a>[✔] 3. Visual Studio Code</h4><p>I highly suggest using a code editor. My editor of choice is Visual Studio Code.</p>
 <p>To install VS Code run:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -291,7 +291,7 @@ I bought my domain at Namecheap.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>And of course if you prefer a different editor yourself than you can use that one instead.</p>
-<h2 id="create-a-hugo-site" class="headerLink"><a href="#create-a-hugo-site" class="header-mark"></a>Create a Hugo site</h2><h3 id="1-create-a-site-folder" class="headerLink"><a href="#1-create-a-site-folder" class="header-mark"></a>1. Create a site folder</h3><p>Before we start let us create a directory in which our Hugo sites will be stored.
+<h2 id="u-hugosite" class="headerLink"><a href="#u-hugosite" class="header-mark"></a>➕ Create a Hugo site</h2><h3 id="u-sitefolder" class="headerLink"><a href="#u-sitefolder" class="header-mark"></a>1. Create a site folder</h3><p>Before we start let us create a directory in which our Hugo sites will be stored.
 For this demo I will use create a Hugo folder on C:.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -312,7 +312,7 @@ You can specify a name other than &ldquo;sitefolder&rdquo; by just replacing it 
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">new</span> <span class="n">site</span> <span class="n">sitefolder</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="2-add-a-theme-for-your-site" class="headerLink"><a href="#2-add-a-theme-for-your-site" class="header-mark"></a>2. Add a theme for your site</h3><p>Before we can start deploying our site we need to pick a theme. There are a lot of which you can choose from <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a>. I am using the uBlogger theme (<a href="https://themes.gohugo.io/ublogger/)">https://themes.gohugo.io/ublogger/)</a>.</p>
+</div><h3 id="u-sitetheme" class="headerLink"><a href="#u-sitetheme" class="header-mark"></a>2. Add a theme for your site</h3><p>Before we can start deploying our site we need to pick a theme. There are a lot of which you can choose from <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a>. I am using the uBlogger theme (<a href="https://themes.gohugo.io/ublogger/)">https://themes.gohugo.io/ublogger/)</a>.</p>
 <p>Once you have found your theme you will have to install it.\ 
 You can either download a zip file of the latest release of the theme and extract it in the themes directory, clone the themes GitHub repository to theme directory directly or create an empty git repository and make it a submodule of your site directory.</p>
 <p>I went with the latter.</p>
@@ -375,7 +375,7 @@ Open this site in your browser (ctrl + click in terminal to open).</p>
 <p>It is empty as of now but this is what we got as of now.<br>
 You can leave your terminal open and make changes to the config or any content files.<br>
 Any changes made will immediately reflect on the page.</p>
-<h3 id="3-some-more-theme-changes" class="headerLink"><a href="#3-some-more-theme-changes" class="header-mark"></a>3. Some more theme changes</h3><p>Our site as of now is still looking a bit empty.. time to change that.</p>
+<h3 id="u-themechanges" class="headerLink"><a href="#u-themechanges" class="header-mark"></a>3. Some more theme changes</h3><p>Our site as of now is still looking a bit empty.. time to change that.</p>
 <p>First we will have to make some changes to the configuration.<br>
 We can have a peak at the sample site of our theme which is listed in the exampleSite folder of our themes directory.<br>
 But the uBlogger theme also has a default configuration in their documentation.
@@ -748,7 +748,7 @@ There is a lot of tweaking you can do and whilst you keep your site running loca
 But definitely try it out yourself.</p>
 <p>If you hadn&rsquo;t noticed already the posts page is missing.<br>
 Well.. we haven&rsquo;t created a post yet. Time for another mission!</p>
-<h3 id="4-lets-create-a-post" class="headerLink"><a href="#4-lets-create-a-post" class="header-mark"></a>4. Let&rsquo;s create a post</h3><p>To create a new post we can simple run the new command from our sites directory.<br>
+<h3 id="u-firstpost" class="headerLink"><a href="#u-firstpost" class="header-mark"></a>4. Let&rsquo;s create a post</h3><p>To create a new post we can simple run the new command from our sites directory.<br>
 Make sure to specify the posts folder when you are creating a post.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -771,9 +771,9 @@ We can create a pre-configured post by replacing it with our themes default.md f
 <p>For now lets just edit the title of our post, set draft to false and write some sample text below the last &ldquo;&mdash;&rdquo;.<br>
 Once you have done that save the file.</p>
 <p>What are you waiting for? Check out your site :)</p>
-<h2 id="hosting-your-site-on-github" class="headerLink"><a href="#hosting-your-site-on-github" class="header-mark"></a>Hosting your site (on GitHub)</h2><p>I hope by now the process of creating and tweaking your site.<br>
+<h2 id="u-sitehosting" class="headerLink"><a href="#u-sitehosting" class="header-mark"></a>🌐 Hosting your site (on GitHub)</h2><p>I hope by now the process of creating and tweaking your site.<br>
 Now it is time to share our creation with others.</p>
-<h3 id="1-build-the-static-pages" class="headerLink"><a href="#1-build-the-static-pages" class="header-mark"></a>1. Build the static pages</h3><p>First we will have to build the static pages.<br>
+<h3 id="u-buildstaticpages" class="headerLink"><a href="#u-buildstaticpages" class="header-mark"></a>1. Build the static pages</h3><p>First we will have to build the static pages.<br>
 We can achieve this by running the command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -788,14 +788,14 @@ We can achieve this by running the command:</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>Your output will be in the public directory of your site.</p>
-<h3 id="2-create-your-sites-github-repository" class="headerLink"><a href="#2-create-your-sites-github-repository" class="header-mark"></a>2. Create your site&rsquo;s GitHub repository</h3><p>Sign in to your GitHub account and click on &ldquo;Create a new repository&rdquo;.<br>
+<h3 id="u-creategithubrepo" class="headerLink"><a href="#u-creategithubrepo" class="header-mark"></a>2. Create your site&rsquo;s GitHub repository</h3><p>Sign in to your GitHub account and click on &ldquo;Create a new repository&rdquo;.<br>
 In order to host your generated content you must use a repo name of the following format:</p>
 <blockquote>
 <p>YOURUSERNAME.github.io</p>
 </blockquote>
 <p>Also if you are using a free account make sure to leave the repository Public.
 All other boxes can be left unchecked.</p>
-<h3 id="3-push-our-sites-static-pages-to-our-repo" class="headerLink"><a href="#3-push-our-sites-static-pages-to-our-repo" class="header-mark"></a>3. Push our site&rsquo;s static pages to our repo</h3><p>Back on our local machine.
+<h3 id="u-pushpagestorepo" class="headerLink"><a href="#u-pushpagestorepo" class="header-mark"></a>3. Push our site&rsquo;s static pages to our repo</h3><p>Back on our local machine.
 Make sure your working directory is the public directory.
 From there run the following:</p>
 <div class="highlight"><div class="chroma">
@@ -816,7 +816,7 @@ From there run the following:</p>
 </div>
 </div><p>Once completed go back to your GitHub repository.<br>
 Your files are now stored in your repository and your site should display by following the link <a href="http://YOURUSERNAME.github.io">http://YOURUSERNAME.github.io</a></p>
-<h3 id="4-add-your-own-domain-name" class="headerLink"><a href="#4-add-your-own-domain-name" class="header-mark"></a>4. Add your own domain name</h3><h4 id="-github" class="headerLink"><a href="#-github" class="header-mark"></a>@ GitHub</h4><p>Go to the settings of your repository. On the sidebar click the &lsquo;Pages&rsquo; button.<br>
+<h3 id="u-domainregistration" class="headerLink"><a href="#u-domainregistration" class="header-mark"></a>4. Add your own domain name</h3><h4 id="-github" class="headerLink"><a href="#-github" class="header-mark"></a>@ GitHub</h4><p>Go to the settings of your repository. On the sidebar click the &lsquo;Pages&rsquo; button.<br>
 Under &lsquo;custom domain&rsquo; specify your own domain name (e.g. <a href="http://www.jeroentrimbach.com">www.jeroentrimbach.com</a>) and click save.<br>
 A file with the name CNAME will be created in your repository with your specified domain name as its content.</p>
 <h4 id="-your-domain-registrar" class="headerLink"><a href="#-your-domain-registrar" class="header-mark"></a>@ your Domain Registrar</h4><p>This may differ per Domain Registrar but the process shouldn&rsquo;t be too difficult.</p>
@@ -845,7 +845,7 @@ Create a CNAME record that points your domain name to your github.io site.</p>
 After a while your validation will pass.<br>
 Optionally you can also enforce HTTPS for your site but it may take a while before you can check that box.<br>
 You can come back later to do this.</p>
-<h3 id="5-pull-the-cname-file-to-your-site-locally" class="headerLink"><a href="#5-pull-the-cname-file-to-your-site-locally" class="header-mark"></a>5. Pull the CNAME file to your site locally</h3><p>From your local machine make sure the working directory is the public folder.<br>
+<h3 id="u-gitpull" class="headerLink"><a href="#u-gitpull" class="header-mark"></a>5. Pull the CNAME file to your site locally</h3><p>From your local machine make sure the working directory is the public folder.<br>
 We are now going to pull the CNAME file that we created in GitHub to make sure it is included in future builds.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -855,7 +855,8 @@ We are now going to pull the CNAME file that we created in GitHub to make sure i
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="basic-flow-for-writing-and-publishing-a-new-post" class="headerLink"><a href="#basic-flow-for-writing-and-publishing-a-new-post" class="header-mark"></a>Basic flow for writing and publishing a new post</h2><p>So now we have our site hosted on GitHub pages and we are able to access it through our own custom domain. Sweet! 😍</p>
+</div><h2 id="u-conclusion" class="headerLink"><a href="#u-conclusion" class="header-mark"></a>💡 Conclusion</h2><p>Basic flow for writing and publishing a new post</p>
+<p>So now we have our site hosted on GitHub pages and we are able to access it through our own custom domain. Sweet! 😍</p>
 <p>But what if we want to publish new content?</p>
 <p>We have learned how to create a new post.</p>
 <div class="highlight"><div class="chroma">
