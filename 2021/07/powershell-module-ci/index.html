@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2021/07/powershell-module-ci/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/07/powershell-module-ci/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-28T19:06:05&#43;02:00" />
-<meta property="article:modified_time" content="2021-07-28T19:06:05&#43;02:00" />
+<meta property="article:modified_time" content="2021-07-31T13:34:05&#43;02:00" />
 
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -31,8 +31,8 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  1305 ,
-        "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/","datePublished": "2021-07-28T19:06:05+02:00","dateModified": "2021-07-28T19:06:05+02:00","description": "A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  1492 ,
+        "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/","datePublished": "2021-07-28T19:06:05+02:00","dateModified": "2021-07-31T13:34:05+02:00","description": "A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"
     }
     </script><script type="application/ld+json">
     {
@@ -167,10 +167,10 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-28">28-07-2021</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>1305 words
+                                <span class="svg-icon icon-pencil"></span>1492 words
                             </span>
                             <span class="post-meta-reading meta-item">
-                                <span class="svg-icon icon-stopwatch"></span>7 minutes
+                                <span class="svg-icon icon-stopwatch"></span>8 minutes
                             </span>
                         </div>
 
@@ -202,7 +202,7 @@
     </li>
     <li><a href="#prepare-your-git-repository">Prepare your Git repository</a></li>
     <li><a href="#prepare-your-powershell-repository">Prepare your PowerShell repository</a></li>
-    <li><a href="#a-sample-function">A sample function</a></li>
+    <li><a href="#functions">Functions!</a></li>
     <li><a href="#a-sample-module">A sample module</a></li>
     <li><a href="#the-manifest-file">The manifest file</a></li>
     <li><a href="#running-pester-tests">Running Pester tests</a></li>
@@ -211,6 +211,10 @@
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
+                    </div><div style="margin: 20px 0 20px 0;">
+                        <span class="post-update">
+                            <span class="s">Updated on 31-07-2021</span>
+                        </span>
                     </div><p>A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</p>
 <p>You might be like me. Use PowerShell daily. Oneliners most of the time. For more advanced tasks you write a script and perhaps schedule those by using Task Scheduler, the SQL Server Agent or something similar. But creating a PowerShell module? Publishing it to the PowerShellGallery? Crazy!</p>
 <p>I&rsquo;m by no means an expert but I got it working. So if you are interested then try to follow along. You might learn something new. I sure did! 😎</p>
@@ -276,7 +280,7 @@ Optionally you can give a description for you repository as well.</p>
 <p>You can always change this in the settings of your repository later as well.</p>
 <p>Additionaly you can select whether you want to initialize your repository with a README file, a .gitignore file and a license.</p>
 <p>Once you have provided all the necessary information press the button <code>Create repository</code> at the bottom of the page.</p>
-<p>Congrats on your Repo!</p>
+<p>🎈 Congrats on your Repo! 🎉</p>
 <p>Now go back to the page that lists all your repositories and open the repository that you have just created. There should be a green button named <code>Code</code>. Press that button and copy the provided URL. Open PowerShell on your machine and browse to your working folder. For this example I am using my home directory.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -316,7 +320,7 @@ Optionally you can give a description for you repository as well.</p>
     </div>
 <p>In the root of the repository I have a README and License file. The README file is an important part of your repository. Actually, mine should get some love! 😅</p>
 <p>The <code>.github</code> and <code>build_scripts</code> folders can be ignored for now. We will cover this later once we start working on our pipeline.</p>
-<p>For now create a directory with the name of your module. This is where we are going to create our module and manifest files for our PowerShell moduule. Within the directory we just created, create another folder with the name <code>functions</code>. This is where we are going to place all our functions.</p>
+<p>For now create a directory with the name of your module. This is where we are going to create our module and manifest files for our PowerShell module. Within the directory we just created, create another folder with the name <code>functions</code>. This is where we are going to place all our functions.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -379,16 +383,20 @@ Optionally you can give a description for you repository as well.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>Now if you check your repository on GitHub your code will be there as well.</p>
-<blockquote>
+<h2 id="functions" class="headerLink"><a href="#functions" class="header-mark"></a>Functions!</h2><p>When you are creating a PowerShell module you are going to need to have one or more scripts/functions first.</p>
+<p>If you are new to functions have a look at this <a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/09-functions?view=powershell-7.1" target="_blank" rel="noopener noreffer">documentation</a>.
+It might sound intimidating at first but it is a really straight forward process.
+Maybe you already have a script available that you might want to turn into a function (because you are using running that script quite often now that you think of it 🤔). Give it a shot! And if you don&rsquo;t have anything existing yet try to come up with something and try doing it with PowerShell. I found myself looking at the <a href="https://docs.microsoft.com/en-us/azure/templates/" target="_blank" rel="noopener noreffer">Azure ARM template documentation</a> quite often but usually need to only have a quick look for reference. So I thought maybe I can create a <a href="https://github.com/jeroen-t/jtAz/blob/main/jtAz/functions/Get-jtAzTemplate.ps1" target="_blank" rel="noopener noreffer">function</a> that will just return the ARM (or Bicep) template from the docs onto my terminal window. So it doesn&rsquo;t have to be revolutionary just try something that sounds useful to you. Dive in. That is how we learn 👍</p>
+<p>Once you have created your function save them in the <code>.\functions\</code> folder. Now we can have a look what that psm1 file is all about. 🐱‍🏍</p>
+<h2 id="a-sample-module" class="headerLink"><a href="#a-sample-module" class="header-mark"></a>A sample module</h2><blockquote>
 <blockquote>
 <blockquote>
 <p>Uh oh - this looks a bit empty. I am planning to work on that.</p>
 </blockquote>
 </blockquote>
 </blockquote>
-<h2 id="a-sample-function" class="headerLink"><a href="#a-sample-function" class="header-mark"></a>A sample function</h2><p>// either create a sample function or just show my own code</p>
-<p>tbd</p>
-<h2 id="a-sample-module" class="headerLink"><a href="#a-sample-module" class="header-mark"></a>A sample module</h2><p>// either create a sample function or just show my own code</p>
+<p>// either create a sample function or just show my own code
+<a href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/understanding-a-windows-powershell-module?view=powershell-7.1#module-cmdlets-and-variables">https://docs.microsoft.com/en-us/powershell/scripting/developer/module/understanding-a-windows-powershell-module?view=powershell-7.1#module-cmdlets-and-variables</a></p>
 <p>tbd</p>
 <h2 id="the-manifest-file" class="headerLink"><a href="#the-manifest-file" class="header-mark"></a>The manifest file</h2><p>// either create a sample function or just show my own code</p>
 <p>tbd</p>
