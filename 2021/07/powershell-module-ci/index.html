@@ -31,7 +31,7 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  2702 ,
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  2698 ,
         "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/","datePublished": "2021-07-28T19:06:05+02:00","dateModified": "2021-07-31T13:34:05+02:00","description": "A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"
     }
     </script><script type="application/ld+json">
@@ -171,7 +171,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-28">28-07-2021</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>2702 words
+                                <span class="svg-icon icon-pencil"></span>2698 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>13 minutes
@@ -210,7 +210,7 @@
     <li><a href="#u-psmodule">📦 A sample module</a></li>
     <li><a href="#u-psmanifest">📄 The manifest file</a></li>
     <li><a href="#u-psgallery">🖼 PowerShellGallery</a></li>
-    <li><a href="#u-githubactions">🔩 Build script / Pipeline / Actions</a></li>
+    <li><a href="#u-githubactions">🔩 GithHub Actions</a></li>
     <li><a href="#u-conclusion">💡 Conclusion</a></li>
   </ul>
 </nav></div>
@@ -470,7 +470,7 @@ Maybe you already have a script available that you might want to turn into a fun
 <p>Click on your Profile. It will show a button named <code>API Keys</code>. This will take you to the API Keys page. Click on <code>Create</code>. Provide a name for your key and give an amount of days until the key will expire. The default is 365 days. Now click on <code>Create</code> again at the bottom of the page. Copy the key that is displayed on the screen.</p>
 <p>Now we are going to store this key in a safe location from where we can use it in our next steps. Go to your Github repository and click on settings. There will be a menu item called <code>Secrets</code>. This will take you to the <code>Actions secrets</code> page. Click on <code>New repository secret</code> at the top right of the page. Provide a name for your secret (e.g. PSGALLERYAPIKEY) and provide your key. Click on <code>save</code>.</p>
 <p>Now we are completely set. Time for <em>Actions</em>! 💥</p>
-<h2 id="u-githubactions" class="headerLink"><a href="#u-githubactions" class="header-mark"></a>🔩 Build script / Pipeline / Actions</h2><p>Oh, one more step. Remember the values we were going to replace in our manifest file?<br>
+<h2 id="u-githubactions" class="headerLink"><a href="#u-githubactions" class="header-mark"></a>🔩 GithHub Actions</h2><p>Oh, one more step. Remember the values we were going to replace in our manifest file?<br>
 Lets do that now. Create a directory in the root of your repository with the name <code>build_scripts</code> or something similar if you haven&rsquo;t already done so. Create a file in there with the name <code>build.ps1</code>. Set the content of that file to:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
