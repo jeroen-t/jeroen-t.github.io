@@ -31,7 +31,7 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  2694 ,
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Module, GitHub Actions, YAML, CICD","wordCount":  2719 ,
         "url": "https:\/\/jeroentrimbach.com\/2021\/07\/powershell-module-ci\/","datePublished": "2021-07-28T19:06:05+02:00","dateModified": "2021-07-31T13:34:05+02:00","description": "A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions"
     }
     </script><script type="application/ld+json">
@@ -171,7 +171,7 @@
                             </span><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-28">28-07-2021</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>2694 words
+                                <span class="svg-icon icon-pencil"></span>2719 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>13 minutes
@@ -324,7 +324,32 @@ Optionally you can give a description for you repository as well.</p>
 <p>In the root of the repository I have a README and License file. The README file is an important part of your repository. Actually, mine should get some love! 😅</p>
 <p>The <code>.github</code> and <code>build_scripts</code> folders can be ignored for now. We will cover this later once we start working on our pipeline.</p>
 <p>For now create a directory with the name of your module. This is where we are going to create our module and manifest files for our PowerShell module. Within the directory we just created, create another folder with the name <code>functions</code>. This is where we are going to place all our functions.</p>
-<pre><code>JTAZ
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">JTAZ
 │   LICENSE
 │   README.md
 │   Unit.Tests.xml
@@ -345,7 +370,9 @@ Optionally you can give a description for you repository as well.</p>
             Get-jtAzProviderNamespace.ps1
             Get-jtAzResourceTypes.ps1
             Get-jtAzTemplate.ps1
-</code></pre><p>Now that we have a skeleton of our PowerShell repository lets commit and push these changes to our repository on GitHub. To do this run the commands:</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now that we have a skeleton of our PowerShell repository lets commit and push these changes to our repository on GitHub. To do this run the commands:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -461,8 +488,10 @@ Maybe you already have a script available that you might want to turn into a fun
 </code></pre></td></tr></table>
 </div>
 </div><p>Have a check at the content of your newly created file. Uncomment keys that seem useful to you and provide values where required. We have not given any function names and module version intentionally. We are going to replace these in our actions workflow because as mentioned earlier whenever we create a new function we want our module to pick that up as well without having to edit the manifest file ourselves. This same idea applies to the ModuleVersion key.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<!-- 
+## 📝 Running Pester tests {#u-pester}
+
+>> Future content :-) -->
 <h2 id="u-psgallery" class="headerLink"><a href="#u-psgallery" class="header-mark"></a>🖼 PowerShellGallery</h2><p>The plan is that we are going to publish our module to the <a href="www.powershellgallery.com" rel="">PowerShell Gallery</a>. This is a free website maintained by Microsoft.</p>
 <p>Register on the website. Once you have an account in the Gallery we want to create a API key. Because whenever we want to publish any package to the PowerShell Gallery we are going to provide this key.</p>
 <p>Click on your Profile. It will show a button named <code>API Keys</code>. This will take you to the API Keys page. Click on <code>Create</code>. Provide a name for your key and give an amount of days until the key will expire. The default is 365 days. Now click on <code>Create</code> again at the bottom of the page. Copy the key that is displayed on the screen.</p>
