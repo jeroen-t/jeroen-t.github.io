@@ -9,8 +9,8 @@
 <meta property="og:description" content="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2021/06/site-setup/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/06/site-setup/featured-image.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-19T16:03:42&#43;02:00" />
-<meta property="article:modified_time" content="2021-06-19T22:22:42&#43;02:00" />
+<meta property="article:published_time" content="2021-06-19T16:03:42+02:00" />
+<meta property="article:modified_time" content="2021-06-19T22:22:42+02:00" />
 
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -237,43 +237,43 @@
   </ul>
 </nav></div>
                     </div><p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>
-<h2 id="u-prerequisites" class="headerLink"><a href="#u-prerequisites" class="header-mark"></a>📋 Prerequisites</h2><h3 id="u-chocolatey" class="headerLink"><a href="#u-chocolatey" class="header-mark"></a>[✔] Chocolatey</h3><p>I have used chocolatey for installing all pre-reqs. If you are also interested in using a package manager and don&rsquo;t have Chocolatey installed yet you can do so by following the instructions on their website <a href="https://chocolatey.org/install">https://chocolatey.org/install</a>.</p>
+<h2 id="u-prerequisites" class="headerLink"><a href="#u-prerequisites" class="header-mark"></a>📋 Prerequisites</h2><h3 id="u-chocolatey" class="headerLink"><a href="#u-chocolatey" class="header-mark"></a>[✔] Chocolatey</h3><p>I have used chocolatey for installing all pre-reqs. If you are also interested in using a package manager and don&rsquo;t have Chocolatey installed yet you can do so by following the instructions on their website <a href="https://chocolatey.org/install" target="_blank" rel="noopener noreffer">https://chocolatey.org/install</a>.</p>
 <p>Or you can just open PowerShell as Admin and run the following script:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="n">3072</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="n">3072</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="u-hugo" class="headerLink"><a href="#u-hugo" class="header-mark"></a>[✔] Hugo</h3><p>Now lets put Chocolatey to use.. ;)</p>
 <p>From Powershell run the following install command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="nb">hugo-extended</span> <span class="n">-confirm</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="nb">hugo-extended</span> <span class="n">-confirm</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>The terminal should display a message saying that the installation was successful.
 We can verify this by running the command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">version</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">version</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="u-git" class="headerLink"><a href="#u-git" class="header-mark"></a>[✔] GIT</h3><p>And again using chocolatey we can simply install git by running:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">git</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">git</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>And once that is done we have everyting we need.
@@ -288,10 +288,10 @@ I bought my domain at Namecheap.</p>
 <p>To install VS Code run:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">vscode</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">vscode</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>And of course if you prefer a different editor yourself than you can use that one instead.</p>
@@ -299,10 +299,10 @@ I bought my domain at Namecheap.</p>
 For this demo I will use create a Hugo folder on C:.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">cd </span><span class="n">C:</span><span class="p">\;</span> <span class="n">mkdir</span> <span class="n">Hugo</span> <span class="p">|</span> <span class="nb">cd
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">cd </span><span class="n">C:</span><span class="p">\;</span> <span class="n">mkdir</span> <span class="n">Hugo</span> <span class="p">|</span> <span class="nb">cd
 </span></code></pre></td></tr></table>
 </div>
 </div><p>The command below will create a new Hugo site in a folder named &ldquo;sitefolder&rdquo; in the current directory.
@@ -310,13 +310,13 @@ If you want it to be created in a different location then change your working di
 You can specify a name other than &ldquo;sitefolder&rdquo; by just replacing it to whatever you like.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">new</span> <span class="n">site</span> <span class="n">sitefolder</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">new</span> <span class="n">site</span> <span class="n">sitefolder</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="u-sitetheme" class="headerLink"><a href="#u-sitetheme" class="header-mark"></a>2. Add a theme for your site</h3><p>Before we can start deploying our site we need to pick a theme. There are a lot of which you can choose from <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a>. I am using the uBlogger theme (<a href="https://themes.gohugo.io/ublogger/)">https://themes.gohugo.io/ublogger/)</a>.</p>
+</div><h3 id="u-sitetheme" class="headerLink"><a href="#u-sitetheme" class="header-mark"></a>2. Add a theme for your site</h3><p>Before we can start deploying our site we need to pick a theme. There are a lot of which you can choose from <a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreffer">https://themes.gohugo.io/</a>. I am using the uBlogger theme (<a href="https://themes.gohugo.io/ublogger/%29" target="_blank" rel="noopener noreffer">https://themes.gohugo.io/ublogger/)</a>.</p>
 <p>Once you have found your theme you will have to install it.\ 
 You can either download a zip file of the latest release of the theme and extract it in the themes directory, clone the themes GitHub repository to theme directory directly or create an empty git repository and make it a submodule of your site directory.</p>
 <p>I went with the latter.</p>
@@ -324,12 +324,12 @@ You can either download a zip file of the latest release of the theme and extrac
 We do this by running:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">cd </span><span class="n">sitefolder</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">cd </span><span class="n">sitefolder</span>
 <span class="n">git</span> <span class="n">init</span>
 <span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">upagge</span><span class="p">/</span><span class="n">uBlogger</span><span class="p">.</span><span class="n">git</span> <span class="n">themes</span><span class="p">/</span><span class="n">uBlogger</span>
 </code></pre></td></tr></table>
@@ -339,16 +339,16 @@ In our sites directory we need to make some changes to the config.toml file to a
 So open the file in VS Code:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">code</span> <span class="p">.\</span><span class="n">config</span><span class="p">.</span><span class="n">toml</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">code</span> <span class="p">.\</span><span class="n">config</span><span class="p">.</span><span class="n">toml</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>And add these settings to the site configuration:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -356,7 +356,7 @@ So open the file in VS Code:</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># Default theme</span>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># Default theme</span>
 <span class="nx">Theme</span> <span class="p">=</span> <span class="s2">&#34;uBlogger&#34;</span>
 
 <span class="p">[</span><span class="nx">params</span><span class="p">]</span>
@@ -368,10 +368,10 @@ So open the file in VS Code:</p>
 From your site directory run:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">serve</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">serve</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>Once the build succeeds the web server will be available at http://localhost:1313/<br>
@@ -386,7 +386,7 @@ But the uBlogger theme also has a default configuration in their documentation.
 Which I am going to use for now.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -437,7 +437,7 @@ Which I am going to use for now.</p>
 </span><span class="lnt">49
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s2">&#34;http://example.org/&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s2">&#34;http://example.org/&#34;</span>
 <span class="c"># [en, zh-cn, fr, ...] determines default content language</span>
 <span class="nx">defaultContentLanguage</span> <span class="p">=</span> <span class="s2">&#34;en&#34;</span>
 <span class="c"># language code</span>
@@ -494,10 +494,10 @@ http://localhost:1313/ in case you closed your browser.</p>
 <p>Or if you have exit PowerShell run:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">serve</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">serve</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>keep it running.. it is nice to see what is happening.</p>
@@ -506,7 +506,7 @@ But.. our homepage is still looking empty. Time to config some more.</p>
 <p>We are going to add onto our param section:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -626,7 +626,7 @@ But.. our homepage is still looking empty. Time to config some more.</p>
 </span><span class="lnt">118
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
     <span class="c"># uBlogger theme version</span>
     <span class="nx">version</span> <span class="p">=</span> <span class="s2">&#34;2.0.X&#34;</span>
     <span class="c"># site default theme (&#34;light&#34;, &#34;dark&#34;, &#34;auto&#34;)</span>
@@ -756,14 +756,14 @@ Well.. we haven&rsquo;t created a post yet. Time for another mission!</p>
 Make sure to specify the posts folder when you are creating a post.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Creating a post can be done using the new command</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># Creating a post can be done using the new command</span>
 <span class="n">hugo</span> <span class="n">new</span> <span class="n">posts</span><span class="p">/</span><span class="nb">site-setup</span><span class="p">.</span><span class="nb">md
 </span><span class="nb"></span>
 <span class="c"># Let&#39;s have a check and see what that did</span>
@@ -781,12 +781,12 @@ Now it is time to share our creation with others.</p>
 We can achieve this by running the command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span>
 <span class="c"># or if you want to include draft posts:</span>
 <span class="n">hugo</span> <span class="n">-D</span>
 </code></pre></td></tr></table>
@@ -804,14 +804,14 @@ Make sure your working directory is the public directory.
 From there run the following:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">init</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">init</span>
 <span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
 <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">YOURUSERNAME</span><span class="p">/</span><span class="n">YOURUSERNAME</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;commit&#34;</span>
@@ -819,9 +819,9 @@ From there run the following:</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>Once completed go back to your GitHub repository.<br>
-Your files are now stored in your repository and your site should display by following the link <a href="http://YOURUSERNAME.github.io">http://YOURUSERNAME.github.io</a></p>
+Your files are now stored in your repository and your site should display by following the link <a href="http://YOURUSERNAME.github.io" target="_blank" rel="noopener noreffer">http://YOURUSERNAME.github.io</a></p>
 <h3 id="u-domainregistration" class="headerLink"><a href="#u-domainregistration" class="header-mark"></a>4. Add your own domain name</h3><h4 id="-github" class="headerLink"><a href="#-github" class="header-mark"></a>@ GitHub</h4><p>Go to the settings of your repository. On the sidebar click the &lsquo;Pages&rsquo; button.<br>
-Under &lsquo;custom domain&rsquo; specify your own domain name (e.g. <a href="http://www.jeroentrimbach.com">www.jeroentrimbach.com</a>) and click save.<br>
+Under &lsquo;custom domain&rsquo; specify your own domain name (e.g. <a href="http://www.jeroentrimbach.com" target="_blank" rel="noopener noreffer">www.jeroentrimbach.com</a>) and click save.<br>
 A file with the name CNAME will be created in your repository with your specified domain name as its content.</p>
 <h4 id="-your-domain-registrar" class="headerLink"><a href="#-your-domain-registrar" class="header-mark"></a>@ your Domain Registrar</h4><p>This may differ per Domain Registrar but the process shouldn&rsquo;t be too difficult.</p>
 <p>Log in to your domain registrar&rsquo;s account manager, select your domain name and go to the DNS settings.<br>
@@ -853,10 +853,10 @@ You can come back later to do this.</p>
 We are now going to pull the CNAME file that we created in GitHub to make sure it is included in future builds.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="u-conclusion" class="headerLink"><a href="#u-conclusion" class="header-mark"></a>💡 Conclusion</h2><p>Basic flow for writing and publishing a new post</p>
@@ -865,7 +865,7 @@ We are now going to pull the CNAME file that we created in GitHub to make sure i
 <p>We have learned how to create a new post.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -878,7 +878,7 @@ We are now going to pull the CNAME file that we created in GitHub to make sure i
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># set site as working directory</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># set site as working directory</span>
 <span class="nb">cd </span><span class="n">sitefolder</span>
 <span class="c"># create a new hugo post</span>
 <span class="n">hugo</span> <span class="n">new</span> <span class="n">posts</span><span class="p">\</span><span class="nb">new-post</span><span class="p">.</span><span class="nb">md
@@ -895,7 +895,7 @@ We are now going to pull the CNAME file that we created in GitHub to make sure i
 Followed by pushing our static pages in the public folder to our GitHub repo.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -905,7 +905,7 @@ Followed by pushing our static pages in the public folder to our GitHub repo.</p
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># build static pages</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># build static pages</span>
 <span class="n">hugo</span>
 <span class="c"># or if including drafts: hugo -D</span>
 <span class="c"># change the to the public directory</span>
@@ -951,7 +951,7 @@ Followed by pushing our static pages in the public folder to our GitHub repo.</p
             </noscript></div></section></div>
 
 </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://jeroentrimbach.com/&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
+        <div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.86.1">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://jeroentrimbach.com/&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
                 </div><div class="footer-line"><i class="svg-icon icon-copyright"></i><span>2021</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
