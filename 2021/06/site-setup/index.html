@@ -2,22 +2,23 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>How to create a website using Hugo and GitHub Pages | </title><meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://jeroentrimbach.com/2021/06/site-setup/featured-image.png"/>
-<meta name="twitter:title" content="How to create a website using Hugo and GitHub Pages"/>
-<meta name="twitter:description" content="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages."/><meta name="Description" content="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages."><meta property="og:title" content="How to create a website using Hugo and GitHub Pages" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>How to create a website using Hugo and GitHub Pages - Jeroen Trimbach</title><meta name="description" content="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages."><meta property="og:title" content="How to create a website using Hugo and GitHub Pages" />
 <meta property="og:description" content="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2021/06/site-setup/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/06/site-setup/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-19T16:03:42+02:00" />
 <meta property="article:modified_time" content="2021-06-19T22:22:42+02:00" />
 
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jeroentrimbach.com/2021/06/site-setup/featured-image.png"/>
+<meta name="twitter:title" content="How to create a website using Hugo and GitHub Pages"/>
+<meta name="twitter:description" content="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages."/>
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2021/06/site-setup/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><meta name="google-site-verification" content="G-NZDT366YND" /><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2021/06/site-setup/" /><link rel="next" href="https://jeroentrimbach.com/2021/07/powershell-module-ci/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><meta name="google-site-verification" content="G-NZDT366YND" /><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -31,170 +32,98 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Setup, GitHub Pages","wordCount":  2688 ,
-        "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/","datePublished": "2021-06-19T16:03:42+02:00","dateModified": "2021-06-19T22:22:42+02:00","description": "A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages."
+                        }],"genre": "posts","keywords": "Blog, Setup, GitHub Pages","wordcount":  2711 ,
+        "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/","datePublished": "2021-06-19T16:03:42+02:00","dateModified": "2021-06-19T22:22:42+02:00","publisher": {
+            "@type": "Organization",
+            "name": "Jeroen Trimbach"},"author": {
+                "@type": "Person",
+                "name": "Jeroen Trimbach"
+            },"description": "A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages."
     }
-    </script><script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https:\/\/jeroentrimbach.com\/"
-        },{
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Documentation",
-            "item": "https://jeroentrimbach.com/categories/documentation/"
-        },{
-                "@type": "ListItem",
-                "position": 3,
-                "name": "How to create a website using Hugo and GitHub Pages"
-            }]
-    }
-</script></head>
-    <body data-header-desktop="" data-header-mobile=""><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    </script></head><body data-header-desktop="" data-header-mobile=""><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-        <div id="mask"></div><div class="wrapper"><header>
-    <div class="desktop header" id="header-desktop">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="Jeroen Trimbach" class="header-logo logo-svg">Jeroen Trimbach</a>
-            </div>
-            <div class="menu">
-                <nav>
-                    <h2 class="display-hidden">Основная навигация</h2>
-                    <ul class="menu-inner"><li>
-                            <a class="menu-item" href="/posts/"> Posts </a>
-                        </li><li>
-                            <a class="menu-item" href="/tags/"> Tags </a>
-                        </li><li>
-                            <a class="menu-item" href="/categories/"> Categories </a>
-                        </li><li>
-                            <a class="menu-item" href="/categories/documentation/"> Docs </a>
-                        </li><li>
-                            <a class="menu-item" href="/about/"> About </a>
-                        </li></ul>
-                </nav><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jeroen Trimbach">Jeroen Trimbach</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Looking for something?" id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <span class="svg-icon icon-search"></span>
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <span class="svg-icon icon-cancel"></span>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
-                            <span class="svg-icon icon-loading"></span>
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <span class="svg-icon icon-moon"></span>
+                    <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
         </div>
-    </div><div class="mobile header" id="header-mobile">
-        <div class="header-container">
-            <div class="header-wrapper">
-                <div class="header-title">
-                    <a href="/" title="Jeroen Trimbach" class="header-logo">Jeroen Trimbach</a>
-                </div>
-                <div class="menu-toggle" id="menu-toggle-mobile">
-                    <span></span><span></span><span></span>
-                </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jeroen Trimbach">Jeroen Trimbach</a>
             </div>
-            <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                        <div class="search mobile" id="search-mobile">
-                            <input type="text" placeholder="Looking for something?" id="search-input-mobile">
-                            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                                <span class="svg-icon icon-search"></span>
-                            </a>
-                            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                                <span class="svg-icon icon-cancel"></span>
-                            </a>
-                            <span class="search-button search-loading" id="search-loading-mobile">
-                                <span class="svg-icon icon-loading"></span>
-                            </span>
-                        </div>
-                        <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
-                            Cancel
-                        </a>
-                    </div><nav>
-                    <h2 class="display-hidden">Основная навигация</h2>
-                    <ul><li>
-                            <a class="menu-item" href="/posts/" title="">Posts</a>
-                        </li><li>
-                            <a class="menu-item" href="/tags/" title="">Tags</a>
-                        </li><li>
-                            <a class="menu-item" href="/categories/" title="">Categories</a>
-                        </li><li>
-                            <a class="menu-item" href="/categories/documentation/" title="">Docs</a>
-                        </li><li>
-                            <a class="menu-item" href="/about/" title="">About</a>
-                        </li></ul>
-                </nav>
-                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <span class="svg-icon icon-moon"></span>
-                </a></div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-    </div><div class="search-dropdown desktop">
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Looking for something?" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><div class="menu-item"><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
     <div id="search-dropdown-desktop"></div>
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div></header><main class="main">
-<div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
-            <div class="toc-title">Contents</div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div>
-
-    
-    
-    <article>
-    
-
-        <header class="header-post">
-
+        </div><article class="page single" data-toc="enable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2021/06/site-setup/featured-image.png"
+        data-srcset="/2021/06/site-setup/featured-image.png, /2021/06/site-setup/featured-image.png 1.5x, /2021/06/site-setup/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/2021/06/site-setup/featured-image.png"
+        title="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">How to create a website using Hugo and GitHub Pages</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>Documentation</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="19-06-2021">19-06-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2711 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;13 minutes</span>&nbsp;</div>
+            </div>
             
-
-            
-            <div class="post-title">
-
-                    <div class="post-all-meta">
-                        <nav class="breadcrumbs">
-    <ol>
-        <li><a href="/">Home </a></li><li><a href="/categories/documentation/">Documentation </a></li><li>How to create a website using Hugo and GitHub Pages</li>
-    </ol>
-</nav>
-                        <h1 class="single-title flipInX">How to create a website using Hugo and GitHub Pages</h1><div class="post-meta summary-post-meta"><span class="post-category meta-item">
-                                <a href="/categories/documentation/"><span class="svg-icon icon-folder"></span>Documentation</a>
-                            </span><span class="post-meta-date meta-item">
-                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-06-19">19-06-2021</time>
-                            </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>2688 words
-                            </span>
-                            <span class="post-meta-reading meta-item">
-                                <span class="svg-icon icon-stopwatch"></span>13 minutes
-                            </span>
-                        </div>
-
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
                     </div>
-
-                </div>
-
-                </header>
-
-        <div class="article-post toc-start">
-
-            <div class="content-block content-block-first content-block-position">
-
-                <div class="post single"><div class="image-theme-classic">
-                        <img src="https://jeroentrimbach.com/2021/06/site-setup/featured-image.png" style="width: 100%">
-                    </div><div class="details toc" id="toc-static"  data-kept="">
-                        <div class="details-summary toc-title">
-                            <span>Contents</span>
-                        </div>
-                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#u-prerequisites">📋 Prerequisites</a>
       <ul>
@@ -236,8 +165,10 @@
     <li><a href="#u-conclusion">💡 Conclusion</a></li>
   </ul>
 </nav></div>
-                    </div><p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>
-<h2 id="u-prerequisites" class="headerLink"><a href="#u-prerequisites" class="header-mark"></a>📋 Prerequisites</h2><h3 id="u-chocolatey" class="headerLink"><a href="#u-chocolatey" class="header-mark"></a>[✔] Chocolatey</h3><p>I have used chocolatey for installing all pre-reqs. If you are also interested in using a package manager and don&rsquo;t have Chocolatey installed yet you can do so by following the instructions on their website <a href="https://chocolatey.org/install" target="_blank" rel="noopener noreffer">https://chocolatey.org/install</a>.</p>
+                </div><div class="content" id="content"><p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>
+<h2 id="u-prerequisites">📋 Prerequisites</h2>
+<h3 id="u-chocolatey">[✔] Chocolatey</h3>
+<p>I have used chocolatey for installing all pre-reqs. If you are also interested in using a package manager and don&rsquo;t have Chocolatey installed yet you can do so by following the instructions on their website <a href="https://chocolatey.org/install" target="_blank" rel="noopener noreffer">https://chocolatey.org/install</a>.</p>
 <p>Or you can just open PowerShell as Admin and run the following script:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -247,7 +178,8 @@
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="n">3072</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="u-hugo" class="headerLink"><a href="#u-hugo" class="header-mark"></a>[✔] Hugo</h3><p>Now lets put Chocolatey to use.. ;)</p>
+</div><h3 id="u-hugo">[✔] Hugo</h3>
+<p>Now lets put Chocolatey to use.. ;)</p>
 <p>From Powershell run the following install command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -267,7 +199,8 @@ We can verify this by running the command:</p>
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">version</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="u-git" class="headerLink"><a href="#u-git" class="header-mark"></a>[✔] GIT</h3><p>And again using chocolatey we can simply install git by running:</p>
+</div><h3 id="u-git">[✔] GIT</h3>
+<p>And again using chocolatey we can simply install git by running:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -278,13 +211,17 @@ We can verify this by running the command:</p>
 </div>
 </div><p>And once that is done we have everyting we need.
 The following are optional requirements but I do suggest having a look at them.</p>
-<h3 id="u-optionalreqs" class="headerLink"><a href="#u-optionalreqs" class="header-mark"></a>(✔) Optional</h3><h4 id="u-domainname" class="headerLink"><a href="#u-domainname" class="header-mark"></a>[✔] 1. Domain Name</h4><p>The only cost we will have is having to buy a domain name.
+<h3 id="u-optionalreqs">(✔) Optional</h3>
+<h4 id="u-domainname">[✔] 1. Domain Name</h4>
+<p>The only cost we will have is having to buy a domain name.
 Unless of course you are ok with your site ending with github.io.
 We can always change this afterwards as well.</p>
 <p>You can buy a domain at any domain registrar.
 I bought my domain at Namecheap.</p>
-<h4 id="u-githubaccount" class="headerLink"><a href="#u-githubaccount" class="header-mark"></a>[✔] 2. GitHub Account</h4><p>I am using GitHub pages to host my site. If you are interested in doing the same you should create a GitHub account if you don&rsquo;t already have one. They have a free plan available and the process is straight forward. Just go to their site to sign up.</p>
-<h4 id="u-vscode" class="headerLink"><a href="#u-vscode" class="header-mark"></a>[✔] 3. Visual Studio Code</h4><p>I highly suggest using a code editor. My editor of choice is Visual Studio Code.</p>
+<h4 id="u-githubaccount">[✔] 2. GitHub Account</h4>
+<p>I am using GitHub pages to host my site. If you are interested in doing the same you should create a GitHub account if you don&rsquo;t already have one. They have a free plan available and the process is straight forward. Just go to their site to sign up.</p>
+<h4 id="u-vscode">[✔] 3. Visual Studio Code</h4>
+<p>I highly suggest using a code editor. My editor of choice is Visual Studio Code.</p>
 <p>To install VS Code run:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -295,7 +232,9 @@ I bought my domain at Namecheap.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>And of course if you prefer a different editor yourself than you can use that one instead.</p>
-<h2 id="u-hugosite" class="headerLink"><a href="#u-hugosite" class="header-mark"></a>➕ Create a Hugo site</h2><h3 id="u-sitefolder" class="headerLink"><a href="#u-sitefolder" class="header-mark"></a>1. Create a site folder</h3><p>Before we start let us create a directory in which our Hugo sites will be stored.
+<h2 id="u-hugosite">➕ Create a Hugo site</h2>
+<h3 id="u-sitefolder">1. Create a site folder</h3>
+<p>Before we start let us create a directory in which our Hugo sites will be stored.
 For this demo I will use create a Hugo folder on C:.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -316,7 +255,8 @@ You can specify a name other than &ldquo;sitefolder&rdquo; by just replacing it 
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span> <span class="n">new</span> <span class="n">site</span> <span class="n">sitefolder</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="u-sitetheme" class="headerLink"><a href="#u-sitetheme" class="header-mark"></a>2. Add a theme for your site</h3><p>Before we can start deploying our site we need to pick a theme. There are a lot of which you can choose from <a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreffer">https://themes.gohugo.io/</a>. I am using the uBlogger theme (<a href="https://themes.gohugo.io/ublogger/%29" target="_blank" rel="noopener noreffer">https://themes.gohugo.io/ublogger/)</a>.</p>
+</div><h3 id="u-sitetheme">2. Add a theme for your site</h3>
+<p>Before we can start deploying our site we need to pick a theme. There are a lot of which you can choose from <a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreffer">https://themes.gohugo.io/</a>. I am using the uBlogger theme (<a href="https://themes.gohugo.io/ublogger/%29" target="_blank" rel="noopener noreffer">https://themes.gohugo.io/ublogger/)</a>.</p>
 <p>Once you have found your theme you will have to install it.\ 
 You can either download a zip file of the latest release of the theme and extract it in the themes directory, clone the themes GitHub repository to theme directory directly or create an empty git repository and make it a submodule of your site directory.</p>
 <p>I went with the latter.</p>
@@ -379,7 +319,8 @@ Open this site in your browser (ctrl + click in terminal to open).</p>
 <p>It is empty as of now but this is what we got as of now.<br>
 You can leave your terminal open and make changes to the config or any content files.<br>
 Any changes made will immediately reflect on the page.</p>
-<h3 id="u-themechanges" class="headerLink"><a href="#u-themechanges" class="header-mark"></a>3. Some more theme changes</h3><p>Our site as of now is still looking a bit empty.. time to change that.</p>
+<h3 id="u-themechanges">3. Some more theme changes</h3>
+<p>Our site as of now is still looking a bit empty.. time to change that.</p>
 <p>First we will have to make some changes to the configuration.<br>
 We can have a peak at the sample site of our theme which is listed in the exampleSite folder of our themes directory.<br>
 But the uBlogger theme also has a default configuration in their documentation.
@@ -752,7 +693,8 @@ There is a lot of tweaking you can do and whilst you keep your site running loca
 But definitely try it out yourself.</p>
 <p>If you hadn&rsquo;t noticed already the posts page is missing.<br>
 Well.. we haven&rsquo;t created a post yet. Time for another mission!</p>
-<h3 id="u-firstpost" class="headerLink"><a href="#u-firstpost" class="header-mark"></a>4. Let&rsquo;s create a post</h3><p>To create a new post we can simple run the new command from our sites directory.<br>
+<h3 id="u-firstpost">4. Let&rsquo;s create a post</h3>
+<p>To create a new post we can simple run the new command from our sites directory.<br>
 Make sure to specify the posts folder when you are creating a post.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -775,9 +717,11 @@ We can create a pre-configured post by replacing it with our themes default.md f
 <p>For now lets just edit the title of our post, set draft to false and write some sample text below the last &ldquo;&mdash;&rdquo;.<br>
 Once you have done that save the file.</p>
 <p>What are you waiting for? Check out your site :)</p>
-<h2 id="u-sitehosting" class="headerLink"><a href="#u-sitehosting" class="header-mark"></a>🌐 Hosting your site (on GitHub)</h2><p>I hope by now the process of creating and tweaking your site.<br>
+<h2 id="u-sitehosting">🌐 Hosting your site (on GitHub)</h2>
+<p>I hope by now the process of creating and tweaking your site.<br>
 Now it is time to share our creation with others.</p>
-<h3 id="u-buildstaticpages" class="headerLink"><a href="#u-buildstaticpages" class="header-mark"></a>1. Build the static pages</h3><p>First we will have to build the static pages.<br>
+<h3 id="u-buildstaticpages">1. Build the static pages</h3>
+<p>First we will have to build the static pages.<br>
 We can achieve this by running the command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -792,14 +736,16 @@ We can achieve this by running the command:</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>Your output will be in the public directory of your site.</p>
-<h3 id="u-creategithubrepo" class="headerLink"><a href="#u-creategithubrepo" class="header-mark"></a>2. Create your site&rsquo;s GitHub repository</h3><p>Sign in to your GitHub account and click on &ldquo;Create a new repository&rdquo;.<br>
+<h3 id="u-creategithubrepo">2. Create your site&rsquo;s GitHub repository</h3>
+<p>Sign in to your GitHub account and click on &ldquo;Create a new repository&rdquo;.<br>
 In order to host your generated content you must use a repo name of the following format:</p>
 <blockquote>
 <p>YOURUSERNAME.github.io</p>
 </blockquote>
 <p>Also if you are using a free account make sure to leave the repository Public.
 All other boxes can be left unchecked.</p>
-<h3 id="u-pushpagestorepo" class="headerLink"><a href="#u-pushpagestorepo" class="header-mark"></a>3. Push our site&rsquo;s static pages to our repo</h3><p>Back on our local machine.
+<h3 id="u-pushpagestorepo">3. Push our site&rsquo;s static pages to our repo</h3>
+<p>Back on our local machine.
 Make sure your working directory is the public directory.
 From there run the following:</p>
 <div class="highlight"><div class="chroma">
@@ -820,10 +766,13 @@ From there run the following:</p>
 </div>
 </div><p>Once completed go back to your GitHub repository.<br>
 Your files are now stored in your repository and your site should display by following the link <a href="http://YOURUSERNAME.github.io" target="_blank" rel="noopener noreffer">http://YOURUSERNAME.github.io</a></p>
-<h3 id="u-domainregistration" class="headerLink"><a href="#u-domainregistration" class="header-mark"></a>4. Add your own domain name</h3><h4 id="-github" class="headerLink"><a href="#-github" class="header-mark"></a>@ GitHub</h4><p>Go to the settings of your repository. On the sidebar click the &lsquo;Pages&rsquo; button.<br>
+<h3 id="u-domainregistration">4. Add your own domain name</h3>
+<h4 id="-github">@ GitHub</h4>
+<p>Go to the settings of your repository. On the sidebar click the &lsquo;Pages&rsquo; button.<br>
 Under &lsquo;custom domain&rsquo; specify your own domain name (e.g. <a href="http://www.jeroentrimbach.com" target="_blank" rel="noopener noreffer">www.jeroentrimbach.com</a>) and click save.<br>
 A file with the name CNAME will be created in your repository with your specified domain name as its content.</p>
-<h4 id="-your-domain-registrar" class="headerLink"><a href="#-your-domain-registrar" class="header-mark"></a>@ your Domain Registrar</h4><p>This may differ per Domain Registrar but the process shouldn&rsquo;t be too difficult.</p>
+<h4 id="-your-domain-registrar">@ your Domain Registrar</h4>
+<p>This may differ per Domain Registrar but the process shouldn&rsquo;t be too difficult.</p>
 <p>Log in to your domain registrar&rsquo;s account manager, select your domain name and go to the DNS settings.<br>
 Create a CNAME record that points your domain name to your github.io site.</p>
 <p>It will show like this:</p>
@@ -845,11 +794,13 @@ Create a CNAME record that points your domain name to your github.io site.</p>
 </tr>
 </tbody>
 </table>
-<h4 id="-github-1" class="headerLink"><a href="#-github-1" class="header-mark"></a>@ GitHub</h4><p>Go back to the settings of your sites repository and go to back to where you added your custom domain.<br>
+<h4 id="-github-1">@ GitHub</h4>
+<p>Go back to the settings of your sites repository and go to back to where you added your custom domain.<br>
 After a while your validation will pass.<br>
 Optionally you can also enforce HTTPS for your site but it may take a while before you can check that box.<br>
 You can come back later to do this.</p>
-<h3 id="u-gitpull" class="headerLink"><a href="#u-gitpull" class="header-mark"></a>5. Pull the CNAME file to your site locally</h3><p>From your local machine make sure the working directory is the public folder.<br>
+<h3 id="u-gitpull">5. Pull the CNAME file to your site locally</h3>
+<p>From your local machine make sure the working directory is the public folder.<br>
 We are now going to pull the CNAME file that we created in GitHub to make sure it is included in future builds.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -859,7 +810,8 @@ We are now going to pull the CNAME file that we created in GitHub to make sure i
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="u-conclusion" class="headerLink"><a href="#u-conclusion" class="header-mark"></a>💡 Conclusion</h2><p>Basic flow for writing and publishing a new post</p>
+</div><h2 id="u-conclusion">💡 Conclusion</h2>
+<p>Basic flow for writing and publishing a new post</p>
 <p>So now we have our site hosted on GitHub pages and we are able to access it through our own custom domain. Sweet! 😍</p>
 <p>But what if we want to publish new content?</p>
 <p>We have learned how to create a new post.</p>
@@ -916,53 +868,25 @@ Followed by pushing our static pages in the public folder to our GitHub repo.</p
 </code></pre></td></tr></table>
 </div>
 </div><p>That&rsquo;s it! Now if we refresh our site it should contain the newly created content.</p>
-<p>Have fun! 👍</p></div><footer>
-                        <div class="post">
-
-
-<div class="post-share"><div class="share-link">
-        <a class="share-icon share-twitter" href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-title="How to create a website using Hugo and GitHub Pages" data-hashtags="Blog,Setup,GitHub Pages"><span class="svg-social-icon icon-twitter"></span></a>
-    </div><div class="share-link">
-        <a class="share-icon share-facebook" href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-hashtag="Blog"><span class="svg-social-icon icon-facebook"></span></a>
-    </div><div class="share-link">
-        <a class="share-icon share-linkedin" href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2021/06/site-setup/"><span class="svg-social-icon icon-linkedin"></span></a>
-    </div><div class="share-link">
-        <a class="share-icon share-whatsapp" href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-title="How to create a website using Hugo and GitHub Pages" data-web><span class="svg-social-icon icon-whatsapp"></span></a>
-    </div><div class="share-link">
-        <a class="share-icon share-reddit" href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2021/06/site-setup/"><span class="svg-social-icon icon-reddit"></span></a>
-    </div></div>
-
-
-
-
-
-
-<div class="post-tags"><a href="/tags/blog/" class="tag">Blog</a><a href="/tags/setup/" class="tag">Setup</a><a href="/tags/github-pages/" class="tag">GitHub Pages</a></div></div>
-                </footer></div>
-
-        <div id="toc-final"></div>
+<p>Have fun! 👍</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
+                </span><span><a href="/tags/setup/">Setup</a>
+                </span><span><a href="/tags/github-pages/">GitHub Pages</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 19-06-2021</span>
+            </div><div class="post-info-mod"></div>
+        </div><div class="post-info-share">
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-title="How to create a website using Hugo and GitHub Pages" data-hashtags="Blog,Setup,GitHub Pages"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2021/06/site-setup/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-title="How to create a website using Hugo and GitHub Pages" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2021/06/site-setup/"><i class="fab fa-reddit fa-fw"></i></a></span>
+        </div></div><div class="post-nav">
+            <a href="/2021/07/powershell-module-ci/" class="next" rel="next" title="Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.86.1">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
+        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+</div>
+</footer>
         </div>
 
-    
-    </article>
-    <section class="page single comments content-block-position">
-        <h1 class="display-hidden">Комментарии</h1><div id="comments"><div id="utterances"></div><noscript>
-                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
-            </noscript></div></section></div>
-
-</main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.86.1">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://jeroentrimbach.com/&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
-                </div><div class="footer-line"><i class="svg-icon icon-copyright"></i><span>2021</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
-
-        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="svg-icon icon-arrow-up"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="svg-icon icon-comments-fixed"></i>
-            </a>
-        </aside><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/prismjs/prism.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"comment","lightTheme":"github-light","repo":"jeroen-t/utterances-comments"}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js"></script><script>
-                window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
-                gtag('config', '276260495', { 'anonymize_ip': true });
-            </script><script src="https://www.googletagmanager.com/gtag/js?id=276260495" async></script></body>
-</html>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js"></script></body></html>

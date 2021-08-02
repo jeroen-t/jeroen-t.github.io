@@ -6,16 +6,14 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</title>
     <link>https://jeroentrimbach.com/2021/07/powershell-module-ci/</link>
-    <pubDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</pubDate>
-    <author>Jeroen Trimbach</author>
-    <guid>https://jeroentrimbach.com/2021/07/powershell-module-ci/</guid>
+    <pubDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/07/powershell-module-ci/</guid>
     <description><![CDATA[<p>A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>How to create a website using Hugo and GitHub Pages</title>
     <link>https://jeroentrimbach.com/2021/06/site-setup/</link>
-    <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate>
-    <author>Jeroen Trimbach</author>
-    <guid>https://jeroentrimbach.com/2021/06/site-setup/</guid>
+    <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/06/site-setup/</guid>
     <description><![CDATA[<p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>
