@@ -136,7 +136,7 @@
     <li><a href="#u-gitrepository">📂 Prepare your Git repository</a></li>
     <li><a href="#u-powershellrepo">📂 Prepare your PowerShell repository</a></li>
     <li><a href="#u-functions">⚡ Functions!</a></li>
-    <li><a href="#u-psmodule">📦 A sample module</a></li>
+    <li><a href="#u-psmodule">📦 The module file</a></li>
     <li><a href="#u-psmanifest">📄 The manifest file</a></li>
     <li><a href="#u-psgallery">🖼 PowerShellGallery</a></li>
     <li><a href="#u-githubactions">🔩 GithHub Actions</a></li>
@@ -144,9 +144,12 @@
   </ul>
 </nav></div>
                 </div><div class="content" id="content"><p>A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</p>
-<p>You might be like me. Use PowerShell daily. Oneliners most of the time. For more advanced tasks you write a script and perhaps schedule those by using Task Scheduler, the SQL Server Agent or something similar. But creating a PowerShell module? Publishing it to the PowerShellGallery? Crazy!</p>
-<p>I&rsquo;m by no means an expert but I got it working. So if you are interested then try to follow along. You might learn something new. I sure did! 😎</p>
+<p>You might be like me. Use PowerShell daily. Oneliners most of the time. For more advanced tasks you write a script and perhaps schedule those by using Task Scheduler,<br>
+the SQL Server Agent or something similar. But creating a PowerShell module? Publishing it to the PowerShellGallery? Crazy!</p>
+<p>I&rsquo;m by no means an expert but I got it working. So if you are interested then try to follow along. You might learn something new. I sure did! 😎
+<br/><br/></p>
 <h2 id="u-prerequisites">📋 Prerequisites</h2>
+<hr>
 <h3 id="u-githubaccount">[✔] GitHub Account</h3>
 <p>I&rsquo;m hosting the source code of my module in a Git repository on GitHub. If you are interested in doing the same you should create a GitHub account if you don&rsquo;t already have one. They have a free plan available and the process is straight forward. Just go to their <a href="https://github.com/" target="_blank" rel="noopener noreffer">site</a> to sign up.</p>
 <h3 id="u-poshgit">[✔] Git in PowerShell</h3>
@@ -201,8 +204,10 @@ You can check whether you have this module installed by running:</p>
             <div class="admonition-content">The winget tool is the client interface to the Windows Package Manager service. You can use it to search for and/or install applications. It also has some other commands in store that allow you to display installed packages, export/import, validate and a bunch of more useful stuff. Once you have it installed simply run <code>winget</code> to see all commands that are available. You can read more about winget <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/" target="_blank" rel="noopener noreffer">here</a></div>
         </div>
     </div>
-<p>And of course if you prefer a different editor yourself than you can use that one instead.</p>
+<p>And of course if you prefer a different editor yourself than you can use that one instead. 
+<br/><br/></p>
 <h2 id="u-gitrepository">📂 Prepare your Git repository</h2>
+<hr>
 <p>I hope you have read through the prerequisites and signed up for GitHub because <a href="https://github.com/" target="_blank" rel="noopener noreffer">GitHub</a> is where we start.
 We are going to set up the Git repository (repo) for our module.</p>
 <p>Click on your profile in the top right of the page. A menu will open. Click on <code>Your repositories</code>. We are going to create a new repository so click on <code>New</code>.</p>
@@ -236,8 +241,10 @@ Optionally you can give a description for you repository as well.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>replace the URL with the one you have copied earlier. Or just replace the tokens with your own details.</p>
-<p>There you go! You have your repository locally now. Awesome! I think? A bit empty though..? Hmm, lets work on that!</p>
+<p>There you go! You have your repository locally now. Awesome! I think? A bit empty though..? Hmm, lets work on that!
+<br/><br/></p>
 <h2 id="u-powershellrepo">📂 Prepare your PowerShell repository</h2>
+<hr>
 <p>// describe what it will look like</p>
 <p>e.g.</p>
 <ul>
@@ -321,14 +328,18 @@ Optionally you can give a description for you repository as well.</p>
 <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>Now if you check your repository on GitHub your code will be there as well.</p>
+</div><p>Now if you check your repository on GitHub your code will be there as well.
+<br/><br/></p>
 <h2 id="u-functions">⚡ Functions!</h2>
+<hr>
 <p>When you are creating a PowerShell module you are going to need to have one or more scripts/functions first.</p>
 <p>If you are new to functions have a look at this <a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/09-functions?view=powershell-7.1" target="_blank" rel="noopener noreffer">documentation</a>.
 It might sound intimidating at first but it is a really straight forward process.
 Maybe you already have a script available that you might want to turn into a function (because you are using running that script quite often now that you think of it 🤔). Give it a shot! And if you don&rsquo;t have anything existing yet try to come up with something and try doing it with PowerShell. I found myself looking at the <a href="https://docs.microsoft.com/en-us/azure/templates/" target="_blank" rel="noopener noreffer">Azure ARM template documentation</a> quite often but usually need to only have a quick look for reference. So I thought maybe I can create a <a href="https://github.com/jeroen-t/jtAz/blob/main/jtAz/functions/Get-jtAzTemplate.ps1" target="_blank" rel="noopener noreffer">function</a> that will just return the ARM (or Bicep) template from the docs onto my terminal window. So it doesn&rsquo;t have to be revolutionary just try something that sounds useful to you. Dive in. That is how we learn 👍</p>
-<p>Once you have created your function save them in the <code>.\&lt;modulename&gt;\functions\</code> folder. Now we can have a look what that psm1 file is all about. 🐱‍🏍</p>
-<h2 id="u-psmodule">📦 A sample module</h2>
+<p>Once you have created your function save them in the <code>.\&lt;modulename&gt;\functions\</code> folder. Now we can have a look what that psm1 file is all about. 🐱‍🏍
+<br/><br/></p>
+<h2 id="u-psmodule">📦 The module file</h2>
+<hr>
 <p>Next up we have our script module file. As described in the <a href="https://docs.microsoft.com/en-us/powershell/scripting/developer/module/understanding-a-windows-powershell-module?view=powershell-7.1#module-cmdlets-and-variables" target="_blank" rel="noopener noreffer">Microsoft documentation</a> a module is:</p>
 <p>&ldquo;A <em>module</em> is a set of related Windows PowerShell functionalities, grouped together as a convenient unit (usually saved in a single directory). By defining a set of related script files, assemblies, and related resources as a module, you can reference, load, persist, and share your code much easier than you would otherwise.&rdquo;</p>
 <p>Create a file with the name of your module and save it with the <code>.psm1</code> extension in the folder that also has your module name. Now we could have saved the code of our function in this module file and that would have been a valid and working approach. However, as you can imagine that might become quite cumbersome once you start adding additional functions and/or have to modify them. So instead of doing this we are going to use the functions subfolder, dot source each of our functions and export them.</p>
@@ -371,8 +382,10 @@ Maybe you already have a script available that you might want to turn into a fun
 <span class="p">}</span> <span class="c">#foreach</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>dot sourcing the functions will load the functions into memory without executing the code.</p>
+</div><p>dot sourcing the functions will load the functions into memory without executing the code.
+<br/><br/></p>
 <h2 id="u-psmanifest">📄 The manifest file</h2>
+<hr>
 <p>We are also going to create a manifest file (the one with the .psd1 extension). This is a file that will contain a hashtable with keys and values that describes everything about the module. Think prerequisites, what scripts need to be processed, metadata, versions, etc. We can simply create this file using the <code>New-ModuleManifest</code> PowerShell cmdlet.</p>
 <p>Checking the help for this cmdlet will give you all the details:</p>
 <div class="highlight"><div class="chroma">
@@ -431,13 +444,17 @@ Maybe you already have a script available that you might want to turn into a fun
 ## 📝 Running Pester tests {#u-pester}
 
 >> Future content :-) -->
+<p><br/><br/></p>
 <h2 id="u-psgallery">🖼 PowerShellGallery</h2>
+<hr>
 <p>The plan is that we are going to publish our module to the <a href="www.powershellgallery.com" rel="">PowerShell Gallery</a>. This is a free website maintained by Microsoft.</p>
 <p>Register on the website. Once you have an account in the Gallery we want to create a API key. Because whenever we want to publish any package to the PowerShell Gallery we are going to provide this key.</p>
 <p>Click on your Profile. It will show a button named <code>API Keys</code>. This will take you to the API Keys page. Click on <code>Create</code>. Provide a name for your key and give an amount of days until the key will expire. The default is 365 days. Now click on <code>Create</code> again at the bottom of the page. Copy the key that is displayed on the screen.</p>
 <p>Now we are going to store this key in a safe location from where we can use it in our next steps. Go to your Github repository and click on settings. There will be a menu item called <code>Secrets</code>. This will take you to the <code>Actions secrets</code> page. Click on <code>New repository secret</code> at the top right of the page. Provide a name for your secret (e.g. PSGALLERYAPIKEY) and provide your key. Click on <code>save</code>.</p>
-<p>Now we are completely set. Time for <em>Actions</em>! 💥</p>
+<p>Now we are completely set. Time for <em>Actions</em>! 💥
+<br/><br/></p>
 <h2 id="u-githubactions">🔩 GithHub Actions</h2>
+<hr>
 <p>Oh, one more step. Remember the values we were going to replace in our manifest file?<br>
 Lets do that now. Create a directory in the root of your repository with the name <code>build_scripts</code> or something similar if you haven&rsquo;t already done so. Create a file in there with the name <code>build.ps1</code>. Set the content of that file to:</p>
 <div class="highlight"><div class="chroma">
@@ -568,8 +585,10 @@ Lets do that now. Create a directory in the root of your repository with the nam
 </div><p>Additionaly it might be a good idea to add a job that will run tests on your code first. For PowerShell using Pester is an excellent way to do that. Especially since it is automatic. I will update this post later to include some unit tests and how you can use them in your workflow.</p>
 <p>Now click on <code>start commit</code>. Select your workflow and <code>Run workflow</code>! Now it&rsquo;s time to sit back and relax 🍿</p>
 <p>Your workflow will run and if all goes well it will show a green checkmark ✅ Which also means that you now have your module published to the PowerShell Gallery. They will also send you mail upon succes.</p>
-<p>If you get a failure message well then you know what that means.. troubleshoot time. This may or may not have happened to me a few times.. 🙂</p>
+<p>If you get a failure message well then you know what that means.. troubleshoot time. This may or may not have happened to me a few times.. 🙂
+<br/><br/></p>
 <h2 id="u-conclusion">💡 Conclusion</h2>
+<hr>
 <p>In this post we have learned how we can create a PowerShell module using functions that we have stored in separate ps1 files. We have started using a bit of git. And we know now how we can publish our modules to the PS Gallery by using a GitHub Actions workflow.</p>
 <p>There is still a lot of room for improvement. We definitely need some tests in there else we are stuck doing that manually and we don&rsquo;t want that.</p>
 <p>If you want to learn more about PowerShell then I highly recommend reading through the two books that I have mentioned below. The books are very well written and I have learned a lot from them. Whenever I want to do something in PowerShell but not sure what the correct approach is I try to search in those books first. I will pick up something new most of the times as well.</p>
