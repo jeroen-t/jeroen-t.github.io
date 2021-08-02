@@ -113,7 +113,7 @@
         data-sizes="auto"
         alt="/2021/07/powershell-module-ci/featured-image.png"
         title="A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</h2><h2 class="single-subtitle">A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</h2><div class="post-meta">
-                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>Documentation</a>&nbsp;<a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
+                <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>Documentation</a>&nbsp;<a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
                 <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="28-07-2021">28-07-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2732 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;13 minutes</span>&nbsp;</div>
             </div>
@@ -160,7 +160,7 @@ You can check whether you have this module installed by running:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-Module</span> <span class="n">Pester</span> <span class="n">-ListAvailable</span>
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">Get-Module</span> <span class="n">Pester</span> <span class="n">-ListAvailable</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>The 3.4.0 version ships as part of Windows 10 and is a bit problematic. To avoid headaches I would suggest updating it right away. Unfortunately updating the module using the Update-Module cmdlet won&rsquo;t work. So you will have to install the latest version of Pester side-by-side using the follow tactic. Open PowerShell as Admin and run the following command:</p>
