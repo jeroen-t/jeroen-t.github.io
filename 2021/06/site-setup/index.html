@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2021/06/site-setup/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/06/site-setup/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-19T16:03:42+02:00" />
-<meta property="article:modified_time" content="2021-06-19T22:22:42+02:00" />
+<meta property="article:modified_time" content="2021-08-02T20:01:42+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2021/06/site-setup/featured-image.png"/>
@@ -32,8 +32,8 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Setup, GitHub Pages","wordcount":  2711 ,
-        "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/","datePublished": "2021-06-19T16:03:42+02:00","dateModified": "2021-06-19T22:22:42+02:00","publisher": {
+                        }],"genre": "posts","keywords": "Blog, Setup, GitHub Pages","wordcount":  2929 ,
+        "url": "https:\/\/jeroentrimbach.com\/2021\/06\/site-setup\/","datePublished": "2021-06-19T16:03:42+02:00","dateModified": "2021-08-02T20:01:42+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
                 "@type": "Person",
@@ -114,8 +114,8 @@
         alt="/2021/06/site-setup/featured-image.png"
         title="A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">How to create a website using Hugo and GitHub Pages</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>Documentation</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="19-06-2021">19-06-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2711 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;13 minutes</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="19-06-2021">19-06-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2929 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;14 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -162,11 +162,13 @@
         <li><a href="#u-gitpull">5. Pull the CNAME file to your site locally</a></li>
       </ul>
     </li>
+    <li><a href="#u-switchhugotheme">↔ Switching your theme?</a></li>
     <li><a href="#u-conclusion">💡 Conclusion</a></li>
   </ul>
 </nav></div>
                 </div><div class="content" id="content"><p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>
 <h2 id="u-prerequisites">📋 Prerequisites</h2>
+<hr>
 <h3 id="u-chocolatey">[✔] Chocolatey</h3>
 <p>I have used chocolatey for installing all pre-reqs. If you are also interested in using a package manager and don&rsquo;t have Chocolatey installed yet you can do so by following the instructions on their website <a href="https://chocolatey.org/install" target="_blank" rel="noopener noreffer">https://chocolatey.org/install</a>.</p>
 <p>Or you can just open PowerShell as Admin and run the following script:</p>
@@ -810,7 +812,79 @@ We are now going to pull the CNAME file that we created in GitHub to make sure i
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="u-conclusion">💡 Conclusion</h2>
+</div><h2 id="u-switchhugotheme">↔ Switching your theme?</h2>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>readme<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">You can skip this section if you are happy with your theme. If you want to try out another then I suggest reading this :-)</div>
+        </div>
+    </div>
+<p>If you have found another theme that you want to use then simply copy the url of the theme&rsquo;s repository.<br>
+You can then add the theme to your sites repository as a submodule just like we have done before. E.g.:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">git submodule add  https://github.com/khusika/FeelIt themes/FeelIt
+</code></pre></td></tr></table>
+</div>
+</div><p>And in your <code>config.toml</code> file update the theme to the name of your new theme. For me that is:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;FeelIt&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Time to check out our new theme (no errors pls 🤞)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hugo serve
+</code></pre></td></tr></table>
+</div>
+</div><p>And if all looks good lets publish our updated site by running:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hugo
+cd .\public\
+git add .
+git commit -m &#34;new theme&#34;
+git push origin master
+</code></pre></td></tr></table>
+</div>
+</div><p>Looking good!</p>
+<p>If you are happy with your new theme and you are sure that you are not going to use your old theme again you may want to remove it.<br>
+You can do so by running the following commands from your site&rsquo;s home directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">git submodule deinit \themes\&lt;oldtheme&gt;
+git rm \themes\&lt;oldtheme&gt;
+git commit -m &#34;removed old themes submodule&#34;
+rm -r -f .git/modules/themes/&lt;oldtheme&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>Poof.. done with our cleanup 🧹</p>
+<h2 id="u-conclusion">💡 Conclusion</h2>
 <p>Basic flow for writing and publishing a new post</p>
 <p>So now we have our site hosted on GitHub pages and we are able to access it through our own custom domain. Sweet! 😍</p>
 <p>But what if we want to publish new content?</p>
@@ -873,7 +947,7 @@ Followed by pushing our static pages in the public folder to our GitHub repo.</p
                 </span><span><a href="/tags/setup/">Setup</a>
                 </span><span><a href="/tags/github-pages/">GitHub Pages</a>
                 </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 19-06-2021</span>
+                <span>Updated on 02-08-2021</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
             <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-title="How to create a website using Hugo and GitHub Pages" data-hashtags="Blog,Setup,GitHub Pages"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2021/06/site-setup/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2021/06/site-setup/" data-title="How to create a website using Hugo and GitHub Pages" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2021/06/site-setup/"><i class="fab fa-reddit fa-fw"></i></a></span>
