@@ -4,25 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Azure Bicep: My First Pump - Jeroen Trimbach</title><meta name="description" content="beep boop I&#39;m backing up.. 🤖"><meta property="og:title" content="Azure Bicep: My First Pump" />
-<meta property="og:description" content="Getting started with Azure Bicep" />
+        <title>Azure Bicep: The First Pump - Jeroen Trimbach</title><meta name="description" content="A write-up on what I have learned so far about Azure Bicep Lang"><meta property="og:title" content="Azure Bicep: The First Pump" />
+<meta property="og:description" content="A write-up on what I have learned so far about Azure Bicep Lang" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/featured-image.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-02T14:23:50+02:00" />
-<meta property="article:modified_time" content="2021-08-02T14:23:50+02:00" />
+<meta property="article:published_time" content="2021-08-05T19:41:50+02:00" />
+<meta property="article:modified_time" content="2021-08-05T19:41:50+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/featured-image.png"/>
-<meta name="twitter:title" content="Azure Bicep: My First Pump"/>
-<meta name="twitter:description" content="Getting started with Azure Bicep"/>
+<meta name="twitter:title" content="Azure Bicep: The First Pump"/>
+<meta name="twitter:description" content="A write-up on what I have learned so far about Azure Bicep Lang"/>
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" /><link rel="prev" href="https://jeroentrimbach.com/2021/07/powershell-module-ci/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><meta name="google-site-verification" content="G-NZDT366YND" /><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" /><link rel="prev" href="https://jeroentrimbach.com/2021/07/powershell-module-ci/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><meta name="google-site-verification" content="276260495" /><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Azure Bicep: My First Pump",
+        "headline": "Azure Bicep: The First Pump",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -32,15 +32,15 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/08\/azure-bicep-intro\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Azure, Bicep, Cloud","wordcount":  5 ,
-        "url": "https:\/\/jeroentrimbach.com\/2021\/08\/azure-bicep-intro\/","datePublished": "2021-08-02T14:23:50+02:00","dateModified": "2021-08-02T14:23:50+02:00","publisher": {
+                        }],"genre": "posts","keywords": "Azure, ARM, Bicep, Cloud","wordcount":  3523 ,
+        "url": "https:\/\/jeroentrimbach.com\/2021\/08\/azure-bicep-intro\/","datePublished": "2021-08-05T19:41:50+02:00","dateModified": "2021-08-05T19:41:50+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
                 "@type": "Person",
                 "name": "Jeroen Trimbach"
-            },"description": ""
+            },"description": "A write-up on what I have learned so far about Azure Bicep Lang"
     }
-    </script></head><body data-header-desktop="" data-header-mobile=""><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    </script></head><body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -112,10 +112,10 @@
         data-srcset="/2021/08/azure-bicep-intro/featured-image.png, /2021/08/azure-bicep-intro/featured-image.png 1.5x, /2021/08/azure-bicep-intro/featured-image.png 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/featured-image.png"
-        title="/2021/08/azure-bicep-intro/featured-image.png" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Azure Bicep: My First Pump</h2><h2 class="single-subtitle">Getting started with Azure Bicep</h2><div class="post-meta">
+        title="A write-up on what I have learned so far about Azure Bicep Lang" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Azure Bicep: The First Pump</h2><h2 class="single-subtitle">Getting started with Azure Bicep</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="02-08-2021">02-08-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;5 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;One minute</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="05-08-2021">05-08-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3523 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;17 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -123,18 +123,872 @@
                         <span>Contents</span>
                         <span><i class="details-icon fas fa-angle-right"></i></span>
                     </div>
-                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-                </div><div class="content" id="content"><p>Getting started with Azure Bicep</p></div><div class="post-footer" id="post-footer">
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#u-prerequisites">📋 Prerequisites</a>
+      <ul>
+        <li><a href="#u-azCli">[✔] Azure CLI</a></li>
+        <li><a href="#u-bicepLangExtentsion">[✔] The Bicep Lang extension</a></li>
+        <li><a href="#u-vsCodeBicep">[✔] VS Code Bicep Extension</a></li>
+        <li><a href="#u-psAzModule">[✔] PowerShell AZ module</a></li>
+        <li><a href="#u-azureSubscription">[✔] An Azure Subscription (Optional)</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-azureResourceManager">👨‍🏫 Azure Resource Manager</a>
+      <ul>
+        <li><a href="#u-armTemplates">❓ What are ARM Templates?</a></li>
+        <li><a href="#u-armTemplateSyntax">{ } The ARM Template syntax</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-bicepLang">💪 Project Bicep</a>
+      <ul>
+        <li><a href="#u-sections">🎈 More sections</a></li>
+        <li><a href="#u-decompileBuild">🛠 Decompile / Build</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-conclusion">💡 Conclusion</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>Getting started with Azure Bicep</p>
+<p>In this post I will take you through deploying resources to Azure using templates. We will be creating these templates using Azure Bicep.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="azureDummy-arm.png"
+        data-srcset="/2021/08/azure-bicep-intro/azureDummy-arm.png, azureDummy-arm.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-arm.png 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/azureDummy-arm.png"
+        title="azureDummy-arm" />
+<br/><br/></p>
+<h2 id="u-prerequisites">📋 Prerequisites</h2>
+<hr>
+<h3 id="u-azCli">[✔] Azure CLI</h3>
+<p>The first thing we will need is the Azure command-line interface (Azure CLI). This is a set of commands that can interact with Azure and its resources.
+<br/><br/>
+You can get the Azure CLI through the <code>winget</code> tool.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AzureCLI</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Or any of the other methods mentioned in the documentation: <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank" rel="noopener noreffer">Install the Azure CLI</a>.</p>
+<p>Once succesfully installed you can simply run <code>az</code> in your terminal to see a list of all the base commands.
+<br/><br/></p>
+<h3 id="u-bicepLangExtentsion">[✔] The Bicep Lang extension</h3>
+<p>Now that we have the Azure CLI installed we are going to install the Bicep extension.<br>
+You may have already seen it pop up when you ran the <code>az</code> command.<br>
+Simply run the following command to install the Bicep CLI:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep install
+</code></pre></td></tr></table>
+</div>
+</div><p>If you already had the extension installed this may have been because you already ran an Azure CLI command that depends on the Bicep CLI.<br>
+The Bicep CLI will automatically get installed if this is the case.
+You can check your Bicep version by running:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep version
+</code></pre></td></tr></table>
+</div>
+</div><p>and if it is not the latest then upgrade by running:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep upgrade
+</code></pre></td></tr></table>
+</div>
+</div><p>if you have never touched the CLI before then checkout some of the commands by including -h / &ndash;help at the end.
+<br/><br/></p>
+<h3 id="u-vsCodeBicep">[✔] VS Code Bicep Extension</h3>
+<p>I highly suggest using a code editor. My editor of choice is Visual Studio Code. Especially since it has the Bicep extension.</p>
+<p>To install VS Code run:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualStudioCode</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>or for a bunch of other methods visit <a href="https://code.visualstudio.com/docs/setup/setup-overview" target="_blank" rel="noopener noreffer">VS Code setup overview</a>.</p>
+<p>Once you have Visual Studio Code installed. Open VS Code and go to the extensions tab. Search for &ldquo;<em>bicep</em>&rdquo; and select <code>install</code>.</p>
+<p>You can verify whether the extension installed succesfully by creating a file with the <em>.bicep</em> extension. Save it and then check whether it picks up any of the IntelliSense features.
+<br/><br/></p>
+<h3 id="u-psAzModule">[✔] PowerShell AZ module</h3>
+<p>I am used to working with PowerShell so in this post I will be using the pwsh az module.<br>
+This is optional. If you want to follow along then run the below commands in a PowerShell terminal.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="c"># PowerShell script execution policy must be set to remote signed or less restrictive</span>
+<span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+
+<span class="c"># Works cross-platform - PowerShell 7.x and later is recommended</span>
+<span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">Az</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">-Repository</span> <span class="n">PSGallery</span> <span class="n">-Force</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Another option is using the Azure CLI we installed earlier. 👍
+<br/><br/></p>
+<h3 id="u-azureSubscription">[✔] An Azure Subscription (Optional)</h3>
+<p>And of course if we want to deploy to Azure we are going to need an Azure Account with an active Subscription on which we have permissions so that we can deploy resources.<br>
+If you are new to Azure you can create an Azure free account. This will give you access to free tier services for 12 months and a $200 budget which you can spend <strong>within 30 days from signing up</strong>.<br>
+Noticed that I put within 30 days in bold? Don&rsquo;t sign up late at night and think I will look at it tomorrow.<br>
+Nah dude, we don&rsquo;t have time to lose! Sign up for this at a time that you know you have some time to spend.<br>
+You can <code>Start free</code> <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="noopener noreffer">here</a>. 
+<br/><br/>
+And if you are a student you can try Azure without having to sign up with a credit card. Checkout the students <a href="https://azure.microsoft.com/en-us/free/students/" target="_blank" rel="noopener noreffer">page</a>.</p>
+<p>In case you can&rsquo;t signup for any of the offers above and don&rsquo;t have access to an active subscription you can checkout the <a href="https://docs.microsoft.com/en-us/learn/" target="_blank" rel="noopener noreffer">Microsoft Learn</a> site. You are limited with what you can do depending on what course you follow but that is not a problem. They have a wide variety of courses available (especially when it comes to Azure) and more and more of their courses come with a Sandbox environment. These Sanbox environment let you perform tasks in Azure (based on the course description) without needing an Azure account. And best of all no charging at all. Completely <strong>free</strong>! Downside is of course that you can&rsquo;t save any of your work but I mean for learning purposes it is wise to delete all your deployed resources at the end of your learning sessions anyway. Unless you like to be a big spender. 💰</p>
+<p>Go over the options I have just listed and make your decision. Once you are all set we can go on our adventure. You can also just do the reading thing. That is cool as well!
+<br/><br/></p>
+<h2 id="u-azureResourceManager">👨‍🏫 Azure Resource Manager</h2>
+<hr>
+<p>Whenever you want to deploy resources to Azure you are going to interact with the Azure Resource Manager (ARM).
+Whether you are using the Azure Portal, Azure Powershell, the Azure CLI or the Azure REST APIs.
+As you can imagine it is important for the ARM service to be available at all times.
+It is designed to be resilient and continuously available. Think:</p>
+<ul>
+<li>Distributed services across regions</li>
+<li>No dependencies on a single data center</li>
+<li>No downtime during maintenace</li>
+<li>et cetera.</li>
+</ul>
+<p>No need for us to worry about all of that. We want to deploy and they will let us.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="azureDummy-whiteboard.png"
+        data-srcset="/2021/08/azure-bicep-intro/azureDummy-whiteboard.png, azureDummy-whiteboard.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-whiteboard.png 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/azureDummy-whiteboard.png"
+        title="azureDummy-whiteboard" /></p>
+<p>How are we deploying things? Behind the scenes everything in Azure is stored in JSON format.</p>
+<div class="details admonition info">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>JSON format<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">JSON is a lightweight data-interchange format that is self describing and easy to read and understand.
+<a href="https://json.org/example.html" target="_blank" rel="noopener noreffer">This site</a> shows examples messages formatted using JSON (and a comparison with the same text as XML).</div>
+        </div>
+    </div>
+<p>You can verify this within the Azure portal. The portal is accessible through <a href="https://portal.azure.com" target="_blank" rel="noopener noreffer">portal.azure.com</a>.<br>
+When you have deployed a resource you can access that resource and export the template.</p>
+<p>For example let&rsquo;s say we create a Resource Group through the portal:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="PortalRG.PNG"
+        data-srcset="/2021/08/azure-bicep-intro/PortalRG.PNG, PortalRG.PNG 1.5x, /2021/08/azure-bicep-intro/PortalRG.PNG 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/PortalRG.PNG"
+        title="azure portal" /></p>
+<p>Once you click on the button <code>Review + create</code> you will get a last overview of the resource you are about to deploy and at the bottom right you will get an option to <code>download the template</code>.</p>
+<p>If we press download we get the deployment template and we can also choose whether or not we want a parameter template with the values we have supplied earlier.
+In our case we get the following files:</p>
+<p>Template.json:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;rgName&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;rgLocation&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Resources/resourceGroups&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2018-05-01&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;rgLocation&#39;)]&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;rgName&#39;)]&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;tags&#39;)]&#34;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>along with its parameter file. parameters.json:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;rgName&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;new-resourcegroup&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;rgLocation&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;westeurope&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>See, easy to understand. Right? :-)</p>
+<p>Or you could checkout the Azure Resource Explorer on <a href="https://resources.azure.com" target="_blank" rel="noopener noreffer">resources.azure.com</a>.
+This is currently in preview and allows you to view the API and make API calls directly into your own subscriptions.<br>
+Because all of the earlier mentioned tools (portal, cli, etc) make requests through the same APIs you will see consistent results.
+All requests are handled using JSON. To showcase our Resource Group example of earlier we could simply run:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="resourcesRG.PNG"
+        data-srcset="/2021/08/azure-bicep-intro/resourcesRG.PNG, resourcesRG.PNG 1.5x, /2021/08/azure-bicep-intro/resourcesRG.PNG 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/resourcesRG.PNG"
+        title="resources api" /></p>
+<p>So if we want to create the same resource group as earlier we would have to provide values for the Resource Name, the resource id, the name and its location.</p>
+<p>But if all requests are in JSON format anyways then wouldn&rsquo;t it be a good idea to deploy these templates directly?
+Yup, good question. That brings us to a concept called &ldquo;Infrastructure as Code&rdquo; and ARM templates.
+<br/><br/></p>
+<h3 id="u-armTemplates">❓ What are ARM Templates?</h3>
+<hr>
+<p>As we have seen earlier with our Resource Group deployment we can deploy resources to Azure using a template that is written in JSON format. 
+Such a template is called an Azure Resource Manager template or ARM template in short.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="azureDummy-think.png"
+        data-srcset="/2021/08/azure-bicep-intro/azureDummy-think.png, azureDummy-think.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-think.png 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/azureDummy-think.png"
+        title="azureDummy-think" /></p>
+<p>A template is declarative that means that in your ARM template you describe what you want.
+How to get to that state and what operations need to be done? Well, we don&rsquo;t care. Azure will take care of all of that.
+Take into account that we provide the correct resources and their properties.
+And even if we didn&rsquo;t the Azure Resource Manager has a built-in validation that will check the template before doing the actual deployment. If there is something wrong with the resource that we are trying to deploy then it will tell us and we are not stuck with only half of the deployment.
+<br/><br/></p>
+<h3 id="u-armTemplateSyntax">{ } The ARM Template syntax</h3>
+<hr>
+<p>A basic template file contains the sections: Parameters, Variables, Resources and Outputs.
+You can also use functions in your ARM template. Checkout <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions" target="_blank" rel="noopener noreffer">the documentation</a> for a full list of functions.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="azureDummy-curlybraces.png"
+        data-srcset="/2021/08/azure-bicep-intro/azureDummy-curlybraces.png, azureDummy-curlybraces.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-curlybraces.png 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/azureDummy-curlybraces.png"
+        title="azureDummy-curlybraces" /></p>
+<p>The sections mentioned in ARM template format will look like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>We could make it even more minimalistic because the only keys that are required are the schema, content version and resources. We could remove the others however they have their use case so it is best to utilize them. The parameters section is used for input. That way we don&rsquo;t have to hardcode each and every property and it gives us a way to reuse our templates. Handy! You can define variables using complicated expressions. You can for instance have a parameter that allows &ldquo;QA&rdquo; or &ldquo;PRD&rdquo; as input and based on the supplied value define a variable that will use a certain tier of a resource. Perhaps a Standard tier when deploying to QA and a Premium tier when that same resource gets deployed onto Production. And last but not least the outputs section. This is pretty straight forward. If you want to return any values from your deployed you can specify that.</p>
+<p>In practice a template we can deploy will look something like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;webAppName&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(&#39;webApp-&#39;, uniqueString(resourceGroup().id))]&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;minLength&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Unique name of the app to create or update.&#34;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Location of the resources. Default is RG location.&#34;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;F1&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;allowedValues&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;B1&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;B2&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;B3&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;F1&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;The SKU of App Service Plan.&#34;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;linuxFxVersion&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;DOTNETCORE|3.0&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;The Runtime stack of current web app&#34;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;appServicePlanPortalName&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(&#39;AppServicePlan-&#39;, parameters(&#39;webAppName&#39;))]&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;appServicePlanPortalName&#39;)]&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Web/serverfarms&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-06-01&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;location&#39;)]&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;sku&#39;)]&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;kind&#34;</span><span class="p">:</span> <span class="s2">&#34;linux&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;reserved&#34;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;webAppName&#39;)]&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Web/sites&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-06-01&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;location&#39;)]&#34;</span><span class="p">,</span>  
+        <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;[resourceId(&#39;Microsoft.Web/serverfarms&#39;, variables(&#39;appServicePlanPortalName&#39;))]&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;serverFarmId&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceId(&#39;Microsoft.Web/serverfarms&#39;, variables(&#39;appServicePlanPortalName&#39;))]&#34;</span><span class="p">,</span>
+          <span class="nt">&#34;siteConfig&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;linuxFxVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;linuxFxVersion&#39;)]&#34;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>As you can see in the resources section we have specified two resources. A resource of the type <code>Microsoft.Web/serverfarms</code> and a resource of the type <code>Microsoft.Web/sites</code>. Please not that in the second resource we do have to specify a dependsOn key with the resource id of the serverfarm. This is because we need to have an app service plan in place before we can deploy a web app so it is key that one gets deployed before the other.</p>
+<p>So far things have been going great. We can easily specify what we want to deploy and it is easy to read what we are deploying. The things is though that once you deploy more and more resources using the same template. Your template will get bigger and bigger. That&rsquo;s a hell of a lot of curly braces! And the whole easy to read thing will not be so easy anymore and may even get confusing once you add in a bunch of depends on keys. Writing a template like this doesn&rsquo;t feel natural either. Most of the time you have to copy &amp; paste stuff in. A more programmary way of doing this would be great and let me tell you.. there is! 😀</p>
+<p><br/><br/></p>
+<h2 id="u-bicepLang">💪 Project Bicep</h2>
+<hr>
+<p>Your expectations must be pretty high right now and that is good because they should be. <em>Throws a front double bicep.</em></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="azureDummy-doublebicep.png"
+        data-srcset="/2021/08/azure-bicep-intro/azureDummy-doublebicep.png, azureDummy-doublebicep.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-doublebicep.png 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/azureDummy-doublebicep.png"
+        title="azureDummy-doublebicep" /></p>
+<p>A default resource in Bicep will look like the following. If you want to see this for yourself then simply open a file with the <code>.bicep</code> file extension in VS Code. If you type <code>res</code> a dropdown will appear which a bunch of snippets. If you select <code>resource with defaults</code> you will get the below code.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">resource Identifier &#39;Provider/Type@Version&#39; = {
+  name: &#39;name&#39;
+  location: &#39;location&#39;
+  properties: {    
+  }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s break this down for a bit. We have the <code>resource</code> keyword which we also saw in our ARM template. Nothing new there, it is known. The <code>Identifier</code> keyword we haven&rsquo;t seen before. If you have seen some bicep tmeplates before then you might have seen being mentioned as a symbolicName. This is not the name of the resource. That wouldn&rsquo;t make sense either since we already have a <code>name</code> property on the next line. Instead the <code>Identifier</code> is the name that we can give our resource so that we can reference it by that name throughout our template. Really useful stuff! And then last but not least we have the <code>Provider</code>, <code>Type</code> and <code>Version</code>. We had those in our ARM templates as well but instead having them each as separate properties in our template we just specify them in the resource declaration. It&rsquo;s a lot clearer this way in my opinion.</p>
+<p>I know what you always wanted to have is an Azure Container Registry. I can&rsquo;t give you that. Here, have it&rsquo;s bicep template instead. Here ya go bud!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">resource acr &#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39; = {
+  name: &#39;nicelookingacrbro&#39;
+  location: &#39;West Europe&#39;
+  sku: {
+    name: &#39;Basic&#39;
+  }
+  properties: {
+    adminUserEnabled: true
+  }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="u-sections">🎈 More sections</h3>
+<p>You might be thinking now &ldquo;where are the rest of our sections. I don&rsquo;t see any curly braces.&rdquo;.</p>
+<p>Yup, time to add some. Parameters first that is.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@minLength(5)
+@maxLength(30)
+@description(&#39;The name of the container registry&#39;)
+param acrName string = &#39;acrgiveanyname&#39;
+
+@description(&#39;The value that indicates whether the admin user is enabled.&#39;)
+param acrAdminUserEnabled bool = false
+
+@description(&#39;The location of the resource. This cannot be changed after the resource is created.&#39;)
+param location string = resourceGroup().location
+
+@allowed([
+  &#39;Basic&#39;
+  &#39;Standard&#39;
+  &#39;Premium&#39;
+])
+@description(&#39;The SKU of the container registry.&#39;)
+param acrSku string = &#39;Basic&#39;
+
+// azure container registry
+resource acr &#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39; = {
+  name: acrName
+  location: location
+  sku: {
+    name: acrSku
+  }
+  properties: {
+    adminUserEnabled: acrAdminUserEnabled
+  }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>You may have noticed two things. We have added parameters above our resource declaration and we have referenced the parameters by their name.</p>
+<p>To put this into comparison with ARM the acrSku parameter would be defined as:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="s2">&#34;acrSku&#34;</span><span class="err">:</span> <span class="p">{</span>
+  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;Basic&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Tier of your Azure Container Registry.&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;allowedValues&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;Basic&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;Standard&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;Premium&#34;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>and we would have to reference it in our resource like:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="s2">&#34;sku&#34;</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;acrSku&#39;)]&#34;</span>
+      <span class="p">}</span><span class="err">,</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Bicep is cleaner.
+I think there is not much else to parameters.</p>
+<p>I do want to touch on the symbolicName part mentioned earlier though. We&rsquo;ll check that out by adding an output section to our template.
+I thought of displaying the whole code here however we only need to add one line to our previous Bicep template. I don&rsquo;t think that is worth it so I will just mention that part but imagine it being part of the same template.</p>
+<p>When we create an Azure Container Registry we will have to give it a name. So let&rsquo;s say we create an ACR with the name <code>theirontemple</code> and we want to push an image to that registry. In order to push an image to our newly created registry we need to know the value of the login server, which is a fuly qualified name ending with <code>azurecr.io</code>. So instead of looking this up after deployment we want our deployment to output this Login server name once we deployed our ACR. Our output will be:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">output acrLoginServer string = acr.properties.loginServer
+</code></pre></td></tr></table>
+</div>
+</div><p>We are saying give me the output value for the login Server which in our case will be <code>theirontemple.azurecr.io</code> and store it in <code>acrLoginServer</code>.
+Notice the <code>acr</code>? That is the symbolicName we gave our resource. If you have VS Code open then remove the <code>properties.loginServer</code> and you will see all the outputs properties that you could specify.</p>
+<p>Now that we have covered a few of the basics of an Bicep template. Let&rsquo;s see what that &ldquo;big&rdquo; ARM template that we used earlier looks like in Bicep.</p>
+<h3 id="u-decompileBuild">🛠 Decompile / Build</h3>
+<p>It is fast and easy to write it all in Bicep from scratch but why would we do that when we have the <code>az bicep decompile</code> function available to us?
+If I run this against our earlier template:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep decompile -f .\deploy.json
+</code></pre></td></tr></table>
+</div>
+</div><p>We get the following message:
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>decompile warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>WARNING:</strong> Decompilation is a best-effort process, as there is no guaranteed mapping from ARM JSON to Bicep.
+You may need to fix warnings and errors in the generated bicep file(s), or decompilation may fail entirely if an accurate conversion is not possible.
+If you would like to report any issues or inaccurate conversions, please see <a href="https://github.com/Azure/bicep/issues" target="_blank" rel="noopener noreffer">https://github.com/Azure/bicep/issues</a>.</div>
+        </div>
+    </div></p>
+<p>Ours is looking great though (the template went from 74 lines of code to 43!):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@description(&#39;Unique name of the app to create or update.&#39;)
+@minLength(2)
+param webAppName string = &#39;webApp-${uniqueString(resourceGroup().id)}&#39;
+
+@description(&#39;Location of the resources. Default is RG location.&#39;)
+param location string = resourceGroup().location
+
+@description(&#39;The SKU of App Service Plan.&#39;)
+@allowed([
+  &#39;B1&#39;
+  &#39;B2&#39;
+  &#39;B3&#39;
+  &#39;F1&#39;
+])
+param sku string = &#39;F1&#39;
+
+@description(&#39;The Runtime stack of current web app&#39;)
+param linuxFxVersion string = &#39;DOTNETCORE|3.0&#39;
+
+var appServicePlanPortalName_var = &#39;AppServicePlan-${webAppName}&#39;
+
+resource appServicePlanPortalName &#39;Microsoft.Web/serverfarms@2020-06-01&#39; = {
+  name: appServicePlanPortalName_var
+  location: location
+  sku: {
+    name: sku
+  }
+  kind: &#39;linux&#39;
+  properties: {
+    reserved: true
+  }
+}
+
+resource webAppName_resource &#39;Microsoft.Web/sites@2020-06-01&#39; = {
+  name: webAppName
+  location: location
+  properties: {
+    serverFarmId: appServicePlanPortalName.id
+    siteConfig: {
+      linuxFxVersion: linuxFxVersion
+    }
+  }
+}
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition info">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>dependsOn<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Notice that this time we do not have to specify a dependsOn property. That is because we are referencing the symbolic name of the app service plan. See the value of the serverFarmId property in the web app resource. <code>appServicePlanPortalName.id</code>.</div>
+        </div>
+    </div>
+<p>This works both ways. We can also write our code in Bicep first and decide to run <code> az bicep build --file {bicep_file.bicep}</code>.
+If we run that then it will spit out the ARM template for us. We could also just leave it as a bicep file and deploy the bicep file directly to Azure. For instance by running:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">New-AzResourceGroupDeployment</span> <span class="n">-ResourceGroup</span> <span class="s2">&#34;yadayada&#34;</span> <span class="n">-TemplateFile</span> <span class="s2">&#34;main.bicep&#34;</span> <span class="p">-...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><br/><br/></p>
+<h2 id="u-conclusion">💡 Conclusion</h2>
+<hr>
+<p>In this post we have learned a bit about what the Azure Resource Manager is, how we can deploy resources to Azure, What an ARM template is and of course Azure Bicep.</p>
+<p>I also wanted to touch on using modules in Bicep however I&rsquo;m still playing around with these myself. I might edit this post later to include a section about this as well. They are great. If you throw a bunch of dummy workout plan files in there then whenever your SO/Friends/Family accidently stumble upon your project they will think you are finally serious about working out instead of it being another one of those side projects of yours.. 😉</p>
+<p>That was it. I hope you enjoyed it and have learned something.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="azureDummy-point.png"
+        data-srcset="/2021/08/azure-bicep-intro/azureDummy-point.png, azureDummy-point.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-point.png 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/azureDummy-point.png"
+        title="azureDummy-point" /></p>
+<p>Now it is time for <strong>you</strong> to roll up your sleeves 💪</p>
+<p>If you want to learn more about <strong>Bicep</strong> I suggest the following resources:</p>
+<ul>
+<li>The official Azure Bicep <a href="https://github.com/Azure/bicep" target="_blank" rel="noopener noreffer">Repo</a> and it&rsquo;s <a href="https://github.com/Azure/bicep/tree/main/docs" target="_blank" rel="noopener noreffer">documentation</a></li>
+<li>The <a href="https://bicepdemo.z22.web.core.windows.net/" target="_blank" rel="noopener noreffer">Bicep Playground</a> in which you can have a look at some sample templates and try some tweaking yourself</li>
+<li>The <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/learn-bicep" target="_blank" rel="noopener noreffer">Microsoft Learn Paths</a>. Some of these have those sandboxes available of which I was talking about.</li>
+<li>The book: <a href="https://www.amazon.com/Getting-started-Bicep-Infrastructure-Azure-dp-B098WK3MR7/dp/B098WK3MR7/ref=mt_other?_encoding=UTF8&amp;me=&amp;qid=" target="_blank" rel="noopener noreffer"> Getting started with Bicep: Infrastructure as code on Azure</a> by Freek Berson.</li>
+</ul>
+<p><br/><br/>
+<em>Btw, I discovered <a href="https://www.gimp.org/" target="_blank" rel="noopener noreffer">GIMP</a>. It&rsquo;s great</em> 😉</p></div><div class="post-footer" id="post-footer">
     <div class="post-info"><div class="post-info-tag"><span><a href="/tags/azure/">Azure</a>
+                </span><span><a href="/tags/arm/">ARM</a>
                 </span><span><a href="/tags/bicep/">Bicep</a>
                 </span><span><a href="/tags/cloud/">Cloud</a>
                 </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 02-08-2021</span>
+                <span>Updated on 05-08-2021</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" data-title="Azure Bicep: My First Pump" data-hashtags="Azure,Bicep,Cloud"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" data-hashtag="Azure"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" data-title="Azure Bicep: My First Pump" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/"><i class="fab fa-reddit fa-fw"></i></a></span>
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" data-title="Azure Bicep: The First Pump" data-hashtags="Azure,ARM,Bicep,Cloud"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" data-hashtag="Azure"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" data-title="Azure Bicep: The First Pump" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2021/08/azure-bicep-intro/"><i class="fab fa-reddit fa-fw"></i></a></span>
         </div></div><div class="post-nav"><a href="/2021/07/powershell-module-ci/" class="prev" rel="prev" title="Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
-</div></article></div>
+</div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
+            </noscript></div></article></div>
             </main>
             <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.86.1">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
         </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
@@ -144,4 +998,6 @@
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-chevron-up fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":200}};</script><script src="/js/theme.min.js"></script></body></html>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment-alt fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Azure Bicep: The First Pump"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>

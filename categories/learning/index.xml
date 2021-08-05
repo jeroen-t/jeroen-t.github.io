@@ -3,7 +3,13 @@
         <title>Learning - Category - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/categories/learning/</link>
         <description>Learning - Category - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/categories/learning/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/categories/learning/" rel="self" type="application/rss+xml" /><item>
+    <title>Azure Bicep: The First Pump</title>
+    <link>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</link>
+    <pubDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</guid>
+    <description><![CDATA[<p>Getting started with Azure Bicep</p>]]></description>
+</item>
+<item>
     <title>Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</title>
     <link>https://jeroentrimbach.com/2021/07/powershell-module-ci/</link>
     <pubDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/07/powershell-module-ci/</guid>
