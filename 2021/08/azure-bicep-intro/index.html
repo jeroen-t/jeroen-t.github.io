@@ -32,7 +32,7 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/08\/azure-bicep-intro\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Azure, ARM, Bicep, Cloud","wordcount":  3523 ,
+                        }],"genre": "posts","keywords": "Azure, ARM, Bicep, Cloud","wordcount":  3527 ,
         "url": "https:\/\/jeroentrimbach.com\/2021\/08\/azure-bicep-intro\/","datePublished": "2021-08-05T19:41:50+02:00","dateModified": "2021-08-05T19:41:50+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -114,7 +114,7 @@
         alt="/2021/08/azure-bicep-intro/featured-image.png"
         title="A write-up on what I have learned so far about Azure Bicep Lang" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Azure Bicep: The First Pump</h2><h2 class="single-subtitle">Getting started with Azure Bicep</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="05-08-2021">05-08-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3523 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="05-08-2021">05-08-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3527 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;17 minutes</span>&nbsp;</div>
             </div>
             
@@ -158,7 +158,7 @@
         data-srcset="/2021/08/azure-bicep-intro/jeroensAzureBicepARM.gif, jeroensAzureBicepARM.gif 1.5x, /2021/08/azure-bicep-intro/jeroensAzureBicepARM.gif 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/jeroensAzureBicepARM.gif"
-        title="jeroensAzureBicepARM" /></p>
+        title="Azure Bicep ARM JSON gif - jeroentrimbach" /></p>
 <p><br/><br/></p>
 <h2 id="u-prerequisites">📋 Prerequisites</h2>
 <hr>
@@ -252,7 +252,7 @@ This is optional. If you want to follow along then run the below commands in a P
 If you are new to Azure you can create an Azure free account. This will give you access to free tier services for 12 months and a $200 budget which you can spend <strong>within 30 days from signing up</strong>.<br>
 Noticed that I put within 30 days in bold? Don&rsquo;t sign up late at night and think I will look at it tomorrow.<br>
 Nah dude, we don&rsquo;t have time to lose! Sign up for this at a time that you know you have some time to spend.<br>
-You can <code>Start free</code> <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="noopener noreffer">here</a>. 
+You can <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="noopener noreffer">start free here on this site.</a>. 
 <br/><br/>
 And if you are a student you can try Azure without having to sign up with a credit card. Checkout the students <a href="https://azure.microsoft.com/en-us/free/students/" target="_blank" rel="noopener noreffer">page</a>.</p>
 <p>In case you can&rsquo;t signup for any of the offers above and don&rsquo;t have access to an active subscription you can checkout the <a href="https://docs.microsoft.com/en-us/learn/" target="_blank" rel="noopener noreffer">Microsoft Learn</a> site. You are limited with what you can do depending on what course you follow but that is not a problem. They have a wide variety of courses available (especially when it comes to Azure) and more and more of their courses come with a Sandbox environment. These Sanbox environment let you perform tasks in Azure (based on the course description) without needing an Azure account. And best of all no charging at all. Completely <strong>free</strong>! Downside is of course that you can&rsquo;t save any of your work but I mean for learning purposes it is wise to delete all your deployed resources at the end of your learning sessions anyway. Unless you like to be a big spender. 💰</p>
@@ -267,7 +267,7 @@ And if you are a student you can try Azure without having to sign up with a cred
         data-srcset="/2021/08/azure-bicep-intro/azureDummy-arm.png, azureDummy-arm.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-arm.png 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/azureDummy-arm.png"
-        title="azureDummy-arm" /></p>
+        title="azureDummy - Azure Resource Manager - jeroentrimbach" /></p>
 <p>Whenever you want to deploy resources to Azure you are going to interact with the Azure Resource Manager (ARM).
 Whether you are using the Azure Portal, Azure Powershell, the Azure CLI or the Azure REST APIs.
 As you can imagine it is important for the ARM service to be available at all times.
@@ -286,7 +286,7 @@ It is designed to be resilient and continuously available. Think:</p>
         data-srcset="/2021/08/azure-bicep-intro/azureDummy-whiteboard.png, azureDummy-whiteboard.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-whiteboard.png 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/azureDummy-whiteboard.png"
-        title="azureDummy-whiteboard" /></p>
+        title="azureDummy - Azure Resource Manager Whiteboard - jeroentrimbach" /></p>
 <p>How are we deploying things? Behind the scenes everything in Azure is stored in JSON format.</p>
 <div class="details admonition info">
         <div class="details-summary admonition-title">
@@ -294,7 +294,7 @@ It is designed to be resilient and continuously available. Think:</p>
         </div>
         <div class="details-content">
             <div class="admonition-content">JSON is a lightweight data-interchange format that is self describing and easy to read and understand.
-<a href="https://json.org/example.html" target="_blank" rel="noopener noreffer">This site</a> shows examples messages formatted using JSON (and a comparison with the same text as XML).</div>
+<a href="https://json.org/example.html" target="_blank" rel="noopener noreffer">The website json.org shows </a> examples messages formatted using JSON (and a comparison with the same text as XML).</div>
         </div>
     </div>
 <p>You can verify this within the Azure portal. The portal is accessible through <a href="https://portal.azure.com" target="_blank" rel="noopener noreffer">portal.azure.com</a>.<br>
@@ -307,7 +307,7 @@ When you have deployed a resource you can access that resource and export the te
         data-srcset="/2021/08/azure-bicep-intro/PortalRG.PNG, PortalRG.PNG 1.5x, /2021/08/azure-bicep-intro/PortalRG.PNG 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/PortalRG.PNG"
-        title="azure portal" /></p>
+        title="resourceGroup - Azure Portal Example - jeroentrimbach" /></p>
 <p>Once you click on the button <code>Review + create</code> you will get a last overview of the resource you are about to deploy and at the bottom right you will get an option to <code>download the template</code>.</p>
 <p>If we press download we get the deployment template and we can also choose whether or not we want a parameter template with the values we have supplied earlier.
 In our case we get the following files:</p>
@@ -423,7 +423,7 @@ All requests are handled using JSON. To showcase our Resource Group example of e
         data-srcset="/2021/08/azure-bicep-intro/resourcesRG.PNG, resourcesRG.PNG 1.5x, /2021/08/azure-bicep-intro/resourcesRG.PNG 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/resourcesRG.PNG"
-        title="resources api" /></p>
+        title="azureResourceExplorer - Azure Resources API - jeroentrimbach" /></p>
 <p>So if we want to create the same resource group as earlier we would have to provide values for the Resource Name, the resource id, the name and its location.</p>
 <p>But if all requests are in JSON format anyways then wouldn&rsquo;t it be a good idea to deploy these templates directly?
 Yup, good question. That brings us to a concept called &ldquo;Infrastructure as Code&rdquo; and ARM templates.
@@ -439,7 +439,7 @@ Such a template is called an Azure Resource Manager template or ARM template in 
         data-srcset="/2021/08/azure-bicep-intro/azureDummy-think.png, azureDummy-think.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-think.png 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/azureDummy-think.png"
-        title="azureDummy-think" /></p>
+        title="azureDummy - Azure ARM Templates Thinking - jeroentrimbach" /></p>
 <p>A template is declarative that means that in your ARM template you describe what you want.
 How to get to that state and what operations need to be done? Well, we don&rsquo;t care. Azure will take care of all of that.
 Take into account that we provide the correct resources and their properties.
@@ -456,7 +456,7 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
         data-srcset="/2021/08/azure-bicep-intro/azureDummy-curlybraces.png, azureDummy-curlybraces.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-curlybraces.png 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/azureDummy-curlybraces.png"
-        title="azureDummy-curlybraces" /></p>
+        title="azureDummy - Azure ARM Curly Braces - jeroentrimbach" /></p>
 <p>The sections mentioned in ARM template format will look like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -649,7 +649,7 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
         data-srcset="/2021/08/azure-bicep-intro/azureDummy-doublebicep.png, azureDummy-doublebicep.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-doublebicep.png 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/azureDummy-doublebicep.png"
-        title="azureDummy-doublebicep" /></p>
+        title="azureDummy - Azure Front Double Bicep - jeroentrimbach" /></p>
 <p>A default resource in Bicep will look like the following. If you want to see this for yourself then simply open a file with the <code>.bicep</code> file extension in VS Code. If you type <code>res</code> a dropdown will appear which a bunch of snippets. If you select <code>resource with defaults</code> you will get the below code.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -973,7 +973,7 @@ If we run that then it will spit out the ARM template for us. We could also just
         data-srcset="/2021/08/azure-bicep-intro/azureDummy-point.png, azureDummy-point.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-point.png 2x"
         data-sizes="auto"
         alt="/2021/08/azure-bicep-intro/azureDummy-point.png"
-        title="azureDummy-point" /></p>
+        title="azureDummy - Azure Bicep Pointing - jeroentrimbach" /></p>
 <p>Now it is time for <strong>you</strong> to roll up your sleeves 💪</p>
 <p>If you want to learn more about <strong>Bicep</strong> I suggest the following resources:</p>
 <ul>
