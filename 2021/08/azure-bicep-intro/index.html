@@ -154,12 +154,12 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="azureDummy-arm.png"
-        data-srcset="/2021/08/azure-bicep-intro/azureDummy-arm.png, azureDummy-arm.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-arm.png 2x"
+        data-src="jeroensAzureBicepARM.gif"
+        data-srcset="/2021/08/azure-bicep-intro/jeroensAzureBicepARM.gif, jeroensAzureBicepARM.gif 1.5x, /2021/08/azure-bicep-intro/jeroensAzureBicepARM.gif 2x"
         data-sizes="auto"
-        alt="/2021/08/azure-bicep-intro/azureDummy-arm.png"
-        title="azureDummy-arm" />
-<br/><br/></p>
+        alt="/2021/08/azure-bicep-intro/jeroensAzureBicepARM.gif"
+        title="jeroensAzureBicepARM" /></p>
+<p><br/><br/></p>
 <h2 id="u-prerequisites">📋 Prerequisites</h2>
 <hr>
 <h3 id="u-azCli">[✔] Azure CLI</h3>
@@ -260,6 +260,14 @@ And if you are a student you can try Azure without having to sign up with a cred
 <br/><br/></p>
 <h2 id="u-azureResourceManager">👨‍🏫 Azure Resource Manager</h2>
 <hr>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="azureDummy-arm.png"
+        data-srcset="/2021/08/azure-bicep-intro/azureDummy-arm.png, azureDummy-arm.png 1.5x, /2021/08/azure-bicep-intro/azureDummy-arm.png 2x"
+        data-sizes="auto"
+        alt="/2021/08/azure-bicep-intro/azureDummy-arm.png"
+        title="azureDummy-arm" /></p>
 <p>Whenever you want to deploy resources to Azure you are going to interact with the Azure Resource Manager (ARM).
 Whether you are using the Azure Portal, Azure Powershell, the Azure CLI or the Azure REST APIs.
 As you can imagine it is important for the ARM service to be available at all times.
@@ -990,9 +998,24 @@ If we run that then it will spit out the ARM template for us. We could also just
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
             </noscript></div></article></div>
             </main>
-            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.86.1">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
         </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
 </div>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.min.js?version=1.0.1', { scope: '/' })
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Registered');
+        }, err => console.error('Jeroen Trimbach\u00A0Service Worker registration failed: ', err));
+
+    navigator.serviceWorker
+        .ready
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Ready');
+        });
+}
+</script>
 </footer>
         </div>
 
