@@ -32,7 +32,7 @@
                             "url": "https:\/\/jeroentrimbach.com\/2021\/08\/azure-bicep-intro\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Azure, ARM, Bicep, Cloud","wordcount":  3527 ,
+                        }],"genre": "posts","keywords": "Azure, ARM, Bicep, Cloud","wordcount":  3365 ,
         "url": "https:\/\/jeroentrimbach.com\/2021\/08\/azure-bicep-intro\/","datePublished": "2021-08-05T19:41:50+02:00","dateModified": "2021-08-05T19:41:50+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -114,8 +114,8 @@
         alt="/2021/08/azure-bicep-intro/featured-image.png"
         title="A write-up on what I have learned so far about Azure Bicep Lang" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Azure Bicep: The First Pump</h2><h2 class="single-subtitle">Getting started with Azure Bicep</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="05-08-2021">05-08-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3527 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;17 minutes</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="05-08-2021">05-08-2021</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3365 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;16 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -171,25 +171,25 @@ You can get the Azure CLI through the <code>winget</code> tool.</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AzureCLI</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AzureCLI</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Or any of the other methods mentioned in the documentation: <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank" rel="noopener noreffer">Install the Azure CLI</a>.</p>
 <p>Once succesfully installed you can simply run <code>az</code> in your terminal to see a list of all the base commands.
 <br/><br/></p>
 <h3 id="u-bicepLangExtentsion">[✔] The Bicep Lang extension</h3>
-<p>Now that we have the Azure CLI installed we are going to install the Bicep extension.<br>
-You may have already seen it pop up when you ran the <code>az</code> command.<br>
+<p>Now that we have the Azure CLI installed we are going to install the Bicep extension. <br>
+You may have already seen it pop up when you ran the <code>az</code> command. <br>
 Simply run the following command to install the Bicep CLI:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep install
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az bicep install
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>If you already had the extension installed this may have been because you already ran an Azure CLI command that depends on the Bicep CLI.<br>
+</div><p>If you already had the extension installed this may have been because you already ran an Azure CLI command that depends on the Bicep CLI. <br>
 The Bicep CLI will automatically get installed if this is the case.
 You can check your Bicep version by running:</p>
 <div class="highlight"><div class="chroma">
@@ -197,8 +197,8 @@ You can check your Bicep version by running:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep version
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az bicep version
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>and if it is not the latest then upgrade by running:</p>
 <div class="highlight"><div class="chroma">
@@ -206,8 +206,8 @@ You can check your Bicep version by running:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep upgrade
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az bicep upgrade
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>if you have never touched the CLI before then checkout some of the commands by including -h / &ndash;help at the end.
 <br/><br/></p>
@@ -219,15 +219,15 @@ You can check your Bicep version by running:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualStudioCode</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualStudioCode</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>or for a bunch of other methods visit <a href="https://code.visualstudio.com/docs/setup/setup-overview" target="_blank" rel="noopener noreffer">VS Code setup overview</a>.</p>
 <p>Once you have Visual Studio Code installed. Open VS Code and go to the extensions tab. Search for &ldquo;<em>bicep</em>&rdquo; and select <code>install</code>.</p>
 <p>You can verify whether the extension installed succesfully by creating a file with the <em>.bicep</em> extension. Save it and then check whether it picks up any of the IntelliSense features.
 <br/><br/></p>
 <h3 id="u-psAzModule">[✔] PowerShell AZ module</h3>
-<p>I am used to working with PowerShell so in this post I will be using the pwsh az module.<br>
+<p>I am used to working with PowerShell so in this post I will be using the pwsh az module. <br>
 This is optional. If you want to follow along then run the below commands in a PowerShell terminal.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -238,20 +238,20 @@ This is optional. If you want to follow along then run the below commands in a P
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="c"># PowerShell script execution policy must be set to remote signed or less restrictive</span>
-<span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
-
-<span class="c"># Works cross-platform - PowerShell 7.x and later is recommended</span>
-<span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">Az</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">-Repository</span> <span class="n">PSGallery</span> <span class="n">-Force</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="c"># PowerShell script execution policy must be set to remote signed or less restrictive</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Works cross-platform - PowerShell 7.x and later is recommended</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">Az</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">-Repository</span> <span class="n">PSGallery</span> <span class="n">-Force</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Another option is using the Azure CLI we installed earlier. 👍
 <br/><br/></p>
 <h3 id="u-azureSubscription">[✔] An Azure Subscription (Optional)</h3>
-<p>And of course if we want to deploy to Azure we are going to need an Azure Account with an active Subscription on which we have permissions so that we can deploy resources.<br>
-If you are new to Azure you can create an Azure free account. This will give you access to free tier services for 12 months and a $200 budget which you can spend <strong>within 30 days from signing up</strong>.<br>
-Noticed that I put within 30 days in bold? Don&rsquo;t sign up late at night and think I will look at it tomorrow.<br>
-Nah dude, we don&rsquo;t have time to lose! Sign up for this at a time that you know you have some time to spend.<br>
+<p>And of course if we want to deploy to Azure we are going to need an Azure Account with an active Subscription on which we have permissions so that we can deploy resources. <br>
+If you are new to Azure you can create an Azure free account. This will give you access to free tier services for 12 months and a $200 budget which you can spend <strong>within 30 days from signing up</strong>. <br>
+Noticed that I put within 30 days in bold? Don&rsquo;t sign up late at night and think I will look at it tomorrow. <br>
+Nah dude, we don&rsquo;t have time to lose! Sign up for this at a time that you know you have some time to spend. <br>
 You can <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="noopener noreffer">start free here on this site.</a>. 
 <br/><br/>
 And if you are a student you can try Azure without having to sign up with a credit card. Checkout the students <a href="https://azure.microsoft.com/en-us/free/students/" target="_blank" rel="noopener noreffer">page</a>.</p>
@@ -297,7 +297,7 @@ It is designed to be resilient and continuously available. Think:</p>
 <a href="https://json.org/example.html" target="_blank" rel="noopener noreffer">The website json.org shows </a> examples messages formatted using JSON (and a comparison with the same text as XML).</div>
         </div>
     </div>
-<p>You can verify this within the Azure portal. The portal is accessible through <a href="https://portal.azure.com" target="_blank" rel="noopener noreffer">portal.azure.com</a>.<br>
+<p>You can verify this within the Azure portal. The portal is accessible through <a href="https://portal.azure.com" target="_blank" rel="noopener noreffer">portal.azure.com</a>. <br>
 When you have deployed a resource you can access that resource and export the template.</p>
 <p>For example let&rsquo;s say we create a Resource Group through the portal:</p>
 <p><img
@@ -344,35 +344,35 @@ In our case we get the following files:</p>
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
-    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.1&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;rgName&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-        <span class="p">},</span>
-        <span class="nt">&#34;rgLocation&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-        <span class="p">},</span>
-        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="p">{}</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Resources/resourceGroups&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2018-05-01&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;rgLocation&#39;)]&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;rgName&#39;)]&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{},</span>
-            <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;tags&#39;)]&#34;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rgName&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rgLocation&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Resources/resourceGroups&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2018-05-01&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;rgLocation&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;rgName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;tags&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>along with its parameter file. parameters.json:</p>
 <div class="highlight"><div class="chroma">
@@ -394,26 +394,26 @@ In our case we get the following files:</p>
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
-    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;rgName&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;new-resourcegroup&#34;</span>
-        <span class="p">},</span>
-        <span class="nt">&#34;rgLocation&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;westeurope&#34;</span>
-        <span class="p">},</span>
-        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rgName&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;new-resourcegroup&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rgLocation&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;westeurope&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>See, easy to understand. Right? :-)</p>
 <p>Or you could checkout the Azure Resource Explorer on <a href="https://resources.azure.com" target="_blank" rel="noopener noreffer">resources.azure.com</a>.
-This is currently in preview and allows you to view the API and make API calls directly into your own subscriptions.<br>
+This is currently in preview and allows you to view the API and make API calls directly into your own subscriptions. <br>
 Because all of the earlier mentioned tools (portal, cli, etc) make requests through the same APIs you will see consistent results.
 All requests are handled using JSON. To showcase our Resource Group example of earlier we could simply run:</p>
 <p><img
@@ -470,15 +470,15 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;outputs&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>We could make it even more minimalistic because the only keys that are required are the schema, content version and resources. We could remove the others however they have their use case so it is best to utilize them. The parameters section is used for input. That way we don&rsquo;t have to hardcode each and every property and it gives us a way to reuse our templates. Handy! You can define variables using complicated expressions. You can for instance have a parameter that allows &ldquo;QA&rdquo; or &ldquo;PRD&rdquo; as input and based on the supplied value define a variable that will use a certain tier of a resource. Perhaps a Standard tier when deploying to QA and a Premium tier when that same resource gets deployed onto Production. And last but not least the outputs section. This is pretty straight forward. If you want to return any values from your deployed you can specify that.</p>
 <p>In practice a template we can deploy will look something like this:</p>
@@ -560,81 +560,81 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">74
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
-    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;webAppName&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(&#39;webApp-&#39;, uniqueString(resourceGroup().id))]&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;minLength&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Unique name of the app to create or update.&#34;</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Location of the resources. Default is RG location.&#34;</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;F1&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;allowedValues&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;B1&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;B2&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;B3&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;F1&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;The SKU of App Service Plan.&#34;</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;linuxFxVersion&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;DOTNETCORE|3.0&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;The Runtime stack of current web app&#34;</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;appServicePlanPortalName&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(&#39;AppServicePlan-&#39;, parameters(&#39;webAppName&#39;))]&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;appServicePlanPortalName&#39;)]&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Web/serverfarms&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-06-01&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;location&#39;)]&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;sku&#39;)]&#34;</span>
-        <span class="p">},</span>
-        <span class="nt">&#34;kind&#34;</span><span class="p">:</span> <span class="s2">&#34;linux&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;reserved&#34;</span><span class="p">:</span> <span class="kc">true</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;webAppName&#39;)]&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Web/sites&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-06-01&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;location&#39;)]&#34;</span><span class="p">,</span>  
-        <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;[resourceId(&#39;Microsoft.Web/serverfarms&#39;, variables(&#39;appServicePlanPortalName&#39;))]&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;serverFarmId&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceId(&#39;Microsoft.Web/serverfarms&#39;, variables(&#39;appServicePlanPortalName&#39;))]&#34;</span><span class="p">,</span>
-          <span class="nt">&#34;siteConfig&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;linuxFxVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;linuxFxVersion&#39;)]&#34;</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;contentVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;webAppName&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(&#39;webApp-&#39;, uniqueString(resourceGroup().id))]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;minLength&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Unique name of the app to create or update.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceGroup().location]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Location of the resources. Default is RG location.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;F1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;allowedValues&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;B1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;B2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;B3&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;F1&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;The SKU of App Service Plan.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;linuxFxVersion&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;DOTNETCORE|3.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;The Runtime stack of current web app&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;appServicePlanPortalName&#34;</span><span class="p">:</span> <span class="s2">&#34;[concat(&#39;AppServicePlan-&#39;, parameters(&#39;webAppName&#39;))]&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;resources&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[variables(&#39;appServicePlanPortalName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Web/serverfarms&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-06-01&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;location&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;sku&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;sku&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;kind&#34;</span><span class="p">:</span> <span class="s2">&#34;linux&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;reserved&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;webAppName&#39;)]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Microsoft.Web/sites&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;apiVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-06-01&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;location&#39;)]&#34;</span><span class="p">,</span>  
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;[resourceId(&#39;Microsoft.Web/serverfarms&#39;, variables(&#39;appServicePlanPortalName&#39;))]&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;serverFarmId&#34;</span><span class="p">:</span> <span class="s2">&#34;[resourceId(&#39;Microsoft.Web/serverfarms&#39;, variables(&#39;appServicePlanPortalName&#39;))]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;siteConfig&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;linuxFxVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;linuxFxVersion&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>As you can see in the resources section we have specified two resources. A resource of the type <code>Microsoft.Web/serverfarms</code> and a resource of the type <code>Microsoft.Web/sites</code>. Please not that in the second resource we do have to specify a dependsOn key with the resource id of the serverfarm. This is because we need to have an app service plan in place before we can deploy a web app so it is key that one gets deployed before the other.</p>
 <p>So far things have been going great. We can easily specify what we want to deploy and it is easy to read what we are deploying. The things is though that once you deploy more and more resources using the same template. Your template will get bigger and bigger. That&rsquo;s a hell of a lot of curly braces! And the whole easy to read thing will not be so easy anymore and may even get confusing once you add in a bunch of depends on keys. Writing a template like this doesn&rsquo;t feel natural either. Most of the time you have to copy &amp; paste stuff in. A more programmary way of doing this would be great and let me tell you.. there is! 😀</p>
@@ -661,13 +661,13 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">resource Identifier &#39;Provider/Type@Version&#39; = {
-  name: &#39;name&#39;
-  location: &#39;location&#39;
-  properties: {    
-  }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="kd">resource</span><span class="w"> </span>Identifier<span class="w"> </span><span class="s">&#39;Provider/Type@Version&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;name&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;location&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Let&rsquo;s break this down for a bit. We have the <code>resource</code> keyword which we also saw in our ARM template. Nothing new there, it is known. The <code>Identifier</code> keyword we haven&rsquo;t seen before. If you have seen some bicep tmeplates before then you might have seen being mentioned as a symbolicName. This is not the name of the resource. That wouldn&rsquo;t make sense either since we already have a <code>name</code> property on the next line. Instead the <code>Identifier</code> is the name that we can give our resource so that we can reference it by that name throughout our template. Really useful stuff! And then last but not least we have the <code>Provider</code>, <code>Type</code> and <code>Version</code>. We had those in our ARM templates as well but instead having them each as separate properties in our template we just specify them in the resource declaration. It&rsquo;s a lot clearer this way in my opinion.</p>
 <p>I know what you always wanted to have is an Azure Container Registry. I can&rsquo;t give you that. Here, have it&rsquo;s bicep template instead. Here ya go bud!</p>
@@ -685,17 +685,17 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">resource acr &#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39; = {
-  name: &#39;nicelookingacrbro&#39;
-  location: &#39;West Europe&#39;
-  sku: {
-    name: &#39;Basic&#39;
-  }
-  properties: {
-    adminUserEnabled: true
-  }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="kd">resource</span><span class="w"> </span>acr<span class="w"> </span><span class="s">&#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;nicelookingacrbro&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;West Europe&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;Basic&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">adminUserEnabled</span><span class="p">:</span><span class="w"> </span>true<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="u-sections">🎈 More sections</h3>
 <p>You might be thinking now &ldquo;where are the rest of our sections. I don&rsquo;t see any curly braces.&rdquo;.</p>
@@ -734,37 +734,37 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@minLength(5)
-@maxLength(30)
-@description(&#39;The name of the container registry&#39;)
-param acrName string = &#39;acrgiveanyname&#39;
-
-@description(&#39;The value that indicates whether the admin user is enabled.&#39;)
-param acrAdminUserEnabled bool = false
-
-@description(&#39;The location of the resource. This cannot be changed after the resource is created.&#39;)
-param location string = resourceGroup().location
-
-@allowed([
-  &#39;Basic&#39;
-  &#39;Standard&#39;
-  &#39;Premium&#39;
-])
-@description(&#39;The SKU of the container registry.&#39;)
-param acrSku string = &#39;Basic&#39;
-
-// azure container registry
-resource acr &#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39; = {
-  name: acrName
-  location: location
-  sku: {
-    name: acrSku
-  }
-  properties: {
-    adminUserEnabled: acrAdminUserEnabled
-  }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="p">@</span><span class="nd">minLength</span><span class="p">(</span>5<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">maxLength</span><span class="p">(</span>30<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The name of the container registry&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>acrName<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;acrgiveanyname&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The value that indicates whether the admin user is enabled.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>acrAdminUserEnabled<span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>false<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The location of the resource. This cannot be changed after the resource is created.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>location<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">resourceGroup</span><span class="p">().</span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">allowed</span><span class="p">([</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;Basic&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;Standard&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;Premium&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">])</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The SKU of the container registry.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>acrSku<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;Basic&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// azure container registry</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>acr<span class="w"> </span><span class="s">&#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>acrName<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>acrSku<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">adminUserEnabled</span><span class="p">:</span><span class="w"> </span>acrAdminUserEnabled<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>You may have noticed two things. We have added parameters above our resource declaration and we have referenced the parameters by their name.</p>
 <p>To put this into comparison with ARM the acrSku parameter would be defined as:</p>
@@ -784,19 +784,19 @@ resource acr &#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="s2">&#34;acrSku&#34;</span><span class="err">:</span> <span class="p">{</span>
-  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;Basic&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Tier of your Azure Container Registry.&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;allowedValues&#34;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&#34;Basic&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;Standard&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;Premium&#34;</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="s2">&#34;acrSku&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;defaultValue&#34;</span><span class="p">:</span> <span class="s2">&#34;Basic&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Tier of your Azure Container Registry.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;allowedValues&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Basic&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Standard&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Premium&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>and we would have to reference it in our resource like:</p>
 <div class="highlight"><div class="chroma">
@@ -806,10 +806,10 @@ resource acr &#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="s2">&#34;sku&#34;</span><span class="err">:</span> <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;acrSku&#39;)]&#34;</span>
-      <span class="p">}</span><span class="err">,</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="s2">&#34;sku&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;[parameters(&#39;acrSku&#39;)]&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span><span class="err">,</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Bicep is cleaner.
 I think there is not much else to parameters.</p>
@@ -821,8 +821,8 @@ I thought of displaying the whole code here however we only need to add one line
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">output acrLoginServer string = acr.properties.loginServer
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bicep" data-lang="bicep"><span class="line"><span class="cl"><span class="kd">output</span><span class="w"> </span>acrLoginServer<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>acr<span class="p">.</span>properties<span class="p">.</span>loginServer<span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>We are saying give me the output value for the login Server which in our case will be <code>theirontemple.azurecr.io</code> and store it in <code>acrLoginServer</code>.
 Notice the <code>acr</code>? That is the symbolicName we gave our resource. If you have VS Code open then remove the <code>properties.loginServer</code> and you will see all the outputs properties that you could specify.</p>
@@ -835,8 +835,8 @@ If I run this against our earlier template:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">az bicep decompile -f .\deploy.json
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az bicep decompile -f .\deploy.json
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>We get the following message:
 <div class="details admonition warning open">
@@ -897,50 +897,50 @@ If you would like to report any issues or inaccurate conversions, please see <a 
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@description(&#39;Unique name of the app to create or update.&#39;)
-@minLength(2)
-param webAppName string = &#39;webApp-${uniqueString(resourceGroup().id)}&#39;
-
-@description(&#39;Location of the resources. Default is RG location.&#39;)
-param location string = resourceGroup().location
-
-@description(&#39;The SKU of App Service Plan.&#39;)
-@allowed([
-  &#39;B1&#39;
-  &#39;B2&#39;
-  &#39;B3&#39;
-  &#39;F1&#39;
-])
-param sku string = &#39;F1&#39;
-
-@description(&#39;The Runtime stack of current web app&#39;)
-param linuxFxVersion string = &#39;DOTNETCORE|3.0&#39;
-
-var appServicePlanPortalName_var = &#39;AppServicePlan-${webAppName}&#39;
-
-resource appServicePlanPortalName &#39;Microsoft.Web/serverfarms@2020-06-01&#39; = {
-  name: appServicePlanPortalName_var
-  location: location
-  sku: {
-    name: sku
-  }
-  kind: &#39;linux&#39;
-  properties: {
-    reserved: true
-  }
-}
-
-resource webAppName_resource &#39;Microsoft.Web/sites@2020-06-01&#39; = {
-  name: webAppName
-  location: location
-  properties: {
-    serverFarmId: appServicePlanPortalName.id
-    siteConfig: {
-      linuxFxVersion: linuxFxVersion
-    }
-  }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;Unique name of the app to create or update.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">minLength</span><span class="p">(</span>2<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>webAppName<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;webApp-${uniqueString(resourceGroup().id)}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;Location of the resources. Default is RG location.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>location<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">resourceGroup</span><span class="p">().</span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The SKU of App Service Plan.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">allowed</span><span class="p">([</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;B1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;B2&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;B3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;F1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">])</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>sku<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;F1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The Runtime stack of current web app&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>linuxFxVersion<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;DOTNETCORE|3.0&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">var</span><span class="w"> </span>appServicePlanPortalName_var<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;AppServicePlan-${webAppName}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>appServicePlanPortalName<span class="w"> </span><span class="s">&#39;Microsoft.Web/serverfarms@2020-06-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>appServicePlanPortalName_var<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>sku<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">kind</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;linux&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">reserved</span><span class="p">:</span><span class="w"> </span>true<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>webAppName_resource<span class="w"> </span><span class="s">&#39;Microsoft.Web/sites@2020-06-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>webAppName<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">serverFarmId</span><span class="p">:</span><span class="w"> </span>appServicePlanPortalName<span class="p">.</span>id<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">siteConfig</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="py">linuxFxVersion</span><span class="p">:</span><span class="w"> </span>linuxFxVersion<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition info">
         <div class="details-summary admonition-title">
@@ -957,8 +957,8 @@ If we run that then it will spit out the ARM template for us. We could also just
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nb">New-AzResourceGroupDeployment</span> <span class="n">-ResourceGroup</span> <span class="s2">&#34;yadayada&#34;</span> <span class="n">-TemplateFile</span> <span class="s2">&#34;main.bicep&#34;</span> <span class="p">-...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">New-AzResourceGroupDeployment</span> <span class="n">-ResourceGroup</span> <span class="s2">&#34;yadayada&#34;</span> <span class="n">-TemplateFile</span> <span class="s2">&#34;main.bicep&#34;</span> <span class="p">-...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><br/><br/></p>
 <h2 id="u-conclusion">💡 Conclusion</h2>
@@ -998,8 +998,8 @@ If we run that then it will spit out the ARM template for us. We could also just
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
             </noscript></div></article></div>
             </main>
-            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
-        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
+        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
 </div>
 <script>
 if ('serviceWorker' in navigator) {
