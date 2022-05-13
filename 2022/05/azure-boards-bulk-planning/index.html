@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Azure Boards: Planning work items in BULK! - Jeroen Trimbach</title><meta name="description" content="Planning multiple Azure DevOps Boards work items using Excel"><meta property="og:title" content="Azure Boards: Planning work items in BULK!" />
+<meta property="og:description" content="Planning multiple Azure DevOps Boards work items using Excel" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-13T17:53:55+02:00" />
+<meta property="article:modified_time" content="2022-05-13T17:53:55+02:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/featured-image.png"/>
+<meta name="twitter:title" content="Azure Boards: Planning work items in BULK!"/>
+<meta name="twitter:description" content="Planning multiple Azure DevOps Boards work items using Excel"/>
+<meta name="application-name" content="jTrimbach">
+<meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" /><link rel="prev" href="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><meta name="google-site-verification" content="276260495" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Azure Boards: Planning work items in BULK!",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-boards-bulk-planning\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-boards-bulk-planning\/featured-image.png",
+                            "width":  889 ,
+                            "height":  500 
+                        }],"genre": "posts","keywords": "Blog, Azure Boards, WIQL","wordcount":  812 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-boards-bulk-planning\/","datePublished": "2022-05-13T17:53:55+02:00","dateModified": "2022-05-13T17:53:55+02:00","publisher": {
+            "@type": "Organization",
+            "name": "Jeroen Trimbach"},"author": {
+                "@type": "Person",
+                "name": "Jeroen Trimbach"
+            },"description": "Planning multiple Azure DevOps Boards work items using Excel"
+    }
+    </script></head><body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Looking for something?" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Looking for something?" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><div class="menu-item"><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="enable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2022/05/azure-boards-bulk-planning/featured-image.png"
+        data-srcset="/2022/05/azure-boards-bulk-planning/featured-image.png, /2022/05/azure-boards-bulk-planning/featured-image.png 1.5x, /2022/05/azure-boards-bulk-planning/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/featured-image.png"
+        title="Planning multiple Azure DevOps Boards work items using Excel" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Azure Boards: Planning work items in BULK!</h2><h2 class="single-subtitle">Planning multiple Azure DevOps Boards work items using Excel</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/planning/"><i class="far fa-folder fa-fw"></i>Planning</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="13-05-2022">13-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;812 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;4 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#u-prerequisites">📋 Prerequisites</a>
+      <ul>
+        <li><a href="#u-AzDoOfficeIntegration">[✔] Azure DevOps Office Integration 2019</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-wiql">Work Item Query Language (WIQL)</a></li>
+    <li><a href="#u-extension">Azure DevOps Open in Excel extension</a></li>
+    <li><a href="#u-workitems">Adding/Modifying work items</a></li>
+    <li><a href="#u-conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>Planning work items in Azure Boards can be a tedious task. In this post I will be explaining how you can plan/create work items using Microsoft Excel. Using Excel you can easily add a large amount of items in an efficient manner.</p>
+<p>I have received the honors of taking up the role as Scrum Master within my team. And you know how the saying goes.. &ldquo;With great power comes great responsibility&rdquo;. Like planning a whole lot of Product Backlog Items (PBIs) and Work items in the backlog and future sprints! Luckily for me a colleague of mine showed me how to leverage Excel for this and after learning this trick I have been using it every day since. So I thought to myself why not pay it forward and write a blog post about it.
+<br/><br/></p>
+<h2 id="u-prerequisites">📋 Prerequisites</h2>
+<hr>
+<h3 id="u-AzDoOfficeIntegration">[✔] Azure DevOps Office Integration 2019</h3>
+<p>The Azure Devops Office Integration solution is required. <a href="https://visualstudio.microsoft.com/downloads/#azure-devops-office-integration-2019" target="_blank" rel="noopener noreffer">Download link for the Azure DevOps Office Integration solution.</a> 
+<br/><br/></p>
+<h2 id="u-wiql">Work Item Query Language (WIQL)</h2>
+<p>In Azure DevOps Boards you can use the <code>Work Item Query Language (WIQL)</code> to list work items and its fields. You can throw as many WHERE filter conditions on the query as you like. I won&rsquo;t be going into the language. If you like to do a deep dive, I&rsquo;d suggest going through <a href="https://docs.microsoft.com/en-us/azure/devops/boards/queries/wiql-syntax?view=azure-devops" target="_blank" rel="noopener noreffer">the documentation</a>.</p>
+<p>Welp, lets create our first query. You can go to the <code>Queries</code> page by going to <code>Boards</code> and click on the <code>Queries</code> button. See:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="AzureBoardsQuery.png"
+        data-srcset="/2022/05/azure-boards-bulk-planning/AzureBoardsQuery.png, AzureBoardsQuery.png 1.5x, /2022/05/azure-boards-bulk-planning/AzureBoardsQuery.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/AzureBoardsQuery.png"
+        title="Azure Boards Query" /></p>
+<p>Once you are on the <code>Queries</code> page, click on <code>+ New query</code>. This will take you to the <code>Query Editor</code>. This is where you can define your filters. At the top of the filters you can select the Type of query you want to create. For the Excel extension to work we need to create a query of the type <code>Tree of work items</code>. Select this type. Now that you have changed the query type a second filter box will display. Notice that the first box has the header <code>Filters for top level work items</code> and the bottom box <code>Filters for linked work items</code>. In the top level work item you can create a filter for your Feature(s). Based on your needs/requirements you can define the filters. For example if you have 2 Features you want to display you can get their ID&rsquo;s and add an additional clause that checks for features with an ID in ##,##. You can add multiple values by comma separating them. In the bottom box you can filter for linked work items. These can be for example your Product Backlog Items, Work Items and/or Bugs. I can imagine that you or your team might have already created quite a lot of work items which have since been closed. Perhaps add a filter to only display PBIs and tasks which are in new/committed/to do state. Be creative!</p>
+<p>An example in its simplest form:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="WorkItemQuerySample.png"
+        data-srcset="/2022/05/azure-boards-bulk-planning/WorkItemQuerySample.png, WorkItemQuerySample.png 1.5x, /2022/05/azure-boards-bulk-planning/WorkItemQuerySample.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/WorkItemQuerySample.png"
+        title="Work Item Query - Sample" /></p>
+<p>Once you have your query defined you can run the query by pressing <code>▷ Run query</code>. If your query is valid and returns any items the results should be displayed within the same page. Or in case you have a lot of results you can switch to the <code>Results</code> tab.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="WorkItemQuerySampleResults.png"
+        data-srcset="/2022/05/azure-boards-bulk-planning/WorkItemQuerySampleResults.png, WorkItemQuerySampleResults.png 1.5x, /2022/05/azure-boards-bulk-planning/WorkItemQuerySampleResults.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/WorkItemQuerySampleResults.png"
+        title="Work Item Query - Sample Results" /></p>
+<p>Congrats on creating your first query using the WIQL syntax. Don&rsquo;t forget to <code>Save query</code>! We will need this query for the next step 😉</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">If you come up with a more complex query save it to the <code>Shared folder</code> instead. By doing that anyone within your team can run the query. Teamwork and all. 👍</div>
+        </div>
+    </div>
+<h2 id="u-extension">Azure DevOps Open in Excel extension</h2>
+<p>Before we can get started with opening our query in Excel we need to install the Azure DevOps Open in Excel extension by Microsoft DevLabs. This is a free extension that you can install from the Azure DevOps Marketplace. You can get to the marketplace by selecting the browse marketplace button at the top right of the Azure DevOps page:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="AzureDevOpsMarketplace.png"
+        data-srcset="/2022/05/azure-boards-bulk-planning/AzureDevOpsMarketplace.png, AzureDevOpsMarketplace.png 1.5x, /2022/05/azure-boards-bulk-planning/AzureDevOpsMarketplace.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/AzureDevOpsMarketplace.png"
+        title="Azure DevOps Marketplace" /></p>
+<p>Once you are in the marketplace just search for <code>Azure DevOps Open in Excel</code> which is an extension by <code>Microsoft DevLabs</code>. Click on the tile and it should take you to it&rsquo;s page. On that page there will be a green button which displays <code>Get it free</code>. Press the button and install the extension for your desired Azure DevOps organization.</p>
+<p>Easy peasy! If you now go back to the query that we have created earlier and run it you should see a new option. If you press the 3 vertical dots, next to the <code>Export to CSV</code> button at the top right of your query the option <code>Open in Excel</code> should display. Open your query in Excel. The following pop-up will appear in your browser:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="TfsProtocolHandler.png"
+        data-srcset="/2022/05/azure-boards-bulk-planning/TfsProtocolHandler.png, TfsProtocolHandler.png 1.5x, /2022/05/azure-boards-bulk-planning/TfsProtocolHandler.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/TfsProtocolHandler.png"
+        title="TfsProtocolHandler - Pop-up" /></p>
+<p>Click <code>Open TfsProtocolHandler.exe</code> and if all goes well Excel will open and the results of your work item query will appear in the grid.</p>
+<h2 id="u-workitems">Adding/Modifying work items</h2>
+<blockquote>
+<p>ToDo. in Excel</p>
+</blockquote>
+<h2 id="u-conclusion">Conclusion</h2>
+<blockquote>
+<p>ToDo. conclusion</p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
+                </span><span><a href="/tags/azure-boards/">Azure Boards</a>
+                </span><span><a href="/tags/wiql/">WIQL</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 13-05-2022</span>
+            </div><div class="post-info-mod"></div>
+        </div><div class="post-info-share">
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" data-title="Azure Boards: Planning work items in BULK!" data-hashtags="Blog,Azure Boards,WIQL"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" data-title="Azure Boards: Planning work items in BULK!" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/"><i class="fab fa-reddit fa-fw"></i></a></span>
+        </div></div><div class="post-nav"><a href="/2022/04/powershell-out-consolegridview/" class="prev" rel="prev" title="$ConsoleTips | Out-ConsoleGridView"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
+            </noscript></div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
+        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.min.js?version=1.0.1', { scope: '/' })
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Registered');
+        }, err => console.error('Jeroen Trimbach\u00A0Service Worker registration failed: ', err));
+
+    navigator.serviceWorker
+        .ready
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Ready');
+        });
+}
+</script>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment-alt fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Azure Boards: Planning work items in BULK!"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
