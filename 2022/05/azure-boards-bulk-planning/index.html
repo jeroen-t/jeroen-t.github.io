@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-13T17:53:55+02:00" />
-<meta property="article:modified_time" content="2022-05-13T17:53:55+02:00" />
+<meta property="article:modified_time" content="2022-05-16T19:08:55+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/featured-image.png"/>
@@ -32,8 +32,8 @@
                             "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-boards-bulk-planning\/featured-image.png",
                             "width":  889 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure Boards, WIQL","wordcount":  812 ,
-        "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-boards-bulk-planning\/","datePublished": "2022-05-13T17:53:55+02:00","dateModified": "2022-05-13T17:53:55+02:00","publisher": {
+                        }],"genre": "posts","keywords": "Blog, Azure Boards, WIQL","wordcount":  1504 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-boards-bulk-planning\/","datePublished": "2022-05-13T17:53:55+02:00","dateModified": "2022-05-16T19:08:55+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
                 "@type": "Person",
@@ -114,8 +114,8 @@
         alt="/2022/05/azure-boards-bulk-planning/featured-image.png"
         title="Planning multiple Azure DevOps Boards work items using Excel" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Azure Boards: Planning work items in BULK!</h2><h2 class="single-subtitle">Planning multiple Azure DevOps Boards work items using Excel</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/planning/"><i class="far fa-folder fa-fw"></i>Planning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="13-05-2022">13-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;812 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;4 minutes</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="13-05-2022">13-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1504 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;8 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -194,7 +194,16 @@
         alt="/2022/05/azure-boards-bulk-planning/AzureDevOpsMarketplace.png"
         title="Azure DevOps Marketplace" /></p>
 <p>Once you are in the marketplace just search for <code>Azure DevOps Open in Excel</code> which is an extension by <code>Microsoft DevLabs</code>. Click on the tile and it should take you to it&rsquo;s page. On that page there will be a green button which displays <code>Get it free</code>. Press the button and install the extension for your desired Azure DevOps organization.</p>
-<p>Easy peasy! If you now go back to the query that we have created earlier and run it you should see a new option. If you press the 3 vertical dots, next to the <code>Export to CSV</code> button at the top right of your query the option <code>Open in Excel</code> should display. Open your query in Excel. The following pop-up will appear in your browser:</p>
+<p>Easy peasy! If you now go back to the query that we have created earlier and run it you should see a new option. If you press the 3 vertical dots, next to the <code>Export to CSV</code> button at the top right of your query the option <code>Open in Excel</code> should display.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="AzureDevOpsOpenQueryInExcel.png"
+        data-srcset="/2022/05/azure-boards-bulk-planning/AzureDevOpsOpenQueryInExcel.png, AzureDevOpsOpenQueryInExcel.png 1.5x, /2022/05/azure-boards-bulk-planning/AzureDevOpsOpenQueryInExcel.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/AzureDevOpsOpenQueryInExcel.png"
+        title="Azure DevOps Open Query in Excel" /></p>
+<p>Open your query in Excel. The following pop-up will appear in your browser:</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -205,18 +214,36 @@
         title="TfsProtocolHandler - Pop-up" /></p>
 <p>Click <code>Open TfsProtocolHandler.exe</code> and if all goes well Excel will open and the results of your work item query will appear in the grid.</p>
 <h2 id="u-workitems">Adding/Modifying work items</h2>
-<blockquote>
-<p>ToDo. in Excel</p>
-</blockquote>
+<p>Now that you have your work items displayed in Excel lets see what we are looking at. First of all you should notice that the columns that are being listed are the same as your Query returned along with some additional Titles. (1, 2, 3..). The titles are based on the parent, child structure. In our case the Feature is populated in Title 1, the Product Backlog Item in Title 2 and the Tasks in Title 3. Make sure that if you are going to change any of the values that you do that in the correct cells. If you want to display additional Columns (e.g. the person to whom the work item is assigned) you can do that by either adding the column within the Azure DevOps query by going to <code>Column options</code> and add it to the column list over there. Or from within Excel. If you look at the top of your Excel sheet you should notice a Tab with the name <code>Team</code>. CLick on it and it will display some buttons which allow us to interact with Azure DevOps. In the case of adding additional columns you can do that by clicking on the button <code>Choose Columns</code>. This will display two lists: <code>Available columns</code> and <code>Selected columns</code>. Simply click on the columns you want to add and move them to the <code>Selected columns</code>. If you can&rsquo;t find the column that you are looking for it can be the case that your Work item type is filtered on the wrong work item. Simply change this to right work item. Once you are done you can click on <code>Add Required</code> and the fields will be populated in your sheet.</p>
+<p>This is good fun and all but I said we were going to bulk add/edit items. Not just looking at data in Excel! Editing items is pretty straight forward. Just modify the data as you see fit (but stick to allowed values and be careful to not mess anything up) and once you you are done click on the <code>Publish</code> button on the top left of the page. This will publish your changes to Azure DevOps. If you to pull changes from Azure DevOps as well you can do so by selecting the <code>Refresh</code> button next to it.</p>
+<p>If you want to add a Task to an existing Product Backlog Item (PBI) you can select the row containing the PBI and click on the button <code>Add Child</code>. A new empty row will by inserted beneath your selection. For the <code>Work Item Type</code> select <code>Task</code>. Once you select the type of your work item some of the required fields will be autopopulated with a default value. For <code>Title 3</code> give the name you want to give to your Task. Once you have given these values you can simply <code>Publish</code> again and you are done. Of course these are just the minimum amount of fields that needed to be populated. You could have given as much information as you need.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="AzureBoardsAddWorkItemInExcel.gif"
+        data-srcset="/2022/05/azure-boards-bulk-planning/AzureBoardsAddWorkItemInExcel.gif, AzureBoardsAddWorkItemInExcel.gif 1.5x, /2022/05/azure-boards-bulk-planning/AzureBoardsAddWorkItemInExcel.gif 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/AzureBoardsAddWorkItemInExcel.gif"
+        title="Azure Boards - Add Work Item in Excel" /></p>
+<p>In this gif I showed how to create a new Task and link it directly as a child to an existing PBI. Notice that I didn&rsquo;t populate all fields and that after publishing the item received an ID.</p>
+<p>The cool thing about this is that you can use a lot of the features available in Excel to work with your data. And instead of adding just one item you could also just add a bunch at a time. You don&rsquo;t need to publish your changes after each value that you modified. Perhaps you have a PBI with some Tasks that needs to be created for multiple sprints, like me! I want Product Backlog Item 7 and its work items created in sprint 1 to 5.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="AzureBoardsCopyWorkItemInExcel.gif"
+        data-srcset="/2022/05/azure-boards-bulk-planning/AzureBoardsCopyWorkItemInExcel.gif, AzureBoardsCopyWorkItemInExcel.gif 1.5x, /2022/05/azure-boards-bulk-planning/AzureBoardsCopyWorkItemInExcel.gif 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-boards-bulk-planning/AzureBoardsCopyWorkItemInExcel.gif"
+        title="Azure Boards - Copy Work Item in Excel" /></p>
+<p>And there you have it. Product Backlog Item 7 and its childs are now all created from Sprint 1 til 5. Great! Saved me some time!</p>
 <h2 id="u-conclusion">Conclusion</h2>
-<blockquote>
-<p>ToDo. conclusion</p>
-</blockquote></div><div class="post-footer" id="post-footer">
+<p>I hope you found this post useful and may find a use for this plugin as well. I think you should just play with the tool and try out a few things. The main purpose of this post was to spread the word.</p>
+<p>Have fun planning 👍</p></div><div class="post-footer" id="post-footer">
     <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
                 </span><span><a href="/tags/azure-boards/">Azure Boards</a>
                 </span><span><a href="/tags/wiql/">WIQL</a>
                 </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 13-05-2022</span>
+                <span>Updated on 16-05-2022</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
             <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" data-title="Azure Boards: Planning work items in BULK!" data-hashtags="Blog,Azure Boards,WIQL"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" data-title="Azure Boards: Planning work items in BULK!" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/"><i class="fab fa-reddit fa-fw"></i></a></span>
