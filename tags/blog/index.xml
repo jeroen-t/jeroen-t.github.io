@@ -3,7 +3,13 @@
         <title>Blog - Tag - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/tags/blog/</link>
         <description>Blog - Tag - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 13 May 2022 17:53:55 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/blog/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 16 May 2022 21:51:16 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/blog/" rel="self" type="application/rss+xml" /><item>
+    <title>Update Azure NSGs using Bicep 🛡️</title>
+    <link>https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/</link>
+    <pubDate>Mon, 16 May 2022 21:51:16 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/</guid>
+    <description><![CDATA[Update Azure Network Security Groups using Bicep]]></description>
+</item>
+<item>
     <title>Azure Boards: Planning work items in BULK!</title>
     <link>https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/</link>
     <pubDate>Fri, 13 May 2022 17:53:55 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/</guid>
@@ -16,13 +22,19 @@
     <description><![CDATA[Pass output to an interactive table in the console through out-consolegridview]]></description>
 </item>
 <item>
+    <title>Azure Bicep: The First Pump 💪</title>
+    <link>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</link>
+    <pubDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</guid>
+    <description><![CDATA[<p>Getting started with Azure Bicep</p>]]></description>
+</item>
+<item>
     <title>Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</title>
     <link>https://jeroentrimbach.com/2021/07/powershell-module-ci/</link>
     <pubDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/07/powershell-module-ci/</guid>
     <description><![CDATA[<p>A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</p>]]></description>
 </item>
 <item>
-    <title>How to create a website using Hugo and GitHub Pages</title>
+    <title>How to create a website using Hugo and GitHub Pages 🌐</title>
     <link>https://jeroentrimbach.com/2021/06/site-setup/</link>
     <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/06/site-setup/</guid>
     <description><![CDATA[<p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>]]></description>

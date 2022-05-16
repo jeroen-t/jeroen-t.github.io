@@ -3,8 +3,14 @@
         <title>Bicep - Tag - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/tags/bicep/</link>
         <description>Bicep - Tag - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/bicep/" rel="self" type="application/rss+xml" /><item>
-    <title>Azure Bicep: The First Pump</title>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 16 May 2022 21:51:16 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/bicep/" rel="self" type="application/rss+xml" /><item>
+    <title>Update Azure NSGs using Bicep 🛡️</title>
+    <link>https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/</link>
+    <pubDate>Mon, 16 May 2022 21:51:16 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/</guid>
+    <description><![CDATA[Update Azure Network Security Groups using Bicep]]></description>
+</item>
+<item>
+    <title>Azure Bicep: The First Pump 💪</title>
     <link>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</link>
     <pubDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</guid>
     <description><![CDATA[<p>Getting started with Azure Bicep</p>]]></description>

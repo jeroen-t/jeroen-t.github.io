@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Update Azure NSGs using Bicep 🛡️ - Jeroen Trimbach</title><meta name="description" content="Update Azure Network Security Groups using Bicep"><meta property="og:title" content="Update Azure NSGs using Bicep 🛡️" />
+<meta property="og:description" content="Update Azure Network Security Groups using Bicep" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-16T21:51:16+02:00" />
+<meta property="article:modified_time" content="2022-05-16T21:51:16+02:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/featured-image.png"/>
+<meta name="twitter:title" content="Update Azure NSGs using Bicep 🛡️"/>
+<meta name="twitter:description" content="Update Azure Network Security Groups using Bicep"/>
+<meta name="application-name" content="jTrimbach">
+<meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" /><link rel="prev" href="https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><meta name="google-site-verification" content="276260495" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Update Azure NSGs using Bicep 🛡️",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/featured-image.png",
+                            "width":  1000 ,
+                            "height":  500 
+                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, Network Security Group, NSG","wordcount":  33 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/","datePublished": "2022-05-16T21:51:16+02:00","dateModified": "2022-05-16T21:51:16+02:00","publisher": {
+            "@type": "Organization",
+            "name": "Jeroen Trimbach"},"author": {
+                "@type": "Person",
+                "name": "Jeroen Trimbach"
+            },"description": "Update Azure Network Security Groups using Bicep"
+    }
+    </script></head><body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Looking for something?" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Looking for something?" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><div class="menu-item"><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="enable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2022/05/azure-update-nsg-rules-bicep/featured-image.png"
+        data-srcset="/2022/05/azure-update-nsg-rules-bicep/featured-image.png, /2022/05/azure-update-nsg-rules-bicep/featured-image.png 1.5x, /2022/05/azure-update-nsg-rules-bicep/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-update-nsg-rules-bicep/featured-image.png"
+        title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Update Azure NSGs using Bicep 🛡️</h2><h2 class="single-subtitle">Update Azure Network Security Groups (NSGs) using Bicep</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="16-05-2022">16-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;33 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;One minute</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#u-networkSecurityGroup">Network Security Group deployment template</a>
+      <ul>
+        <li><a href="#u-customRules">rule(s)</a></li>
+        <li><a href="#u-priority">priority</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-securityRuleParameters">Security Rules parameter template</a>
+      <ul>
+        <li><a href="#u-nsgRestApi">Rest Api</a></li>
+        <li><a href="#u-jsonQuery">Json Query (jq)</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-whatIf">What-If deployment</a>
+      <ul>
+        <li><a href="#u-approvalStep">Pre-check pipeline</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-deployment">Deployment</a></li>
+    <li><a href="#u-conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><blockquote>
+<p>Blocked!</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="AzureNetworkSecurityGroup.gif"
+        data-srcset="/2022/05/azure-update-nsg-rules-bicep/AzureNetworkSecurityGroup.gif, AzureNetworkSecurityGroup.gif 1.5x, /2022/05/azure-update-nsg-rules-bicep/AzureNetworkSecurityGroup.gif 2x"
+        data-sizes="auto"
+        alt="/2022/05/azure-update-nsg-rules-bicep/AzureNetworkSecurityGroup.gif"
+        title="Azure Network Security Group" /></p>
+<h2 id="u-networkSecurityGroup">Network Security Group deployment template</h2>
+<p>&hellip;</p>
+<h3 id="u-customRules">rule(s)</h3>
+<p>&hellip;</p>
+<h3 id="u-priority">priority</h3>
+<p>&hellip;</p>
+<h2 id="u-securityRuleParameters">Security Rules parameter template</h2>
+<p>&hellip;</p>
+<h3 id="u-nsgRestApi">Rest Api</h3>
+<p>&hellip;</p>
+<h3 id="u-jsonQuery">Json Query (jq)</h3>
+<p>&hellip;</p>
+<h2 id="u-whatIf">What-If deployment</h2>
+<p>&hellip;</p>
+<h3 id="u-approvalStep">Pre-check pipeline</h3>
+<p>&hellip;</p>
+<h2 id="u-deployment">Deployment</h2>
+<p>&hellip;</p>
+<h2 id="u-conclusion">Conclusion</h2>
+<p>&hellip;</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
+                </span><span><a href="/tags/azure/">Azure</a>
+                </span><span><a href="/tags/bicep/">Bicep</a>
+                </span><span><a href="/tags/network-security-group/">Network Security Group</a>
+                </span><span><a href="/tags/nsg/">NSG</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 16-05-2022</span>
+            </div><div class="post-info-mod"></div>
+        </div><div class="post-info-share">
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Update Azure NSGs using Bicep 🛡️" data-hashtags="Blog,Azure,Bicep,Network Security Group,NSG"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Update Azure NSGs using Bicep 🛡️" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-reddit fa-fw"></i></a></span>
+        </div></div><div class="post-nav"><a href="/2022/05/azure-boards-bulk-planning/" class="prev" rel="prev" title="Azure Boards: Planning work items in BULK!"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
+            </noscript></div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.0">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a>
+        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.min.js?version=1.0.1', { scope: '/' })
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Registered');
+        }, err => console.error('Jeroen Trimbach\u00A0Service Worker registration failed: ', err));
+
+    navigator.serviceWorker
+        .ready
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Ready');
+        });
+}
+</script>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment-alt fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Update Azure NSGs using Bicep 🛡️"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
