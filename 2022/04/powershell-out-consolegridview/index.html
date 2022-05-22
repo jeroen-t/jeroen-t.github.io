@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-10T15:26:39+02:00" />
-<meta property="article:modified_time" content="2022-04-10T15:26:39+02:00" />
+<meta property="article:modified_time" content="2022-05-22T13:09:20+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/featured-image.png"/>
@@ -32,8 +32,8 @@
                             "url": "https:\/\/jeroentrimbach.com\/2022\/04\/powershell-out-consolegridview\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, PowerShell, Azure","wordcount":  650 ,
-        "url": "https:\/\/jeroentrimbach.com\/2022\/04\/powershell-out-consolegridview\/","datePublished": "2022-04-10T15:26:39+02:00","dateModified": "2022-04-10T15:26:39+02:00","publisher": {
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Azure","wordcount":  663 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/04\/powershell-out-consolegridview\/","datePublished": "2022-04-10T15:26:39+02:00","dateModified": "2022-05-22T13:09:20+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
                 "@type": "Person",
@@ -114,7 +114,7 @@
         alt="/2022/04/powershell-out-consolegridview/featured-image.png"
         title="Pass output to an interactive table in the console through out-consolegridview" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">$ConsoleTips | Out-ConsoleGridView</h2><h2 class="single-subtitle">Pass output to an interactive table straight in the console</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="10-04-2022">10-04-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;650 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="10-04-2022">10-04-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;663 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;4 minutes</span>&nbsp;</div>
             </div>
             
@@ -201,9 +201,12 @@ Or run <code>Get-AzSubscription</code> and then filter through the output and fo
 If you add some nice descriptive tags on your subscriptions you can make use of those. <br>
 For instance a <code>description</code> (e.g. Kubernetes playground) and/or an <code>environment</code> (e.g. Non-Prod / QA / Prod) tag. An easy solution and a lot more user friendly!</p>
 <p>This is the script that I wrote for this:</p>
-<script  src="https://gist.github.com/jeroen-t/0ea91b9194e9c103ab57eec09676f2e5.js"></script>
+<script  src="https://gist.github.com/jeroen-t/0ea91b9194e9c103ab57eec09676f2e5.js?file=Set-SubscriptionAzurePS.ps1"></script>
 
-<p>Feel free to tweak it.</p>
+<p>And of course there is a version for the Azure CLI as well:</p>
+<script  src="https://gist.github.com/jeroen-t/0ea91b9194e9c103ab57eec09676f2e5.js?file=Set-SubscriptionAzureCLI.ps1"></script>
+
+<p>Feel free to tweak them.</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -221,7 +224,7 @@ I hope that you may find a use case for the cmdlet as well and can add it to you
                 </span><span><a href="/tags/powershell/">PowerShell</a>
                 </span><span><a href="/tags/azure/">Azure</a>
                 </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 10-04-2022</span>
+                <span>Updated on 22-05-2022</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
             <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-title="$ConsoleTips | Out-ConsoleGridView" data-hashtags="Blog,PowerShell,Azure"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-title="$ConsoleTips | Out-ConsoleGridView" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/"><i class="fab fa-reddit fa-fw"></i></a></span>
