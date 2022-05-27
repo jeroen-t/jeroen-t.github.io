@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Update Azure NSGs using Bicep 🛡️ - Jeroen Trimbach</title><meta name="description" content="Update Azure Network Security Groups using Bicep"><meta property="og:title" content="Update Azure NSGs using Bicep 🛡️" />
+        <title>Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️ - Jeroen Trimbach</title><meta name="description" content="Update Azure Network Security Groups using Bicep"><meta property="og:title" content="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️" />
 <meta property="og:description" content="Update Azure Network Security Groups using Bicep" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-16T21:51:16+02:00" />
-<meta property="article:modified_time" content="2022-05-22T13:03:23+02:00" />
+<meta property="article:modified_time" content="2022-05-27T21:15:54+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/featured-image.png"/>
-<meta name="twitter:title" content="Update Azure NSGs using Bicep 🛡️"/>
+<meta name="twitter:title" content="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️"/>
 <meta name="twitter:description" content="Update Azure Network Security Groups using Bicep"/>
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -36,7 +36,7 @@ if (!doNotTrack) {
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Update Azure NSGs using Bicep 🛡️",
+        "headline": "Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -46,8 +46,8 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, Network Security Group, NSG","wordcount":  1571 ,
-        "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/","datePublished": "2022-05-16T21:51:16+02:00","dateModified": "2022-05-22T13:03:23+02:00","publisher": {
+                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, Network Security Group, NSG, jq, ARM","wordcount":  1805 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/","datePublished": "2022-05-16T21:51:16+02:00","dateModified": "2022-05-27T21:15:54+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
                 "@type": "Person",
@@ -137,10 +137,10 @@ if (!doNotTrack) {
         data-srcset="/2022/05/azure-update-nsg-rules-bicep/featured-image.png, /2022/05/azure-update-nsg-rules-bicep/featured-image.png 1.5x, /2022/05/azure-update-nsg-rules-bicep/featured-image.png 2x"
         data-sizes="auto"
         alt="/2022/05/azure-update-nsg-rules-bicep/featured-image.png"
-        title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Update Azure NSGs using Bicep 🛡️</h2><h2 class="single-subtitle">Update Azure Network Security Groups (NSGs) using Bicep</h2><div class="post-meta">
+        title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️</h2><h2 class="single-subtitle">Update Azure Network Security Groups (NSG&#39;s) using Bicep</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="16-05-2022">16-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1571 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;8 minutes</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="16-05-2022">16-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1805 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;9 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -180,9 +180,9 @@ if (!doNotTrack) {
         title="Azure Network Security Group" /></p>
 <h2 id="u-networkSecurityGroup">Network Security Group deployment template</h2>
 <p>The template format for a NSG is quite straight forward. There aren&rsquo;t that many properties and child resources to configure. You can find the full template format in <a href="https://docs.microsoft.com/en-us/azure/templates/microsoft.network/networksecuritygroups?tabs=bicep" target="_blank" rel="noopener noreffer">the Microsoft template documentation</a>. But as you properly already have noticed most of the properties have a singular and plural form (e.g. <code>destinationAddressPrefix</code> and <code>destinationAddressPrefixes</code>). My first thought was that it would be handy to only specify one of those properties in the parameters and based on the amount of values/prefixes specified in the parameter decide whether it should be the singular or plural form. But I soon realized that it was not an ideal solution. Instead Bicep has the <code>contains</code> <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-object#contains" target="_blank" rel="noopener noreffer">object function</a> that can be used. It can check whether an object contains a key and with that information we can decide whether we do something with that information or not. In our case if the key is present we want to assign the value and if is not pass an empty value (singular empty string, or pural an empty array).</p>
-<div class="details admonition failure">
+<div class="details admonition failure open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-times-circle fa-fw"></i>Failure<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-times-circle fa-fw"></i>InvalidTemplateDeployment<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p>If you make the above mistake you will run into an <strong>InvalidTemplateDeployment</strong> error:</p>
@@ -191,6 +191,7 @@ if (!doNotTrack) {
 SecurityRuleParameterContainsUnsupportedValue - Security rule parameter DestinationAddressPrefix for rule with Id /subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCEGROUP_NAME/providers/Microsoft.Network/networkSecurityGroups/$NSG_NAME/securityRules/allow-http cannot specify existing VIRTUALNETWORK, INTERNET, AZURELOADBALANCER, &lsquo;*&rsquo; or system tags. Unsupported value used: *.</p>
 </blockquote>
 <p>The deployment failed because the asterisk (*) wildcard character was given as a value for the <code>destionationAddressPrefixes</code> key. The deployment would have succeeded if instead the value was given for the <code>destionAddressPrefix</code> key. This is also the case for any of the service tags such as VIRTUALNETWORK, INTERNET, AZURELOADBALANCER, etc.</p>
+<p>In the JSON snippet below is an example of a security rule that would throw the <code>InvalidTemplateDeployment</code> error.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -235,12 +236,14 @@ SecurityRuleParameterContainsUnsupportedValue - Security rule parameter Destinat
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></div>
+</div><p>In this case the asterisk (<em>) wildcard character should have been a value of the <code>destinationAddressPrefix</code> key (e.g &ldquo;destinationAddressPrefix&rdquo;: &ldquo;</em>&rdquo;).</p>
+</div>
         </div>
     </div>
 <p>With what we know now the following template can be used:</p>
 <script  src="https://gist.github.com/jeroen-t/91d380a8cad231a64df1a4e4745ca51a.js?file=nsg.bicep"></script>
 
+<p>Great! Before we dive into the security rules lets discuss another approach we can take to the priority.</p>
 <h3 id="u-priority">How to define priority</h3>
 <p>Instead of specifying the priority for each rule that you create you can also do some more tweaking to the template. For example, instead of giving priority like:</p>
 <div class="highlight"><div class="chroma">
@@ -274,8 +277,8 @@ SecurityRuleParameterContainsUnsupportedValue - Security rule parameter Destinat
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">destinationPortRange</span><span class="p">:</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span>securityRule<span class="p">.</span>properties<span class="err">,</span><span class="w"> </span><span class="si">&#39;destinationPortRange&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">?</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>destinationPortRange<span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">destinationPortRanges</span><span class="p">:</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span>securityRule<span class="p">.</span>properties<span class="err">,</span><span class="w"> </span><span class="si">&#39;destinationPortRanges&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">?</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>destinationPortRanges<span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">direction</span><span class="p">:</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>direction<span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">  </span><span class="o">--</span><span class="py">priority</span><span class="p">:</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>priority<span class="w">
-</span></span></span><span class="line hl"><span class="cl"><span class="w">  </span><span class="o">++</span><span class="py">priority</span><span class="p">:</span><span class="w"> </span>100<span class="w"> </span><span class="o">+</span><span class="w"> </span>i<span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">  </span><span class="o">--</span><span class="py">priority</span><span class="p">:</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>priority<span class="w"> </span><span class="c1">//remove</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">  </span><span class="o">++</span><span class="py">priority</span><span class="p">:</span><span class="w"> </span>100<span class="w"> </span><span class="o">+</span><span class="w"> </span>i<span class="w"> </span><span class="c1">//add</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">protocol</span><span class="p">:</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>protocol<span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">sourceAddressPrefix</span><span class="p">:</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span>securityRule<span class="p">.</span>properties<span class="err">,</span><span class="w"> </span><span class="si">&#39;sourceAddressPrefix&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">?</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>sourceAddressPrefix<span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">sourceAddressPrefixes</span><span class="p">:</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span>securityRule<span class="p">.</span>properties<span class="err">,</span><span class="w"> </span><span class="si">&#39;sourceAddressPrefixes&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">?</span><span class="w"> </span>securityRule<span class="p">.</span>properties<span class="p">.</span>sourceAddressPrefixes<span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
@@ -290,10 +293,10 @@ SecurityRuleParameterContainsUnsupportedValue - Security rule parameter Destinat
 <p>Great! We have our deployment template. But how do we provide our security rules to the securityRules parameter?
 I was going through the options and the two cleanest way of specifying the parameters were either:</p>
 <ol>
-<li>By having the security rules in a separate json file and using the loadTextContent file function to load the content of the specified file as a string. You can then use the json function to create a JSON objects from this. You can even concatenate teh rules of multiple json files using this method. The properties loaded by these functions even have intelliSense in Visual Studio Code as well, cool! An example of the JSON function together with the loadTextContent can be <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-files#examples" target="_blank" rel="noopener noreffer">found here</a>. Yup, good example because it&rsquo;s using a NSG as well.</li>
+<li>By having the security rules in a separate json file and using the loadTextContent file function to load the content of the specified file as a string. You can then use the json function to create a JSON objects from this. You can even concatenate the rules of multiple json files using this method. The properties loaded by these functions even have intelliSense in Visual Studio Code as well, cool! An example of the JSON function together with the loadTextContent can be <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-files#examples" target="_blank" rel="noopener noreffer">found here</a>. Yup, good example because it&rsquo;s using a NSG as well.</li>
 <li>By just using the good old <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/parameter-files" target="_blank" rel="noopener noreffer">ARM deployment parameters template</a>.</li>
 </ol>
-<p>I chose to go with the second method but might try the first option again later.</p>
+<p>I chose to go with the second method but might try the first option again later. Concatinating a standard set of rules and your more customized rules does have its appeal.</p>
 <h2 id="u-securityRuleParameters">Working with the Network Security Rules parameter template</h2>
 <p>As mentioned above we are going with the deployment parameters option. Without any rules specified the template looks like this:</p>
 <script  src="https://gist.github.com/jeroen-t/91d380a8cad231a64df1a4e4745ca51a.js?file=template.parameters.json"></script>
@@ -337,12 +340,14 @@ I was going through the options and the two cleanest way of specifying the param
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jq --argjson input &#34;$securityRules&#34; &#39;.parameters.securityRules.value += $input&#39; $inputTemplate &gt; $outputTemplate
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>We add the security rules we got returned earlier to the security rule values in the deploymentParameters template and output this as a new deploymentParameter file.</p>
+</div><p>We add the security rules we got returned earlier to the security rule values in the deploymentParameters template and output this as a new deploymentParameter file.
+And as you probably already have guessed by now.. The output file is what we are going to end up using as our deployment paramater file :-)</p>
 <p>As you can see <code>jq</code> is a very powerful commandline tool. And it&rsquo;s also included by default in the Microsoft hosted Azure Pipelines agent images:</p>
 <ul>
 <li><a href="https://github.com/actions/virtual-environments/blob/main/images/win/Windows2022-Readme.md" target="_blank" rel="noopener noreffer">Windows Server 2022</a></li>
 <li><a href="https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2204-Readme.md" target="_blank" rel="noopener noreffer">Ubuntu 22.04 Preview</a></li>
 </ul>
+<p>And on top of that it is a lot of fun figuring out how to use it!</p>
 <p><a href="https://jqplay.org/" target="_blank" rel="noopener noreffer">Here&rsquo;s a playground</a> for <code>jq</code> if you want to take it for a quick spin.</p>
 <div class="details admonition tip">
         <div class="details-summary admonition-title">
@@ -352,8 +357,9 @@ I was going through the options and the two cleanest way of specifying the param
             <div class="admonition-content"><a href="https://github.com/mikefarah/yq" target="_blank" rel="noopener noreffer">yq</a> is also a handy tool to have. It&rsquo;s similar to <code>jq</code> and works for YAML files as well. Fun to use when you work a lot with YAML files which is definitely the case if you work with pipelines, kubernetes, etc.</div>
         </div>
     </div>
+<p>In the above examples we have learned how we can get the custom security rules by calling the Network Security Group Rest API using a GET request. We used the <code>jq</code> commandline tool to extract the security rules and deleted the keys that we didn&rsquo;t need and we have used the <code>jq</code> tool to combine the security rules in a deploymentParameter template. We can put this all together into a PowerShell and/or Bash script.</p>
 <h3 id="u-getSecurityRules">Putting it all together in a bash script</h3>
-<p>By putting everything that we have just learned together we come up with the following bash script (with a few extras):</p>
+<p>By putting everything that we have just learned together we come up with the following bash script. I added the <code>getopts</code> command for easy parsing of commandline arguments:</p>
 <script  src="https://gist.github.com/jeroen-t/91d380a8cad231a64df1a4e4745ca51a.js?file=getSecurityRules.sh"></script>
 
 <p>If we run the above script for a given resource group and network security group:</p>
@@ -365,7 +371,7 @@ I was going through the options and the two cleanest way of specifying the param
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./getSecurityRules -n Nsg1 -r ResourceGroup1
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>It will return an deployment parameter file with the name <code>Nsg1.parameters.json</code> which we can use for our future deployments.</p>
+</div><p>It will return an deployment parameter file with the name <code>Nsg1.parameters.json</code> in the same directory as where the executed script is located. We can use the parameter file for our future deployments. Lets take a look at how we can deploy new security rules using template.</p>
 <h2 id="u-whatIf">(What-If) deployment</h2>
 <p>For now lets do an What-if deployment without editing the file. The What-if deployment will only predict what will happen if we deploy our template file. It won&rsquo;t make any changes to the existing NSG or its rules. So in our case this should only show ignored resources and not show any changes (apart from some garbage perhaps).</p>
 <div class="highlight"><div class="chroma">
@@ -390,17 +396,20 @@ I was going through the options and the two cleanest way of specifying the param
 <p>The What-If deployment followed by the actual deployment can get combined into an Azure Pipelines deployment pipeline. For example, when you update the parameter template with a new rule the pipeline will get triggered. First it will run a validation stage which runs the what-if deployment against your environment and returns results of what security rules get created, modified and/or removed. Then you can have an additional stage which will do the actual deployment after a review approval is done. I really like this approach since it gives you more confidence in your deployments.</p>
 <p>I am planning on writing a post about this as well since there is a lot to write about this topic.</p>
 <h2 id="u-conclusion">Conclusion</h2>
-<p>In this post I showed how you can deploy security rules to your Network Security Group(s) in Azure using Bicep and how to get an deployment parameter template for your existing NSGs.</p></div><div class="post-footer" id="post-footer">
+<p>In this post I showed how you can deploy security rules to your Network Security Group(s) in Azure using Bicep and how to get an deployment parameter template for your existing Network Security Groups.</p>
+<p>Hopefully you found this useful. Have a nice day!</p></div><div class="post-footer" id="post-footer">
     <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
                 </span><span><a href="/tags/azure/">Azure</a>
                 </span><span><a href="/tags/bicep/">Bicep</a>
                 </span><span><a href="/tags/network-security-group/">Network Security Group</a>
                 </span><span><a href="/tags/nsg/">NSG</a>
+                </span><span><a href="/tags/jq/">jq</a>
+                </span><span><a href="/tags/arm/">ARM</a>
                 </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 22-05-2022</span>
+                <span>Updated on 27-05-2022</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Update Azure NSGs using Bicep 🛡️" data-hashtags="Blog,Azure,Bicep,Network Security Group,NSG"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Update Azure NSGs using Bicep 🛡️" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-reddit fa-fw"></i></a></span>
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️" data-hashtags="Blog,Azure,Bicep,Network Security Group,NSG,jq,ARM"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-reddit fa-fw"></i></a></span>
         </div></div><div class="post-nav"><a href="/2022/05/azure-boards-bulk-planning/" class="prev" rel="prev" title="Azure Boards: Planning work items in BULK!"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
 </div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
@@ -430,4 +439,4 @@ if ('serviceWorker' in navigator) {
                 <i class="fas fa-chevron-up fa-fw"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment-alt fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Update Azure NSGs using Bicep 🛡️"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
