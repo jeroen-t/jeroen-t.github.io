@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️ - Jeroen Trimbach</title><meta name="description" content="Update Azure Network Security Groups using Bicep"><meta property="og:title" content="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️" />
+        <title>Update Azure Network Security Group (NSG) security rules using Bicep - Jeroen Trimbach</title><meta name="description" content="Update Azure Network Security Groups using Bicep"><meta property="og:title" content="Update Azure Network Security Group (NSG) security rules using Bicep" />
 <meta property="og:description" content="Update Azure Network Security Groups using Bicep" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/featured-image.png"/><meta property="article:section" content="posts" />
@@ -13,7 +13,7 @@
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/featured-image.png"/>
-<meta name="twitter:title" content="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️"/>
+<meta name="twitter:title" content="Update Azure Network Security Group (NSG) security rules using Bicep"/>
 <meta name="twitter:description" content="Update Azure Network Security Groups using Bicep"/>
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -36,7 +36,7 @@ if (!doNotTrack) {
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️",
+        "headline": "Update Azure Network Security Group (NSG) security rules using Bicep",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -46,7 +46,7 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, Network Security Group, NSG, jq, ARM","wordcount":  1810 ,
+                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, Network Security Group, NSG, jq, ARM","wordcount":  1889 ,
         "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/","datePublished": "2022-05-16T21:51:16+02:00","dateModified": "2022-05-27T21:15:54+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -137,9 +137,9 @@ if (!doNotTrack) {
         data-srcset="/2022/05/azure-update-nsg-rules-bicep/featured-image.png, /2022/05/azure-update-nsg-rules-bicep/featured-image.png 1.5x, /2022/05/azure-update-nsg-rules-bicep/featured-image.png 2x"
         data-sizes="auto"
         alt="/2022/05/azure-update-nsg-rules-bicep/featured-image.png"
-        title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️</h2><h2 class="single-subtitle">Update Azure Network Security Groups (NSG&#39;s) using Bicep</h2><div class="post-meta">
+        title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Update Azure Network Security Group (NSG) security rules using Bicep</h2><h2 class="single-subtitle">Update Azure Network Security Groups (NSG&#39;s) using Bicep</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="16-05-2022">16-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1810 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="16-05-2022">16-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1889 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;9 minutes</span>&nbsp;</div>
             </div>
             
@@ -168,7 +168,9 @@ if (!doNotTrack) {
     <li><a href="#u-conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
-                </div><div class="content" id="content"><p>Together with a colleague, I had to create and update a large amount of security rules on Azure Network Security Groups (NSGs) across multiple environments. Normally we would use an ARM deployment template to do NSG deployments. However, the logic used in the script could not achieve what was required and because it is an ARM template, quite complex as well. Instead of rewriting the template we decided to create a new template written in Bicep instead.</p>
+                </div><div class="content" id="content"><p>In this post I will be explaining how you can utilize Bicep (an Infrastructure as Code (IaC) language) for creating and/or updating the security rules on a Network Security Group (NSG) in Microsoft Azure. I have also shared a script which can be used to export a deployment template based on the security rules configured on an existing NSG resource so that you can use that for further deployments.</p>
+<h1 id="update-azure-network-security-group-nsg-security-rules-using-bicep">Update Azure Network Security Group (NSG) security rules using Bicep</h1>
+<p>Together with a colleague, I had to create and update a large amount of security rules on Azure Network Security Groups (NSGs) across multiple environments. Normally we would use an ARM deployment template to do NSG deployments. However, the logic used in the script could not achieve what was required and because it is an ARM template, quite complex as well. Instead of rewriting the template we decided to create a new template written in Bicep instead.</p>
 <p>In this post I will go over the template as well as some other things I have learned/played with during that process.</p>
 <p><img
         class="lazyload"
@@ -417,7 +419,7 @@ And as you probably already have guessed by now.. The output file is what we are
                 <span>Updated on 27-05-2022</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️" data-hashtags="Blog,Azure,Bicep,Network Security Group,NSG,jq,ARM"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-reddit fa-fw"></i></a></span>
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Update Azure Network Security Group (NSG) security rules using Bicep" data-hashtags="Blog,Azure,Bicep,Network Security Group,NSG,jq,ARM"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" data-title="Update Azure Network Security Group (NSG) security rules using Bicep" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/"><i class="fab fa-reddit fa-fw"></i></a></span>
         </div></div><div class="post-nav"><a href="/2022/05/azure-boards-bulk-planning/" class="prev" rel="prev" title="Azure Boards: Planning work items in BULK!"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
 </div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
@@ -447,4 +449,4 @@ if ('serviceWorker' in navigator) {
                 <i class="fas fa-chevron-up fa-fw"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment-alt fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Update Azure Network Security Group (NSG) security rules using Bicep"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
