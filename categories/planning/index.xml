@@ -4,7 +4,7 @@
         <link>https://jeroentrimbach.com/categories/planning/</link>
         <description>Planning - Category - Jeroen Trimbach</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 13 May 2022 17:53:55 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/categories/planning/" rel="self" type="application/rss+xml" /><item>
-    <title>Azure Boards: Planning work items in BULK using Microsoft Excel!</title>
+    <title>Azure Boards: Planning work items in BULK!</title>
     <link>https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/</link>
     <pubDate>Fri, 13 May 2022 17:53:55 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/05/azure-boards-bulk-planning/</guid>
     <description><![CDATA[<p>Planning work items in Azure Boards can be a tedious task. In this post I will be explaining how you can plan/create work items using Microsoft Excel. Using Excel you can easily add a large amount of items in an efficient manner.</p>]]></description>

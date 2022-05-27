@@ -4,7 +4,7 @@
         <link>https://jeroentrimbach.com/tags/powershell/</link>
         <description>PowerShell - Tag - Jeroen Trimbach</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 10 Apr 2022 15:26:39 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/powershell/" rel="self" type="application/rss+xml" /><item>
-    <title>Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView</title>
+    <title>The Powerful PowerShell cmdlet Out-ConsoleGridView</title>
     <link>https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/</link>
     <pubDate>Sun, 10 Apr 2022 15:26:39 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/</guid>
     <description><![CDATA[<p>In this post I will be sharing the PowerShell cmdlet Out-ConsoleGridView which is part of the ConsoleGuiTools module. Which is in my opinion well worth it to have in your toolbox!</p>]]></description>
