@@ -4,10 +4,10 @@
         <link>https://jeroentrimbach.com/tags/cloud/</link>
         <description>Cloud - Tag - Jeroen Trimbach</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/cloud/" rel="self" type="application/rss+xml" /><item>
-    <title>Azure Bicep: The First Pump 💪</title>
+    <title>Azure Bicep: An introduction on how to get started</title>
     <link>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</link>
     <pubDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</guid>
-    <description><![CDATA[<p>Getting started with Azure Bicep</p>]]></description>
+    <description><![CDATA[<p>In this post I will explain what Bicep is and how you can get start using it for deploying resources to Microsoft Azure.</p>]]></description>
 </item>
 </channel>
 </rss>

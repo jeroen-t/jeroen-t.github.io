@@ -10,16 +10,16 @@
     <description><![CDATA[<p>In this post I will be explaining how you can utilize Bicep (an Infrastructure as Code (IaC) language) for creating and/or updating the security rules on a Network Security Group (NSG) in Microsoft Azure. I have also shared a script which can be used to export a deployment template based on the security rules configured on an existing NSG resource so that you can use that for further deployments.</p>]]></description>
 </item>
 <item>
-    <title>$ConsoleTips | Out-ConsoleGridView</title>
+    <title>Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView</title>
     <link>https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/</link>
     <pubDate>Sun, 10 Apr 2022 15:26:39 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/</guid>
-    <description><![CDATA[Pass output to an interactive table in the console through out-consolegridview]]></description>
+    <description><![CDATA[<p>In this post I will be sharing the PowerShell cmdlet Out-ConsoleGridView which is part of the ConsoleGuiTools module. Which is in my opinion well worth it to have in your toolbox!</p>]]></description>
 </item>
 <item>
-    <title>Azure Bicep: The First Pump 💪</title>
+    <title>Azure Bicep: An introduction on how to get started</title>
     <link>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</link>
     <pubDate>Thu, 05 Aug 2021 19:41:50 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/08/azure-bicep-intro/</guid>
-    <description><![CDATA[<p>Getting started with Azure Bicep</p>]]></description>
+    <description><![CDATA[<p>In this post I will explain what Bicep is and how you can get start using it for deploying resources to Microsoft Azure.</p>]]></description>
 </item>
 </channel>
 </rss>

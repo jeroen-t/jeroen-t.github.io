@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>$ConsoleTips | Out-ConsoleGridView - Jeroen Trimbach</title><meta name="description" content="Pass output to an interactive table in the console through out-consolegridview"><meta property="og:title" content="$ConsoleTips | Out-ConsoleGridView" />
+        <title>Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView - Jeroen Trimbach</title><meta name="description" content="Pass output to an interactive table in the console through out-consolegridview"><meta property="og:title" content="Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView" />
 <meta property="og:description" content="Pass output to an interactive table in the console through out-consolegridview" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/featured-image.png"/><meta property="article:section" content="posts" />
@@ -13,7 +13,7 @@
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/featured-image.png"/>
-<meta name="twitter:title" content="$ConsoleTips | Out-ConsoleGridView"/>
+<meta name="twitter:title" content="Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView"/>
 <meta name="twitter:description" content="Pass output to an interactive table in the console through out-consolegridview"/>
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -36,7 +36,7 @@ if (!doNotTrack) {
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "$ConsoleTips | Out-ConsoleGridView",
+        "headline": "Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -46,7 +46,7 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2022\/04\/powershell-out-consolegridview\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, PowerShell, Azure","wordcount":  663 ,
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Azure","wordcount":  700 ,
         "url": "https:\/\/jeroentrimbach.com\/2022\/04\/powershell-out-consolegridview\/","datePublished": "2022-04-10T15:26:39+02:00","dateModified": "2022-05-22T13:09:20+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -137,9 +137,9 @@ if (!doNotTrack) {
         data-srcset="/2022/04/powershell-out-consolegridview/featured-image.png, /2022/04/powershell-out-consolegridview/featured-image.png 1.5x, /2022/04/powershell-out-consolegridview/featured-image.png 2x"
         data-sizes="auto"
         alt="/2022/04/powershell-out-consolegridview/featured-image.png"
-        title="Pass output to an interactive table in the console through out-consolegridview" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">$ConsoleTips | Out-ConsoleGridView</h2><h2 class="single-subtitle">Pass output to an interactive table straight in the console</h2><div class="post-meta">
+        title="Pass output to an interactive table in the console through out-consolegridview" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView</h2><h2 class="single-subtitle">Pass output to an interactive table straight in the console</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="10-04-2022">10-04-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;663 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="10-04-2022">10-04-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;700 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;4 minutes</span>&nbsp;</div>
             </div>
             
@@ -161,7 +161,9 @@ if (!doNotTrack) {
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
-                </div><div class="content" id="content"><p>It has been a while since I have written a post. So long that I had to figure out how to get going again. Luckily I had my own blog post to go back to! Thank god for documentation :-) <br>
+                </div><div class="content" id="content"><p>In this post I will be sharing the PowerShell cmdlet Out-ConsoleGridView which is part of the ConsoleGuiTools module. Which is in my opinion well worth it to have in your toolbox!</p>
+<h1 id="introducing-the-powerful-powershell-cmdlet-out-consolegridview">Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView</h1>
+<p>It has been a while since I have written a post. So long that I had to figure out how to get going again. Luckily I had my own blog post to go back to! Thank god for documentation :-) <br>
 I&rsquo;m completely set again with Hugo as well as my sites theme updated to the newest versions. I was in the mood to &ldquo;create something&rdquo; so welp a blog post will have to do and nothing was going to stop me.</p>
 <p>A while ago I stumbled upon the Out-ConsoleGridView PowerShell cmdlet and I have used it in my scripts ever since. I get to see the nice GUI look daily. <br>
 Because I like it so much I thought that I might as well share it. Perhaps someone else may find it extremely useful as well!
@@ -252,9 +254,9 @@ I hope that you may find a use case for the cmdlet as well and can add it to you
                 <span>Updated on 22-05-2022</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-title="$ConsoleTips | Out-ConsoleGridView" data-hashtags="Blog,PowerShell,Azure"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-title="$ConsoleTips | Out-ConsoleGridView" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/"><i class="fab fa-reddit fa-fw"></i></a></span>
-        </div></div><div class="post-nav"><a href="/2021/08/azure-bicep-intro/" class="prev" rel="prev" title="Azure Bicep: The First Pump 💪"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
-            <a href="/2022/05/azure-boards-bulk-planning/" class="next" rel="next" title="Azure Boards: Planning work items in BULK!">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-title="Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView" data-hashtags="Blog,PowerShell,Azure"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/" data-title="Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/04/powershell-out-consolegridview/"><i class="fab fa-reddit fa-fw"></i></a></span>
+        </div></div><div class="post-nav"><a href="/2021/08/azure-bicep-intro/" class="prev" rel="prev" title="Azure Bicep: An introduction on how to get started"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+            <a href="/2022/05/azure-boards-bulk-planning/" class="next" rel="next" title="Azure Boards: Planning work items in BULK using Microsoft Excel!">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
 </div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
             </noscript></div></article></div>
@@ -283,4 +285,4 @@ if ('serviceWorker' in navigator) {
                 <i class="fas fa-chevron-up fa-fw"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment-alt fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"$ConsoleTips | Out-ConsoleGridView"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Introducing the Powerful PowerShell cmdlet Out-ConsoleGridView"}},"data":{"id-1":"cd ~ # Jeroen Trimbach","id-2":"cd ~ # Jeroen Trimbach"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
