@@ -46,7 +46,7 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/featured-image.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, Network Security Group, NSG, jq, ARM","wordcount":  1805 ,
+                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, Network Security Group, NSG, jq, ARM","wordcount":  1810 ,
         "url": "https:\/\/jeroentrimbach.com\/2022\/05\/azure-update-nsg-rules-bicep\/","datePublished": "2022-05-16T21:51:16+02:00","dateModified": "2022-05-27T21:15:54+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -139,7 +139,7 @@ if (!doNotTrack) {
         alt="/2022/05/azure-update-nsg-rules-bicep/featured-image.png"
         title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Create/update Azure Network Security Group (NSG) security rules using Bicep 🛡️</h2><h2 class="single-subtitle">Update Azure Network Security Groups (NSG&#39;s) using Bicep</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="16-05-2022">16-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1805 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="16-05-2022">16-05-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1810 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;9 minutes</span>&nbsp;</div>
             </div>
             
@@ -236,7 +236,7 @@ SecurityRuleParameterContainsUnsupportedValue - Security rule parameter Destinat
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>In this case the asterisk (<em>) wildcard character should have been a value of the <code>destinationAddressPrefix</code> key (e.g &ldquo;destinationAddressPrefix&rdquo;: &ldquo;</em>&rdquo;).</p>
+</div><p>In this case the asterisk (*) wildcard character should have been a value of the <code>destinationAddressPrefix</code> key (e.g &ldquo;destinationAddressPrefix&rdquo;: &ldquo;*&rdquo;).</p>
 </div>
         </div>
     </div>
@@ -342,12 +342,20 @@ I was going through the options and the two cleanest way of specifying the param
 </div>
 </div><p>We add the security rules we got returned earlier to the security rule values in the deploymentParameters template and output this as a new deploymentParameter file.
 And as you probably already have guessed by now.. The output file is what we are going to end up using as our deployment paramater file :-)</p>
-<p>As you can see <code>jq</code> is a very powerful commandline tool. And it&rsquo;s also included by default in the Microsoft hosted Azure Pipelines agent images:</p>
+<p>As you can see <code>jq</code> is a very powerful commandline tool and on top of that it is a lot of fun figuring out how to use it!</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Azure Pipelines Agents <i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><code>jq</code> is also part of the installed software on the Microsoft hosted Azure Pipelines agents images:</p>
 <ul>
 <li><a href="https://github.com/actions/virtual-environments/blob/main/images/win/Windows2022-Readme.md" target="_blank" rel="noopener noreffer">Windows Server 2022</a></li>
 <li><a href="https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2204-Readme.md" target="_blank" rel="noopener noreffer">Ubuntu 22.04 Preview</a></li>
 </ul>
-<p>And on top of that it is a lot of fun figuring out how to use it!</p>
+</div>
+        </div>
+    </div>
 <p><a href="https://jqplay.org/" target="_blank" rel="noopener noreffer">Here&rsquo;s a playground</a> for <code>jq</code> if you want to take it for a quick spin.</p>
 <div class="details admonition tip">
         <div class="details-summary admonition-title">
