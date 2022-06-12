@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Create Azure Cost Management exports - Jeroen Trimbach</title><meta name="description" content="How to set up Cost Management exports in Azure"><meta property="og:title" content="Create Azure Cost Management exports" />
+<meta property="og:description" content="How to set up Cost Management exports in Azure" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-11T14:59:32+02:00" />
+<meta property="article:modified_time" content="2022-06-12T12:36:19+02:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"/>
+<meta name="twitter:title" content="Create Azure Cost Management exports"/>
+<meta name="twitter:description" content="How to set up Cost Management exports in Azure"/>
+<meta name="application-name" content="jTrimbach">
+<meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" /><link rel="prev" href="https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZDT366YND"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-NZDT366YND', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+<meta name="google-site-verification" content="276260495" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Create Azure Cost Management exports",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/azure-cost-management-exports.png",
+                            "width":  1000 ,
+                            "height":  500 
+                        }],"genre": "posts","keywords": "Blog, Azure, Cost Management, PowerShell, REST API","wordcount":  1272 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/","datePublished": "2022-06-11T14:59:32+02:00","dateModified": "2022-06-12T12:36:19+02:00","publisher": {
+            "@type": "Organization",
+            "name": "Jeroen Trimbach"},"author": {
+                "@type": "Person",
+                "name": "Jeroen Trimbach"
+            },"description": "How to set up Cost Management exports in Azure"
+    }
+    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZDT366YND"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-NZDT366YND', { 'anonymize_ip': false });
+}
+</script>
+</head><body data-header-desktop="normal" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Looking for something?" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Looking for something?" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><div class="menu-item"><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="enable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"
+        data-srcset="/2022/06/azure-cost-management-exports/azure-cost-management-exports.png, /2022/06/azure-cost-management-exports/azure-cost-management-exports.png 1.5x, /2022/06/azure-cost-management-exports/azure-cost-management-exports.png 2x"
+        data-sizes="auto"
+        alt="/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"
+        title="How to set up Cost Management exports in Azure" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Create Azure Cost Management exports</h2><h2 class="single-subtitle">How to set up Cost Management exports in Azure</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="11-06-2022">11-06-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1272 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#u-scheduledExports">Cost Management scheduled exports</a></li>
+    <li><a href="#u-costManagementAPIs">Cost Management APIs</a></li>
+    <li><a href="#-queryRestApi">PowerShell</a></li>
+    <li><a href="#u-costManagementPowerShell">PowerShell Cost Management Query</a></li>
+    <li><a href="#u-schedulingExports">Scheduling Cost Exports</a></li>
+    <li><a href="#u-conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>Lets dig into some of the ways we can export the monthly costs of resources we have deployed in Azure.</p>
+<h1 id="create-azure-cost-management-exports">Create Azure Cost Management exports</h1>
+<p>Recently I wanted to setup a monthly cost export for all the Virtual Machines (VM&rsquo;s) and Managed Disks in a given subscription in Azure. Aslong as you have ben assigned the <code>Owner\Contributor</code> role on the subscription or have been assigned the <code>Cost Management Reader</code> role scoped to the Subscription, then you should be able to access the cost data.</p>
+<p>In the Azure Portal head over to <code>Subscriptions</code> and select a subscription from the list. When you have the <code>Subscription</code> pane open, there will be an option on the left side of the screen to go to <code>Cost analysis</code>.</p>
+<figure><a class="lightgallery" href="/2022/06/azure-cost-management-exports/azureCostAnalysis.png" title="/2022/06/azure-cost-management-exports/azureCostAnalysis.png" data-thumbnail="/2022/06/azure-cost-management-exports/azureCostAnalysis.png" data-sub-html="<h2>Azure Cost Analysis</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="azureCostAnalysis.png"
+            data-srcset="/2022/06/azure-cost-management-exports/azureCostAnalysis.png, azureCostAnalysis.png 1.5x, /2022/06/azure-cost-management-exports/azureCostAnalysis.png 2x"
+            data-sizes="auto"
+            alt="/2022/06/azure-cost-management-exports/azureCostAnalysis.png" />
+    </a><figcaption class="image-caption">Azure Cost Analysis</figcaption>
+    </figure>
+<p>In the top of the screen you will see a pill button which shows the current selected scope. You can change this to another subscription if you like or scope to a particular resource group instead of the whole subscription.</p>
+<p>You have access to a lot of different visualizations from here. Feel free to play around.</p>
+<p>As mentioned earlier I wanted to see the costs over last month for both Virtual Machine and Managed Disks resources. You can get a report for this by setting <code>VIEW</code> to <code>CostByResource</code>, setting the date pill to <code>Last month</code> and by adding a filter on <code>Resource type</code> and selecting both <code>Microsoft.Compute/disks</code> and <code>Microsoft.Compute/virtualMachines</code>.</p>
+<figure><a class="lightgallery" href="/2022/06/azure-cost-management-exports/azureCostAnalysisByResource.png" title="/2022/06/azure-cost-management-exports/azureCostAnalysisByResource.png" data-thumbnail="/2022/06/azure-cost-management-exports/azureCostAnalysisByResource.png" data-sub-html="<h2>Azure Cost Analysis - CostByResource</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="azureCostAnalysisByResource.png"
+            data-srcset="/2022/06/azure-cost-management-exports/azureCostAnalysisByResource.png, azureCostAnalysisByResource.png 1.5x, /2022/06/azure-cost-management-exports/azureCostAnalysisByResource.png 2x"
+            data-sizes="auto"
+            alt="/2022/06/azure-cost-management-exports/azureCostAnalysisByResource.png" />
+    </a><figcaption class="image-caption">Azure Cost Analysis - CostByResource</figcaption>
+    </figure>
+<p>Great! We have all the cost data that we need. Time to figure out how we can export this.</p>
+<h2 id="u-scheduledExports">Cost Management scheduled exports</h2>
+<p>Cost analysis has a data export feature builtin. The following documentation describes how you can setup an export schedule for your subscription(s): <a href="https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-export-acm-data?tabs=azure-portal" target="_blank" rel="noopener noreffer">Tutorial: Create and manage exported data</a>. You can easily setup exports to a <code>Storage Account</code> with this approach in only a few steps. Pretty straight forward! I stumbled on a problem however because the following prerequisite is mentioned:</p>
+<blockquote>
+<p>The storage account must not have a firewall configured.</p>
+</blockquote>
+<p>This is a blocker for me. Having a <code>firewall</code> configured is a security requirement in a lot of companies and often enforced by Azure Policy. Aslong your storage accounts have a firewall configured the Storage Account will not show up in the Cost Management export configuration.</p>
+<p>That sucks a bit.. But perhaps we can do something with the <code>Cost Management API</code> directly.</p>
+<h2 id="u-costManagementAPIs">Cost Management APIs</h2>
+<p>The Microsoft Documentation has a very nice page referencing <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener noreffer">all the Azure REST APIs</a>. Select <code>Cost Management</code> from the list of APIs on the left side of the screen and click on <code>Overview</code>.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>API usage<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">These APIs are currently only available for Azure Enterprise customers.</div>
+        </div>
+    </div>
+<p>In the overview page we can see a table displaying the three REST Operation Groups that are available to us. <code>Dimensions</code>, <code>Query</code> and <code>Exports</code>. The Exports operation group can be used to schedule and/or manage exports. Ofcourse a storage account is still required in order to set these up. So instead of heading over the exports we are interested in the <a href="https://docs.microsoft.com/en-us/rest/api/cost-management/query/usage" target="_blank" rel="noopener noreffer">Query operations group</a>. We will also be having a look at the <a href="https://docs.microsoft.com/en-us/rest/api/cost-management/dimensions/list" target="_blank" rel="noopener noreffer">Dimensions operations group</a> later since this can also retrieve some information that we need.</p>
+<p>Go to the Usage page and select <code>Usage</code>. At the top of the page a POST request will be displayed along with the URI and its required parameters. The request body and responses are also listed. Aswell as a whole bunch of examples requests. Before we have a look at the example requests lets give the API a try by selecting the <code>Try It</code> option at the top. Sign in into your Microsoft account and confirm that you would like to continue.</p>
+<p>The following should display:</p>
+<figure><a class="lightgallery" href="/2022/06/azure-cost-management-exports/azureCostAnalysisQuery.png" title="/2022/06/azure-cost-management-exports/azureCostAnalysisQuery.png" data-thumbnail="/2022/06/azure-cost-management-exports/azureCostAnalysisQuery.png" data-sub-html="<h2>Azure Cost Analysis - API Query</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="azureCostAnalysisQuery.png"
+            data-srcset="/2022/06/azure-cost-management-exports/azureCostAnalysisQuery.png, azureCostAnalysisQuery.png 1.5x, /2022/06/azure-cost-management-exports/azureCostAnalysisQuery.png 2x"
+            data-sizes="auto"
+            alt="/2022/06/azure-cost-management-exports/azureCostAnalysisQuery.png" />
+    </a><figcaption class="image-caption">Azure Cost Analysis - API Query</figcaption>
+    </figure>
+<p>Ofcourse instead of using this you could also use an API client like Postman and/or Insomnia to investigate the API.</p>
+<p>For the parameters only two are required. The scope and the api-version. The api-version is already populated for the latest available version. We want to display a cost report of resources within our subscription so to achieve that we can specify for the scope subscriptions/subscriptionid, which will look something like <em>subscriptions/xxxx-xxxx-xxxx-xxxx</em>.</p>
+<p>Then coming to the body of the request. This is currently empty. In the Sample Requests section of the Usage API page there are a lot of examples. Feel free to run a few of them. Based on the filters that we have set earlier on the Cost Analysis dashboard I came up with the following query:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Usage&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;timeframe&#34;</span><span class="p">:</span> <span class="s2">&#34;TheLastMonth&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dataset&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;granularity&#34;</span><span class="p">:</span> <span class="s2">&#34;None&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;aggregation&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;totalCost&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;PreTaxCost&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;function&#34;</span><span class="p">:</span> <span class="s2">&#34;Sum&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;filter&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;dimensions&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ResourceType&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;operator&#34;</span><span class="p">:</span> <span class="s2">&#34;In&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;values&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Compute/virtualMachines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Compute/disks&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;grouping&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Dimension&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ResourceId&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We are looking for the data from last month, resources of the types <code>Microsoft.Compute/virtualMachines</code> and/or <code>Microsoft.Compute/disks</code> and we are grouping by the <code>ResourceId</code> in order to get the sum of the costs.</p>
+<p>If you are interested in all dimensions that are available you can list them all through the <a href="https://docs.microsoft.com/en-us/rest/api/cost-management/dimensions/list" target="_blank" rel="noopener noreffer">Dimensions operations group</a> API.</p>
+<h2 id="-queryRestApi">PowerShell</h2>
+<p>Now that we know how to use the API we should find out a way on how to use it. I usually work with Azure using PowerShell and/or the Azure CLI. In this case I went with the Az PowerShell module. We can leverage the command <code>Invoke-AzRestMethod</code> to work with Rest APIs. With the knowledge we gained earlier this is quite easy. All we need to provide to the Cmdlet is the URI path, the REST Method and the Payload. This will look something like the following script:</p>
+<script  src="https://gist.github.com/jeroen-t/d5121b026444280ef04e2167fcb595f8.js?file=Invoke-jtAzCostQuery.ps1"></script>
+
+<p>Since the response is in JSON we can use <code>ConvertFrom-Json</code> to parse the content into objects. The data that we are after is stored in properties.rows. Because each row is stored in an object of its own I am using ForEach-Object to iterate through them, in order to format the data to my liking (mainly based on the resource ids that are returned) and stored them in a PSCustomObject. Ofcourse you can tweak this to however you like.</p>
+<h2 id="u-costManagementPowerShell">PowerShell Cost Management Query</h2>
+<p>Ofcourse only after writing this post I realized there is also a PowerShell cmdlet available in the <code>Az.CostManagement</code> module. I should have checked on this first! So instead of using the above method you can also straight up use this cmdlet:
+<a href="https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/invoke-azcostmanagementquery?view=azps-8.0.0" target="_blank" rel="noopener noreffer">Invoke-AzCostMangementQuery</a></p>
+<p>Usage should be quite similar to what we have done above only instead of providing the payload in JSON you can just pass in the properties that you need. You may also require the cmdlet <code>New-AzCostManagementQueryComparisonExpressionObject</code> (man this has a long name) for setting some of the objects that you need to pass in.</p>
+<h2 id="u-schedulingExports">Scheduling Cost Exports</h2>
+<p>Now that we know how to export the Cost Analysis data we can create a script using the above methods. We can easily write this data to a csv file (by using Export-Csv or something similar) and upload this to a storage account or some other location.</p>
+<p>For scheduling we could use solutions like for example:</p>
+<ul>
+<li>Azure Functions</li>
+<li>Azure Automation Account</li>
+<li>Azure DevOps / Github job</li>
+</ul>
+<p>And many more.</p>
+<h2 id="u-conclusion">Conclusion</h2>
+<p>In this post I went over different options you can access the cost data for resources within your Azure Subscription. I also described the different methods you can use to export said data by using the Cost Export service or leveraging the REST API.</p>
+<p>I hope you found this post useful. Have a nice day! 👍</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
+                </span><span><a href="/tags/azure/">Azure</a>
+                </span><span><a href="/tags/cost-management/">Cost Management</a>
+                </span><span><a href="/tags/powershell/">PowerShell</a>
+                </span><span><a href="/tags/rest-api/">REST API</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 12-06-2022</span>
+            </div><div class="post-info-mod"></div>
+        </div><div class="post-info-share">
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" data-title="Create Azure Cost Management exports" data-hashtags="Blog,Azure,Cost Management,PowerShell,REST API"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" data-title="Create Azure Cost Management exports" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/"><i class="fab fa-reddit fa-fw"></i></a></span>
+        </div></div><div class="post-nav"><a href="/2022/05/azure-update-nsg-rules-bicep/" class="prev" rel="prev" title="Update Azure NSG security rules using Bicep"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
+            </noscript></div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.min.js?version=1.0.1', { scope: '/' })
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Registered');
+        }, err => console.error('Jeroen Trimbach\u00A0Service Worker registration failed: ', err));
+
+    navigator.serviceWorker
+        .ready
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Ready');
+        });
+}
+</script>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment-alt fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Create Azure Cost Management exports"}},"data":{"id-1":"cd ~","id-2":"cd ~"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
