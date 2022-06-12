@@ -46,7 +46,7 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/azure-cost-management-exports.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure, Cost Management, PowerShell, REST API","wordcount":  1272 ,
+                        }],"genre": "posts","keywords": "Blog, Azure, Cost Management, PowerShell, REST API","wordcount":  1381 ,
         "url": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/","datePublished": "2022-06-11T14:59:32+02:00","dateModified": "2022-06-12T12:36:19+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -139,8 +139,8 @@ if (!doNotTrack) {
         alt="/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"
         title="How to set up Cost Management exports in Azure" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Create Azure Cost Management exports</h2><h2 class="single-subtitle">How to set up Cost Management exports in Azure</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="11-06-2022">11-06-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1272 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="11-06-2022">11-06-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1381 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;7 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -152,7 +152,7 @@ if (!doNotTrack) {
   <ul>
     <li><a href="#u-scheduledExports">Cost Management scheduled exports</a></li>
     <li><a href="#u-costManagementAPIs">Cost Management APIs</a></li>
-    <li><a href="#-queryRestApi">PowerShell</a></li>
+    <li><a href="#-queryRestApi">Invoking the REST Method using PowerShell</a></li>
     <li><a href="#u-costManagementPowerShell">PowerShell Cost Management Query</a></li>
     <li><a href="#u-schedulingExports">Scheduling Cost Exports</a></li>
     <li><a href="#u-conclusion">Conclusion</a></li>
@@ -285,14 +285,34 @@ if (!doNotTrack) {
 </div>
 </div><p>We are looking for the data from last month, resources of the types <code>Microsoft.Compute/virtualMachines</code> and/or <code>Microsoft.Compute/disks</code> and we are grouping by the <code>ResourceId</code> in order to get the sum of the costs.</p>
 <p>If you are interested in all dimensions that are available you can list them all through the <a href="https://docs.microsoft.com/en-us/rest/api/cost-management/dimensions/list" target="_blank" rel="noopener noreffer">Dimensions operations group</a> API.</p>
-<h2 id="-queryRestApi">PowerShell</h2>
+<h2 id="-queryRestApi">Invoking the REST Method using PowerShell</h2>
 <p>Now that we know how to use the API we should find out a way on how to use it. I usually work with Azure using PowerShell and/or the Azure CLI. In this case I went with the Az PowerShell module. We can leverage the command <code>Invoke-AzRestMethod</code> to work with Rest APIs. With the knowledge we gained earlier this is quite easy. All we need to provide to the Cmdlet is the URI path, the REST Method and the Payload. This will look something like the following script:</p>
 <script  src="https://gist.github.com/jeroen-t/d5121b026444280ef04e2167fcb595f8.js?file=Invoke-jtAzCostQuery.ps1"></script>
 
-<p>Since the response is in JSON we can use <code>ConvertFrom-Json</code> to parse the content into objects. The data that we are after is stored in properties.rows. Because each row is stored in an object of its own I am using ForEach-Object to iterate through them, in order to format the data to my liking (mainly based on the resource ids that are returned) and stored them in a PSCustomObject. Ofcourse you can tweak this to however you like.</p>
+<p>Since the response is in JSON we can use <code>ConvertFrom-Json</code> to parse the content into objects. The data that we are after is stored in properties.rows. Because each row is stored in an object of its own I am using ForEach-Object to iterate through them, in order to format the data to my liking (mainly based on the resource ids that are returned) and stored them in a PSCustomObject. Of course you can tweak this to however you like.</p>
+<p>After authenticating with Azure (using Connect-AzAccount) and <a href="http://localhost:1313/2022/04/powershell-out-consolegridview/#u-exampleScript" target="_blank" rel="noopener noreffer">setting the active subscription</a>. We can run the above script and the output will display as follows:</p>
+<figure><a class="lightgallery" href="/2022/06/azure-cost-management-exports/azureCostAnalysisPowerShellOutput.PNG" title="/2022/06/azure-cost-management-exports/azureCostAnalysisPowerShellOutput.PNG" data-thumbnail="/2022/06/azure-cost-management-exports/azureCostAnalysisPowerShellOutput.PNG" data-sub-html="<h2>Azure Cost Analysis - PowerShell output</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="azureCostAnalysisPowerShellOutput.png"
+            data-srcset="/2022/06/azure-cost-management-exports/azureCostAnalysisPowerShellOutput.PNG, azureCostAnalysisPowerShellOutput.png 1.5x, /2022/06/azure-cost-management-exports/azureCostAnalysisPowerShellOutput.PNG 2x"
+            data-sizes="auto"
+            alt="/2022/06/azure-cost-management-exports/azureCostAnalysisPowerShellOutput.PNG" />
+    </a><figcaption class="image-caption">Azure Cost Analysis - PowerShell output</figcaption>
+    </figure>
+<p>Perfect! Just like what we had seen earlier in the portal.</p>
+<div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Format-Table<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In the above script I use the <strong>Format-Table</strong> cmdlet to format the cost data into a table. If you are planning on doing anything else with the data (e.g. exporting the data to a csv file using export-csv) then make sure to remove <strong>Format-Table</strong>. The format cmdlet transforms the object into a format type which makes it hard to use.</div>
+        </div>
+    </div>
 <h2 id="u-costManagementPowerShell">PowerShell Cost Management Query</h2>
-<p>Ofcourse only after writing this post I realized there is also a PowerShell cmdlet available in the <code>Az.CostManagement</code> module. I should have checked on this first! So instead of using the above method you can also straight up use this cmdlet:
-<a href="https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/invoke-azcostmanagementquery?view=azps-8.0.0" target="_blank" rel="noopener noreffer">Invoke-AzCostMangementQuery</a></p>
+<p>Of course only after writing this post I realized there is also a PowerShell cmdlet available in the <code>Az.CostManagement</code> module. I should have checked on this first! So instead of using the above method you can also straight up use this cmdlet:
+<a href="https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/invoke-azcostmanagementquery?view=azps-8.0.0" target="_blank" rel="noopener noreffer">Invoke-AzCostMangementQuery</a>.</p>
 <p>Usage should be quite similar to what we have done above only instead of providing the payload in JSON you can just pass in the properties that you need. You may also require the cmdlet <code>New-AzCostManagementQueryComparisonExpressionObject</code> (man this has a long name) for setting some of the objects that you need to pass in.</p>
 <h2 id="u-schedulingExports">Scheduling Cost Exports</h2>
 <p>Now that we know how to export the Cost Analysis data we can create a script using the above methods. We can easily write this data to a csv file (by using Export-Csv or something similar) and upload this to a storage account or some other location.</p>
