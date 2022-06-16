@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-11T14:59:32+02:00" />
-<meta property="article:modified_time" content="2022-06-12T12:36:19+02:00" />
+<meta property="article:modified_time" content="2022-06-16T19:38:27+02:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"/>
@@ -46,8 +46,8 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/azure-cost-management-exports.png",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure, Cost Management, PowerShell, REST API","wordcount":  1381 ,
-        "url": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/","datePublished": "2022-06-11T14:59:32+02:00","dateModified": "2022-06-12T12:36:19+02:00","publisher": {
+                        }],"genre": "posts","keywords": "Blog, Azure, Cost Management, PowerShell, REST API","wordcount":  1385 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/06\/azure-cost-management-exports\/","datePublished": "2022-06-11T14:59:32+02:00","dateModified": "2022-06-16T19:38:27+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
                 "@type": "Person",
@@ -139,7 +139,7 @@ if (!doNotTrack) {
         alt="/2022/06/azure-cost-management-exports/azure-cost-management-exports.png"
         title="How to set up Cost Management exports in Azure" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Create Azure Cost Management exports</h2><h2 class="single-subtitle">How to set up Cost Management exports in Azure</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="11-06-2022">11-06-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1381 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="11-06-2022">11-06-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1385 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;7 minutes</span>&nbsp;</div>
             </div>
             
@@ -192,7 +192,7 @@ if (!doNotTrack) {
 <p>The storage account must not have a firewall configured.</p>
 </blockquote>
 <p>This is a blocker for me. Having a <code>firewall</code> configured is a security requirement in a lot of companies and often enforced by Azure Policy. Aslong your storage accounts have a firewall configured the Storage Account will not show up in the Cost Management export configuration.</p>
-<p>That sucks a bit.. But perhaps we can do something with the <code>Cost Management API</code> directly.</p>
+<p>That sucks a bit.. But perhaps we can do something with the <code>Cost Management API</code> directly. Lets find out!</p>
 <h2 id="u-costManagementAPIs">Cost Management APIs</h2>
 <p>The Microsoft Documentation has a very nice page referencing <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener noreffer">all the Azure REST APIs</a>. Select <code>Cost Management</code> from the list of APIs on the left side of the screen and click on <code>Overview</code>.</p>
 <div class="details admonition info open">
@@ -313,7 +313,7 @@ if (!doNotTrack) {
 <h2 id="u-costManagementPowerShell">PowerShell Cost Management Query</h2>
 <p>Of course only after writing this post I realized there is also a PowerShell cmdlet available in the <code>Az.CostManagement</code> module. I should have checked on this first! So instead of using the above method you can also straight up use this cmdlet:
 <a href="https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/invoke-azcostmanagementquery?view=azps-8.0.0" target="_blank" rel="noopener noreffer">Invoke-AzCostMangementQuery</a>.</p>
-<p>Usage should be quite similar to what we have done above only instead of providing the payload in JSON you can just pass in the properties that you need. You may also require the cmdlet <code>New-AzCostManagementQueryComparisonExpressionObject</code> (man this has a long name) for setting some of the objects that you need to pass in.</p>
+<p>Usage should be quite similar to what we have done above only instead of providing the payload in JSON you can just pass in the properties that you need. You may also require the cmdlet <code>New-AzCostManagementQueryComparisonExpressionObject</code> (man this command has a long name) for setting some of the objects that you need to pass in.</p>
 <h2 id="u-schedulingExports">Scheduling Cost Exports</h2>
 <p>Now that we know how to export the Cost Analysis data we can create a script using the above methods. We can easily write this data to a csv file (by using Export-Csv or something similar) and upload this to a storage account or some other location.</p>
 <p>For scheduling we could use solutions like for example:</p>
@@ -332,7 +332,7 @@ if (!doNotTrack) {
                 </span><span><a href="/tags/powershell/">PowerShell</a>
                 </span><span><a href="/tags/rest-api/">REST API</a>
                 </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 12-06-2022</span>
+                <span>Updated on 16-06-2022</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
             <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" data-title="Create Azure Cost Management exports" data-hashtags="Blog,Azure,Cost Management,PowerShell,REST API"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" data-title="Create Azure Cost Management exports" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/"><i class="fab fa-reddit fa-fw"></i></a></span>
