@@ -7,7 +7,7 @@
     <title>Create Azure Cost Management exports</title>
     <link>https://jeroentrimbach.com/2022/06/azure-cost-management-exports/</link>
     <pubDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/06/azure-cost-management-exports/</guid>
-    <description><![CDATA[<p>Lets dig into some of the ways we can export the monthly costs of resources we have deployed in Azure.</p>]]></description>
+    <description><![CDATA[<p>Lets dig into some of the ways we can export the monthly costs of the resources the we have deployed in Microsoft Azure.</p>]]></description>
 </item>
 <item>
     <title>The Powerful PowerShell cmdlet Out-ConsoleGridView</title>
