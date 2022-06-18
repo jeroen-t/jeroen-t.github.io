@@ -3,11 +3,5 @@
         <title>Cost Management - Tag - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/tags/cost-management/</link>
         <description>Cost Management - Tag - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/cost-management/" rel="self" type="application/rss+xml" /><item>
-    <title>Create Azure Cost Management exports</title>
-    <link>https://jeroentrimbach.com/2022/06/azure-cost-management-exports/</link>
-    <pubDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/06/azure-cost-management-exports/</guid>
-    <description><![CDATA[<p>Lets dig into some of the ways we can export the monthly costs of the resources the we have deployed in Microsoft Azure.</p>]]></description>
-</item>
-</channel>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://jeroentrimbach.com/tags/cost-management/" rel="self" type="application/rss+xml" /></channel>
 </rss>
