@@ -28,7 +28,7 @@
     <description><![CDATA[<p>In this post I will explain what Bicep is and how you can get start using it for deploying resources to Microsoft Azure.</p>]]></description>
 </item>
 <item>
-    <title>Lets create a PowerShell Module and publish it to the PSGallery using GitHub Actions!</title>
+    <title>Publish a PowerShell Module using Github Actions</title>
     <link>https://jeroentrimbach.com/2021/07/powershell-module-ci/</link>
     <pubDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/07/powershell-module-ci/</guid>
     <description><![CDATA[<p>A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</p>]]></description>
