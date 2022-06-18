@@ -46,7 +46,7 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2022\/04\/powershell-out-consolegridview\/powershell-out-consolegridview.webp",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, PowerShell, Azure","wordcount":  898 ,
+                        }],"genre": "posts","keywords": "Blog, PowerShell, Azure","wordcount":  982 ,
         "url": "https:\/\/jeroentrimbach.com\/2022\/04\/powershell-out-consolegridview\/","datePublished": "2022-04-10T15:26:39+02:00","dateModified": "2022-06-18T10:55:34+02:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -139,7 +139,7 @@ if (!doNotTrack) {
         alt="/2022/04/powershell-out-consolegridview/powershell-out-consolegridview.webp"
         title="Pass output to an interactive table in the console through out-consolegridview" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">The Powerful PowerShell cmdlet Out-ConsoleGridView</h2><h2 class="single-subtitle">Pass output to an interactive table straight in the console</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="10-04-2022">10-04-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;898 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="10-04-2022">10-04-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;982 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;5 minutes</span>&nbsp;</div>
             </div>
             
@@ -150,9 +150,9 @@ if (!doNotTrack) {
                     </div>
                     <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#u-prerequisites">📋 Prerequisites</a>
+    <li><a href="#u-prerequisites">Prerequisites</a>
       <ul>
-        <li><a href="#u-PowerShell7">[✔] PowerShell 7</a></li>
+        <li><a href="#u-PowerShell7">PowerShell 7</a></li>
       </ul>
     </li>
     <li><a href="#u-installation">Installation</a></li>
@@ -165,12 +165,11 @@ if (!doNotTrack) {
 <h1 id="introducing-the-powerful-powershell-cmdlet-out-consolegridview">Introducing The Powerful PowerShell cmdlet Out-ConsoleGridView</h1>
 <p>It has been a while since I have written a post. So long that I had to figure out how to get going again. Luckily I had my own blog post to go back to! Thank god for documentation :-) <br>
 I&rsquo;m completely set again with Hugo as well as my sites theme updated to the newest versions. I was in the mood to &ldquo;create something&rdquo; so welp a blog post will have to do and nothing was going to stop me.</p>
-<p>A while ago I stumbled upon the Out-ConsoleGridView PowerShell cmdlet and I have used it in my scripts ever since. I get to see the nice GUI look daily. <br>
-Because I like it so much I thought that I might as well share it. Perhaps someone else may find it extremely useful as well!
+<p>A while ago I stumbled upon the Out-ConsoleGridView PowerShell cmdlet and I have used it in my scripts ever since. I get to see the nice GUI look daily. Because I like it so much I thought that I might as well share it. Perhaps someone else may find it extremely useful as well!
 <br/><br/></p>
-<h2 id="u-prerequisites">📋 Prerequisites</h2>
+<h2 id="u-prerequisites">Prerequisites</h2>
 <hr>
-<h3 id="u-PowerShell7">[✔] PowerShell 7</h3>
+<h3 id="u-PowerShell7">PowerShell 7</h3>
 <p>Only one prerequisite this time. Just good old PowerShell. <a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2" target="_blank" rel="noopener noreffer">PowerShell version 7 that is.</a>
 <br/><br/></p>
 <h2 id="u-installation">Installation</h2>
@@ -230,7 +229,7 @@ For instance a <code>description</code> (e.g. Kubernetes playground) and/or an <
 <p>This is the script that I wrote for this:</p>
 <script  src="https://gist.github.com/jeroen-t/0ea91b9194e9c103ab57eec09676f2e5.js?file=Set-SubscriptionAzurePS.ps1"></script>
 
-<p>And of course there is a version for the Azure CLI as well:</p>
+<p>And of course there is a version for the Azure CLI as well.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -287,7 +286,16 @@ For instance a <code>description</code> (e.g. Kubernetes playground) and/or an <
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Feel free to tweak them as per your requirements.</p>
+</div><p>However, in order to get a list of all subscriptions I am running a Kusto Query Language (KQL) query against the Azure Resource Graph. In order to do that you need to have the resource-graph extension installed for the Azure CLI, but that is a simple process:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az extension add --name resource-graph
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Feel free to tweak both of the scripts as per your requirements. I use them many times per day and it has saved me tons of time.</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -307,11 +315,12 @@ For instance a <code>description</code> (e.g. Kubernetes playground) and/or an <
 </div></div>
         </div>
     </div>
+<p>Oh, and the <code>Out-ConsoleGridView</code> cmdlet works in the Azure Cloud Shell as well. Cool!</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In this post I gave a small introduction to the Out-ConsoleGridView cmdlet and shared an example script. <br>
 I hope that you may find a use case for the cmdlet as well and can add it to your toolbox!</p>
 <p>For further reading I suggest <a href="https://github.com/PowerShell/GraphicalTools/blob/master/docs/Microsoft.PowerShell.ConsoleGuiTools/Out-ConsoleGridView.md" target="_blank" rel="noopener noreffer">the documentation</a>.</p>
-<p>Have a very nice! 👍</p></div><div class="post-footer" id="post-footer">
+<p>Have a very nice day! 👍</p></div><div class="post-footer" id="post-footer">
     <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
                 </span><span><a href="/tags/powershell/">PowerShell</a>
                 </span><span><a href="/tags/azure/">Azure</a>
