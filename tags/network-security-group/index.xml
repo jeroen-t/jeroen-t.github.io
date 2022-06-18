@@ -3,11 +3,5 @@
         <title>Network Security Group - Tag - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/tags/network-security-group/</link>
         <description>Network Security Group - Tag - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 16 May 2022 21:51:16 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/network-security-group/" rel="self" type="application/rss+xml" /><item>
-    <title>Update Azure NSG security rules using Bicep</title>
-    <link>https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/</link>
-    <pubDate>Mon, 16 May 2022 21:51:16 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/05/azure-update-nsg-rules-bicep/</guid>
-    <description><![CDATA[<p>In this post I will be explaining how you can utilize Bicep (an Infrastructure as Code (IaC) language) for creating and/or updating the security rules on a Network Security Group (NSG) in Microsoft Azure. I have also shared a script which can be used to export a deployment template based on the security rules configured on an existing NSG resource so that you can use that for further deployments.</p>]]></description>
-</item>
-</channel>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://jeroentrimbach.com/tags/network-security-group/" rel="self" type="application/rss+xml" /></channel>
 </rss>
