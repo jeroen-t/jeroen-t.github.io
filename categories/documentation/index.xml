@@ -10,10 +10,10 @@
     <description><![CDATA[<p>A step-by-step tutorial on how to create a PowerShell Module and publish it to the PSGallery by using GitHub Actions</p>]]></description>
 </item>
 <item>
-    <title>How to create a website using Hugo and GitHub Pages 🌐</title>
+    <title>How to create a website using Hugo and GitHub Pages</title>
     <link>https://jeroentrimbach.com/2021/06/site-setup/</link>
     <pubDate>Sat, 19 Jun 2021 16:03:42 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2021/06/site-setup/</guid>
-    <description><![CDATA[<p>A write-up/step-by-step tutorial of I have setup my site using Hugo with the uBlogger theme and hosted it on GitHub Pages.</p>]]></description>
+    <description><![CDATA[<p>A write-up/step-by-step tutorial of I have setup my site using Hugo (a static site generator written in Go) and hosted it on GitHub Pages. I will take you to the process from setting up your config, picking a theme and pushing the files to a git repository to host the site.</p>]]></description>
 </item>
 </channel>
 </rss>
