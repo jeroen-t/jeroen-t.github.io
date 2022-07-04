@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Splatting parameters in PowerShell - Jeroen Trimbach</title><meta name="description" content="Passing in PowerShell parameters using splatting"><meta property="og:title" content="Splatting parameters in PowerShell" />
+<meta property="og:description" content="Passing in PowerShell parameters using splatting" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/" /><meta property="og:image" content="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/powershell-parameter-splatting.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-04T13:44:04+02:00" />
+<meta property="article:modified_time" content="2022-07-04T15:38:04+02:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/powershell-parameter-splatting.webp"/>
+<meta name="twitter:title" content="Splatting parameters in PowerShell"/>
+<meta name="twitter:description" content="Passing in PowerShell parameters using splatting"/>
+<meta name="application-name" content="jTrimbach">
+<meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/" /><link rel="prev" href="https://jeroentrimbach.com/2022/06/azure-cost-management-exports/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZDT366YND"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-NZDT366YND', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+<meta name="google-site-verification" content="276260495" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Splatting parameters in PowerShell",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jeroentrimbach.com\/2022\/07\/powershell-parameter-splatting\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jeroentrimbach.com\/2022\/07\/powershell-parameter-splatting\/powershell-parameter-splatting.webp",
+                            "width":  1000 ,
+                            "height":  500 
+                        }],"genre": "posts","keywords": "Blog, PowerShell","wordcount":  1012 ,
+        "url": "https:\/\/jeroentrimbach.com\/2022\/07\/powershell-parameter-splatting\/","datePublished": "2022-07-04T13:44:04+02:00","dateModified": "2022-07-04T15:38:04+02:00","publisher": {
+            "@type": "Organization",
+            "name": "Jeroen Trimbach"},"author": {
+                "@type": "Person",
+                "name": "Jeroen Trimbach"
+            },"description": "Passing in PowerShell parameters using splatting"
+    }
+    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZDT366YND"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-NZDT366YND', { 'anonymize_ip': false });
+}
+</script>
+</head><body data-header-desktop="normal" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Looking for something?" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Looking for something?" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><div class="menu-item"><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="enable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2022/07/powershell-parameter-splatting/powershell-parameter-splatting.webp"
+        data-srcset="/2022/07/powershell-parameter-splatting/powershell-parameter-splatting.webp, /2022/07/powershell-parameter-splatting/powershell-parameter-splatting.webp 1.5x, /2022/07/powershell-parameter-splatting/powershell-parameter-splatting.webp 2x"
+        data-sizes="auto"
+        alt="/2022/07/powershell-parameter-splatting/powershell-parameter-splatting.webp"
+        title="Passing in PowerShell parameters using splatting" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Splatting parameters in PowerShell</h2><h2 class="single-subtitle">How to pass in multiple arguments in PowerShelll</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="04-07-2022">04-07-2022</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1012 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;5 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#u-backticks">Backticks</a></li>
+    <li><a href="#u-splattingArray">Splatting array</a></li>
+    <li><a href="#u-splatting">Splatting</a>
+      <ul>
+        <li><a href="#u-overwritingSplattingParameters">Overwriting splatting parameters</a></li>
+        <li><a href="#u-splattingMultipleHashTables">Splatting multiple hash tables</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>My preferred way of passing in parameters in PowerShell!</p>
+<h1 id="splatting-parameters-in-powershell">Splatting parameters in PowerShell</h1>
+<p>Something I really like about PowerShell is the verbosity of the language. By looking at a script written in PowerShell you can quickly tell what a line of code is suppossed to do. For example, the cmdlet <code>Move-Item</code>, moves an item from one location to another and its parameters (e.g. <code>Path</code> and <code>Destination</code>) are also self descriptive. This makes it very easy for someone to pick up the language. However, a downside to the verbosity is that one cmdlet with multiple arguments can turn into a full paragraph. This can be very annoying because your line of code will no longer fit on the screen. One technique that can help making your code cleaner and prevent the long line of code is <code>splatting</code>. Ever since I learned about splatting I have become kind of addicted to using it. In this post I will be showing you what splatting is, some of its use cases and most likely get you to use it as well!</p>
+<h2 id="u-backticks">Backticks</h2>
+<p>Before we are going to look at <code>splatting</code> lets have a look at the <code>backticks</code> technique. You may have seen the backtick character <code>( ` )</code> being used in a lot of scripts that you find on the internet. The backtick character is used in PowerShell as an escape character. If you put the backtick character at the end of a line it will escape the carriage return which will result in continuatation to the next line. This makes it handy to use if you have a cmdlet to which you want to pass in a bunch of arguments. Because you can pass in each argument on another line, like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">Set-AzKeyVaultSecret</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-VaultName</span> <span class="s1">&#39;Contoso&#39;</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-Name</span> <span class="s1">&#39;ITSecret&#39;</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-SecretValue</span> <span class="nv">$Secret</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-Expires</span> <span class="nv">$Expires</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-NotBefore</span> <span class="nv">$NotBefore</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-ContentType</span> <span class="nv">$ContentType</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-Disable</span> <span class="p">`</span>
+</span></span><span class="line"><span class="cl">  <span class="n">-Tags</span> <span class="nv">$Tags</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Even though this multilined appproach is easier to read then having this all written out on a single line there are some downsides to the <code>backtick</code> approach and hence I do not like to use it. First of all the backtick character can be hard to read/spot and second of all it is easy to mess up. Having a space behind the character will cause it to escape the space and hence break your logic.</p>
+<p>Instead lets have a look at splatting parameters through an array.</p>
+<h2 id="u-splattingArray">Splatting array</h2>
+<p>The <code>splatting array</code> technique allows you to do a similar multiline approach for parameters without using the <code>backtick</code>. Before I am going to describe what this technique is all about lets first look at what this would look like for the example above:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="p">@(</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;Contoso&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;ITSecret&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$Secret</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$true</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$Expires</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$NotBefore</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$ContentType</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$Tags</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-AzKeyVaultSecret</span> <span class="nv">@secretArgs</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>First we are creating an array <code>$secretArgs</code> which contains all of the values that we want to pass in to our cmdlet. Then we pass them in to the cmdlet by calling our array using the <code>splatting operator (@)</code>. Notice that the array is declared over multiple lines, this doesn&rsquo;t have to be the case. You can also pass them in on one-line. What is required however, is that all the parameters have to be declared in the array based on their position in the cmdlet. This means that you can&rsquo;t just swap input parameters around.</p>
+<p>This brings us to our lord and savior, <code>splatting</code>.</p>
+<h2 id="u-splatting">Splatting</h2>
+<p>Yet again, lets look at an example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="p">@{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">VaultName</span>   <span class="p">=</span> <span class="s1">&#39;Contoso&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Name</span>        <span class="p">=</span> <span class="s1">&#39;ITSecret&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SecretValue</span> <span class="p">=</span> <span class="nv">$Secret</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Expires</span>     <span class="p">=</span> <span class="nv">$Expires</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NotBefore</span>   <span class="p">=</span> <span class="nv">$NotBefore</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ContentType</span> <span class="p">=</span> <span class="nv">$ContentType</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Disable</span>     <span class="p">=</span> <span class="nv">$true</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Tags</span>        <span class="p">=</span> <span class="nv">$Tags</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-AzKeyVaultSecret</span> <span class="nv">@secretArgs</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Instead of creating an array we are creating a hash table which contains key value pairs of all the arguments that we want to pass into our cmdlet. With this approach it doesn&rsquo;t matter in what order we list the parameters. The only thing that matters is that the parameter names that we give does have to match with the input parameters of the cmdlet. E.g. an error will occur if there is a typo.</p>
+<h3 id="u-overwritingSplattingParameters">Overwriting splatting parameters</h3>
+<p>Another thing that I like about splatting is that you can reuse the parameters in a lot of scenarios. Which helps following the Don&rsquo;t Repeat Yourself (DRY) principle. In case I have a usecase where based on some logic I don&rsquo;t want to disable, or re-enable a secret I could just run the same cmdlet as in the splatting example and add an additional argument, like so:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">Set-AzkeyVaultSecret</span> <span class="nv">@secretArgs</span> <span class="n">-Disable</span> <span class="nv">$false</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Although <code>Disable</code> was set to <code>$true</code> in my <code>$secretArgs</code>, the secret won&rsquo;t be disabled.</p>
+<h3 id="u-splattingMultipleHashTables">Splatting multiple hash tables</h3>
+<p>You can also pass in multiple splatting arguments. E.g.:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">Set-AzKeyVaultSecret</span> <span class="nv">@secretArgs</span> <span class="nv">@envArgs</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Perhaps for these kind of scenarios the <code>Set-AzKeyVaultSecret</code> cmdlet is not the best example but I usually use this approach in my scripts:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="k">Param</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$true</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="k">ValidateSet</span><span class="p">(</span><span class="s1">&#39;Dev&#39;</span><span class="p">,</span><span class="s1">&#39;Prod&#39;</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="no">[string]</span><span class="nv">$Environment</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">switch</span><span class="p">(</span><span class="nv">$Environment</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;Dev&#39;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">$envArgs</span> <span class="p">=</span> <span class="p">@{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">VaultName</span> <span class="p">=</span> <span class="s1">&#39;contosodev&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Tags</span>      <span class="p">=</span> <span class="nv">$Tags</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;Prod&#39;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">$envArgs</span> <span class="p">=</span> <span class="p">@{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">VaultName</span> <span class="p">=</span> <span class="s1">&#39;contosoprod&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Tags</span>      <span class="p">=</span> <span class="nv">$Tags</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="p">@{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Name</span>        <span class="p">=</span> <span class="s1">&#39;ITSecret&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SecretValue</span> <span class="p">=</span> <span class="nv">$Secret</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Expires</span>     <span class="p">=</span> <span class="nv">$Expires</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NotBefore</span>   <span class="p">=</span> <span class="nv">$NotBefore</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ContentType</span> <span class="p">=</span> <span class="nv">$ContentType</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Disable</span>     <span class="p">=</span> <span class="nv">$true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-AzKeyVaultSecret</span> <span class="nv">@secretArgs</span> <span class="nv">@envArgs</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In such a scenario <code>$envArgs</code> would be declared based on the parameters passed into the script (the environment in this case) and the <code>$secretArgs</code> based on the logic processing within the script.</p>
+<h2 id="u-conclusion">Conclusion</h2>
+<p>In this post I showed you how you can pass in arguments over multiple lines in PowerShell. I showed the backtick-, array splatting- and splatting techniques, explained the ups- and downs to each technique and which technique I prefer to use.</p>
+<p>I hope you found this post useful. Have a very nice day! 👍</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
+                </span><span><a href="/tags/powershell/">PowerShell</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 04-07-2022</span>
+            </div><div class="post-info-mod"></div>
+        </div><div class="post-info-share">
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/" data-title="Splatting parameters in PowerShell" data-hashtags="Blog,PowerShell"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/" data-title="Splatting parameters in PowerShell" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/"><i class="fab fa-reddit fa-fw"></i></a></span>
+        </div></div><div class="post-nav"><a href="/2022/06/azure-cost-management-exports/" class="prev" rel="prev" title="Create Azure Cost Management exports"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
+            </noscript></div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.min.js?version=1.0.1', { scope: '/' })
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Registered');
+        }, err => console.error('Jeroen Trimbach\u00A0Service Worker registration failed: ', err));
+
+    navigator.serviceWorker
+        .ready
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Ready');
+        });
+}
+</script>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment-alt fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Splatting parameters in PowerShell"}},"data":{"id-1":"cd ~","id-2":"cd ~"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>

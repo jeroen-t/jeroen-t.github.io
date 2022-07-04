@@ -3,9 +3,15 @@
         <title>Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/</link>
         <description>beep boop I&#39;m backing up.. 🤖</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</lastBuildDate>
             <atom:link href="https://jeroentrimbach.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Splatting parameters in PowerShell</title>
+    <link>https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/</link>
+    <pubDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/</guid>
+    <description><![CDATA[<p>My preferred way of passing in parameters in PowerShell!</p>]]></description>
+</item>
+<item>
     <title>Create Azure Cost Management exports</title>
     <link>https://jeroentrimbach.com/2022/06/azure-cost-management-exports/</link>
     <pubDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/06/azure-cost-management-exports/</guid>
