@@ -209,11 +209,11 @@ if (!doNotTrack) {
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="p">@(</span>
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="vm">@</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">  <span class="s1">&#39;Contoso&#39;</span>
 </span></span><span class="line"><span class="cl">  <span class="s1">&#39;ITSecret&#39;</span>
 </span></span><span class="line"><span class="cl">  <span class="nv">$Secret</span>
-</span></span><span class="line"><span class="cl">  <span class="nv">$true</span>
+</span></span><span class="line"><span class="cl">  <span class="vm">$true</span>
 </span></span><span class="line"><span class="cl">  <span class="nv">$Expires</span>
 </span></span><span class="line"><span class="cl">  <span class="nv">$NotBefore</span>
 </span></span><span class="line"><span class="cl">  <span class="nv">$ContentType</span>
@@ -241,14 +241,14 @@ if (!doNotTrack) {
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="p">@{</span>
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">VaultName</span>   <span class="p">=</span> <span class="s1">&#39;Contoso&#39;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Name</span>        <span class="p">=</span> <span class="s1">&#39;ITSecret&#39;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">SecretValue</span> <span class="p">=</span> <span class="nv">$Secret</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Expires</span>     <span class="p">=</span> <span class="nv">$Expires</span>
 </span></span><span class="line"><span class="cl">    <span class="n">NotBefore</span>   <span class="p">=</span> <span class="nv">$NotBefore</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ContentType</span> <span class="p">=</span> <span class="nv">$ContentType</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Disable</span>     <span class="p">=</span> <span class="nv">$true</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Disable</span>     <span class="p">=</span> <span class="vm">$true</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Tags</span>        <span class="p">=</span> <span class="nv">$Tags</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Set-AzKeyVaultSecret</span> <span class="nv">@secretArgs</span>
@@ -262,7 +262,7 @@ if (!doNotTrack) {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">Set-AzkeyVaultSecret</span> <span class="nv">@secretArgs</span> <span class="n">-Disable</span> <span class="nv">$false</span>
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">Set-AzkeyVaultSecret</span> <span class="nv">@secretArgs</span> <span class="n">-Disable</span> <span class="vm">$false</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Although <code>Disable</code> was set to <code>$true</code> in my <code>$secretArgs</code>, the secret won&rsquo;t be disabled.</p>
@@ -312,33 +312,33 @@ if (!doNotTrack) {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="k">Param</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$true</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="k">ValidateSet</span><span class="p">(</span><span class="s1">&#39;Dev&#39;</span><span class="p">,</span><span class="s1">&#39;Prod&#39;</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl">    <span class="no">[string]</span><span class="nv">$Environment</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nb">Parameter</span><span class="p">(</span><span class="na">Mandatory</span><span class="p">=</span><span class="vm">$true</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nb">ValidateSet</span><span class="p">(</span><span class="s1">&#39;Dev&#39;</span><span class="p">,</span><span class="s1">&#39;Prod&#39;</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="no">string</span><span class="p">]</span><span class="nv">$Environment</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">switch</span><span class="p">(</span><span class="nv">$Environment</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="s1">&#39;Dev&#39;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nv">$envArgs</span> <span class="p">=</span> <span class="p">@{</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">$envArgs</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">VaultName</span> <span class="p">=</span> <span class="s1">&#39;contosodev&#39;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Tags</span>      <span class="p">=</span> <span class="nv">$Tags</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="s1">&#39;Prod&#39;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nv">$envArgs</span> <span class="p">=</span> <span class="p">@{</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">$envArgs</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">VaultName</span> <span class="p">=</span> <span class="s1">&#39;contosoprod&#39;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Tags</span>      <span class="p">=</span> <span class="nv">$Tags</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="p">@{</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$secretArgs</span> <span class="p">=</span> <span class="vm">@</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Name</span>        <span class="p">=</span> <span class="s1">&#39;ITSecret&#39;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">SecretValue</span> <span class="p">=</span> <span class="nv">$Secret</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Expires</span>     <span class="p">=</span> <span class="nv">$Expires</span>
 </span></span><span class="line"><span class="cl">    <span class="n">NotBefore</span>   <span class="p">=</span> <span class="nv">$NotBefore</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ContentType</span> <span class="p">=</span> <span class="nv">$ContentType</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Disable</span>     <span class="p">=</span> <span class="nv">$true</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Disable</span>     <span class="p">=</span> <span class="vm">$true</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Set-AzKeyVaultSecret</span> <span class="nv">@secretArgs</span> <span class="nv">@envArgs</span>
 </span></span></code></pre></td></tr></table>

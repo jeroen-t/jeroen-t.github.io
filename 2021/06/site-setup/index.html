@@ -206,8 +206,8 @@ if (!doNotTrack) {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span>
-</span></span><span class="line"><span class="cl"><span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="n">3072</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Invoke-Expression</span> <span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">System.Net.ServicePointManager</span><span class="p">]::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.Net.ServicePointManager</span><span class="p">]::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="mf">3072</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Invoke-Expression</span> <span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="py">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="u-hugo">[✔] Hugo</h3>
@@ -303,7 +303,7 @@ We do this by running:</p>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">sitefolder</span>
 </span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">upagge</span><span class="p">/</span><span class="n">uBlogger</span><span class="p">.</span><span class="n">git</span> <span class="n">themes</span><span class="p">/</span><span class="n">uBlogger</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">upagge</span><span class="p">/</span><span class="n">uBlogger</span><span class="p">.</span><span class="py">git</span> <span class="n">themes</span><span class="p">/</span><span class="n">uBlogger</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Now that we have our theme we can add it as a default to our configuration file.<br>
@@ -314,7 +314,7 @@ So open the file in VS Code:</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">code</span> <span class="p">.\</span><span class="n">config</span><span class="p">.</span><span class="n">toml</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">code</span> <span class="p">.\</span><span class="n">config</span><span class="p">.</span><span class="py">toml</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>And add these settings to the site configuration:</p>
@@ -791,7 +791,7 @@ From there run the following:</p>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>
 </span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">YOURUSERNAME</span><span class="p">/</span><span class="n">YOURUSERNAME</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">YOURUSERNAME</span><span class="p">/</span><span class="n">YOURUSERNAME</span><span class="p">.</span><span class="py">github</span><span class="p">.</span><span class="py">io</span><span class="p">.</span><span class="py">git</span>
 </span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;commit&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
 </span></span></code></pre></td></tr></table>
