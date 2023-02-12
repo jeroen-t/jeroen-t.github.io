@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Customize Azure Linux VMs with cloud-init - Jeroen Trimbach</title><meta name="description" content="Update Azure Network Security Groups using Bicep"><meta property="og:title" content="Customize Azure Linux VMs with cloud-init" />
+<meta property="og:description" content="Update Azure Network Security Groups using Bicep" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jeroentrimbach.com/2023/02/cloud-init-ado/" /><meta property="og:image" content="https://jeroentrimbach.com/2023/02/cloud-init-ado/azure-cloud-init.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-12T11:07:52+01:00" />
+<meta property="article:modified_time" content="2023-02-12T11:07:52+01:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jeroentrimbach.com/2023/02/cloud-init-ado/azure-cloud-init.webp"/>
+<meta name="twitter:title" content="Customize Azure Linux VMs with cloud-init"/>
+<meta name="twitter:description" content="Update Azure Network Security Groups using Bicep"/>
+<meta name="application-name" content="jTrimbach">
+<meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jeroentrimbach.com/2023/02/cloud-init-ado/" /><link rel="prev" href="https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZDT366YND"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-NZDT366YND', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+<meta name="google-site-verification" content="276260495" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Customize Azure Linux VMs with cloud-init",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/azure-cloud-init.webp",
+                            "width":  1000 ,
+                            "height":  500 
+                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, cloud-init, DevOps, Linux","wordcount":  1655 ,
+        "url": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/","datePublished": "2023-02-12T11:07:52+01:00","dateModified": "2023-02-12T11:07:52+01:00","publisher": {
+            "@type": "Organization",
+            "name": "Jeroen Trimbach"},"author": {
+                "@type": "Person",
+                "name": "Jeroen Trimbach"
+            },"description": "Update Azure Network Security Groups using Bicep"
+    }
+    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZDT366YND"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-NZDT366YND', { 'anonymize_ip': false });
+}
+</script>
+</head><body data-header-desktop="normal" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Looking for something?" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jeroen Trimbach"><span class="header-title-pre"><i class='fa fa-terminal'></i> </span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Looking for something?" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><div class="menu-item"><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="enable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2023/02/cloud-init-ado/azure-cloud-init.webp"
+        data-srcset="/2023/02/cloud-init-ado/azure-cloud-init.webp, /2023/02/cloud-init-ado/azure-cloud-init.webp 1.5x, /2023/02/cloud-init-ado/azure-cloud-init.webp 2x"
+        data-sizes="auto"
+        alt="/2023/02/cloud-init-ado/azure-cloud-init.webp"
+        title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Customize Azure Linux VMs with cloud-init</h2><h2 class="single-subtitle">Customize Azure Linux VMs with cloud-init on first boot</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="12-02-2023">12-02-2023</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1655 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;8 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-linux-distros-on-azure">Supported Linux distros on Azure</a></li>
+    <li><a href="#cloud-init-config-file">cloud-init config file</a></li>
+    <li><a href="#deploy-an-azure-linux-vm-with-cloud-init-config">Deploy an Azure Linux VM with cloud-init config</a></li>
+    <li><a href="#paramterize-cloud-init-with-bicep">Paramterize cloud-init with Bicep</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>Cloud-init is a popular open-source tool that automates the initial setup of a cloud instance, such as an Azure Linux virtual machine (VM). It allows administrators to define custom configurations, such as users, disk layout, and network settings, that will be applied to the instance when it is first launched. This way, you can quickly and consistently provision new instances with your desired configurations, eliminating the need for manual setup and configuration. In this post, we will explore how to use cloud-init on Azure Linux VMs to configure your instances according to your needs.</p>
+<h1 id="customize-azure-linux-vms-with-cloud-init">Customize Azure Linux VMs with cloud-init</h1>
+<p>Cloud-init is a popular tool for customizing Linux instances at launch time. It is commonly used to automate the initial setup of virtual machines in the cloud, including the installation of packages, creation of users, and configuration of network settings.</p>
+<p>When deploying an Azure Linux virtual machine, cloud-init can be used to configure the instance to meet specific requirements. This can include tasks such as:</p>
+<ul>
+<li>Installing packages: You can specify a list of packages to be installed at launch time, such as Apache, Docker, or Git.</li>
+<li>Creating users: You can create new users and specify their username, password, and group membership.</li>
+<li>Running custom scripts: You can include custom scripts to be executed at launch time, such as installing software or performing additional configuration tasks.</li>
+<li>and much more!</li>
+</ul>
+<p>By using cloud-init, you can automate the process of deploying and configuring Azure Linux virtual machines, saving time and reducing the risk of errors that can occur when manually setting up instances. This can also help to standardize the configuration of instances, ensuring that they are consistently set up and ready to use.</p>
+<h2 id="supported-linux-distros-on-azure">Supported Linux distros on Azure</h2>
+<p>Not all Linux distros have cloud-init enabled images available in the Azure Marketplace. <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init#cloud-init-overview" target="_blank" rel="noopener noreffer">More information</a>.</p>
+<h2 id="cloud-init-config-file">cloud-init config file</h2>
+<p>The cloud-init configuration file is a YAML-formatted file that specifies the initial configuration for a cloud instance. Cloud-init uses it to set up the instance and can contain a variety of different sections that define different aspects of your desired configuration.</p>
+<p>Lets walk through the following example config file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c">#cloud-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">package_upgrade</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">groups</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">docker</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">system_info</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default_user</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">docker]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">packages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">docker.io</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">unattended-upgrades</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>On the first line you need to specify the user data format. cloud-init has multiple user data format types which it can act upon. In the above example I have mentioned the type <code>#cloud-config</code> which allows me to specify the configuration in a human-friendly format. If you are interested in all of the available user data format types you can find them in <a href="https://canonical-cloud-init.readthedocs-hosted.com/en/latest/explanation/format.html#user-data-formats" target="_blank" rel="noopener noreffer">the documentation</a>.</p>
+<p>On the next line I have set <code>package_update: true</code>, this tells cloud-init to update the packaage list before installing anything, to ensure that it has the latest information about the available packages. After this we run <code>package_upgrade: true</code>, so that cloud-init will upgrade all installed packages to the latest available versions. This way all of the latest security patches and bug fixes are applied for both existing and new packages which we will install in the same config file later on. cloud-init will use the package manager that is being used by default on the system.</p>
+<p>Because I want to install Docker on the VM I need to create a group with the name <code>docker</code> and add the default user to the group. The groups section specifies that the docker group should be created. The <code>system_info</code> section sets the default user information, including the groups that the user should belong to. In this case, the default user is added to the docker group using the <code>groups</code> directive.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>default_user<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>NOTE:</strong> Note that this configuration does not specify a username for the default user, so the username will depend on the underlying Linux distribution and cloud-init implementation.</div>
+        </div>
+    </div>
+<p>The <code>packages</code> section lists all the packages to be installed.</p>
+<p>This cloud-config file uses a simple format and structure, and it is easy to customize to meet your specific needs. To use this file, you would pass it as a user data file when creating your Azure Linux virtual machine, and cloud-init would automatically use it to set up the instance with Docker installed and running. In the next section I will show how you can achieve this.</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Provisioning warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>WARNING:</strong> Since the configuration is applied during the initial boot process, you cannot change the configuration afterwards. Trying to do so will result in a error message.</div>
+        </div>
+    </div>
+<h2 id="deploy-an-azure-linux-vm-with-cloud-init-config">Deploy an Azure Linux VM with cloud-init config</h2>
+<p>Using the <code>az vm create</code> command to deploy an Azure VM, you can specify the cloud-init configuration using the <code>--custom-data</code> flag option. For example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az vm create \
+</span></span><span class="line"><span class="cl">  --resource-group myResourceGroup \
+</span></span><span class="line"><span class="cl">  --name LinuxVM \
+</span></span><span class="line"><span class="cl">  --image Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest \
+</span></span><span class="line"><span class="cl">  --custom-data cloud-init.txt \
+</span></span><span class="line"><span class="cl">  --generate-ssh-keys 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>cloud-init.txt</code>, containing your cloud-init configuration, will be passed to the Azure VM at launch time, where cloud-init will use it to configure the instance.</p>
+<h2 id="paramterize-cloud-init-with-bicep">Paramterize cloud-init with Bicep</h2>
+<p>One of the use cases I had apart from installing Docker was that I also wanted to install an Azure DevOps agent on the VM so that I could use the VM as a self hosted agent. I also wanted to be able to substitute the parameters due to the fact that the VM will be deployed to multiple environments. This can be achieved by using the <code>format</code> (or <code>replace</code>) function in Bicep.</p>
+<p>In the the following cloud-init config file I have added some additional packages which are dependencies required for the self hosted agent. I have also added the <code>runcmd</code> directive, this is used to run shell commands on the machine. I will not cover the actions performed to install the agent, if you are interested in the instructions you can find them in the <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops#unattended-config" target="_blank" rel="noopener noreffer">Azure DevOps self hosted agent docs</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c">#cloud-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">package_upgrade</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">groups</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">docker</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">system_info</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default_user</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">docker]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">packages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># docker</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">docker.io</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">unattended-upgrades</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># ado</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">zlib1g</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">libssl1.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">libicu60</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">libkrb5-3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">liblttng-ust-ctl4 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">liblttng-ust0 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">liburcu6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">runcmd</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">mkdir /myagent &amp;&amp; cd /myagent</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">curl -sOL https://vstsagentpackage.azureedge.net/agent/2.214.1/vsts-agent-linux-x64-2.214.1.tar.gz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">tar zxvf vsts-agent-linux-x64-2.214.1.tar.gz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">AGENT_ALLOW_RUNASROOT=1 ./config.sh --url {0} --auth pat --token {1} --unattended --pool {2} --agent {3}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">AGENT_ALLOW_RUNASROOT=1 ./svc.sh install</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">AGENT_ALLOW_RUNASROOT=1 ./svc.sh start</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">AGENT_ALLOW_RUNASROOT=1 ./svc.sh status</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">chown -R {4} /myagent</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Note that for some of the values in the cloud-init file I have given {0}, {1}, etc. These values will be replaced by the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-string#format" target="_blank" rel="noopener noreffer">format string function</a> in bicep.</p>
+<p>In the <code>main.bicep</code> you can leverage the <code>loadTextContent</code> function to load in the content of the specified file as a string. Next you can call the format function to substitute the parameters in the cloud-config file. And then as a last step you can use the <code>base64</code> function to convert the string to base64 and pass it in.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bicep" data-lang="bicep"><span class="line"><span class="cl"><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The name of you Virtual Machine.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>vmName<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;UbuntuVM&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;Username for the Virtual Machine.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>adminUsername<span class="w"> </span><span class="nf">string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;SSH Key or password for the Virtual Machine. SSH key is recommended.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">secure</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>adminPasswordOrKey<span class="w"> </span><span class="nf">string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;Location for all resources.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>location<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;southcentralus&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;Unique DNS Name for the Public IP used to access the Virtual Machine.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>dnsLabelPrefix<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">toLower</span><span class="p">(</span><span class="s">&#39;${vmName}-${uniqueString(resourceGroup().id)}&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">secure</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>patToken<span class="w"> </span><span class="nf">string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">var</span><span class="w"> </span>addressPrefix<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;10.1.0.0/16&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">var</span><span class="w"> </span>subnetAddressPrefix<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;10.1.0.0/24&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops#unattended-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">var</span><span class="w"> </span>values<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">adoOrganizationUrl</span><span class="p">:</span><span class="w"> </span><span class="py">&#39;https</span><span class="p">:</span><span class="c1">//dev.azure.com/JeroenTrimbach&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">adoPatToken</span><span class="p">:</span><span class="w"> </span>patToken<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">adoPoolName</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;selfhosted&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">adoAgentName</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;ubuntu&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">adoUser</span><span class="p">:</span><span class="w"> </span>adminUsername<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">var</span><span class="w"> </span>cloudInit<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">loadTextContent</span><span class="p">(</span><span class="s">&#39;cloud-init-ado-param.yml&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>virtualNetwork<span class="w"> </span><span class="s">&#39;Microsoft.Network/virtualNetworks@2022-07-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;virtualnetwork-01&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">addressSpace</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="py">addressPrefixes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>addressPrefix<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">subnets</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;subnet-01&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">addressPrefix</span><span class="p">:</span><span class="w"> </span>subnetAddressPrefix<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>publicIP<span class="w"> </span><span class="s">&#39;Microsoft.Network/publicIPAddresses@2021-05-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;publicIP&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;Basic&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">publicIPAllocationMethod</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;Dynamic&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">publicIPAddressVersion</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;IPv4&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">dnsSettings</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="py">domainNameLabel</span><span class="p">:</span><span class="w"> </span>dnsLabelPrefix<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">idleTimeoutInMinutes</span><span class="p">:</span><span class="w"> </span>4<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>nsg<span class="w"> </span><span class="s">&#39;Microsoft.Network/networkSecurityGroups@2021-05-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;nsg&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">securityRules</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;SSH&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">priority</span><span class="p">:</span><span class="w"> </span>1000<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">protocol</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;Tcp&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">access</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;Allow&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">direction</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;Inbound&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">sourceAddressPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">sourcePortRange</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">destinationAddressPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="py">destinationPortRange</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;22&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">module</span><span class="w"> </span>virtualMachine<span class="w"> </span><span class="s">&#39;modules/virtualMachines/main.bicep&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;deploy-virtualMachine&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">params</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">adminPasswordOrKey</span><span class="p">:</span><span class="w"> </span>adminPasswordOrKey<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">adminUsername</span><span class="p">:</span><span class="w"> </span>adminUsername<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>vmName<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">subnetId</span><span class="p">:</span><span class="w"> </span><span class="nf">resourceId</span><span class="p">(</span><span class="s">&#39;Microsoft.Network/VirtualNetworks/subnets&#39;</span><span class="err">,</span><span class="w"> </span><span class="s">&#39;virtualnetwork-01&#39;</span><span class="err">,</span><span class="w"> </span><span class="s">&#39;subnet-01&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">publicIpId</span><span class="p">:</span><span class="w"> </span>publicIP<span class="p">.</span>id<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">networkSecurityGroupId</span><span class="p">:</span><span class="w"> </span>nsg<span class="p">.</span>id<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;sshPublicKey&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">customData</span><span class="p">:</span><span class="w"> </span><span class="nf">base64</span><span class="p">(</span><span class="nf">format</span><span class="p">(</span>cloudInit<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoOrganizationUrl<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoPatToken<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoPoolName<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoAgentName<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoUser<span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">output</span><span class="w"> </span>sshCommand<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;ssh ${adminUsername}@${publicIP.properties.dnsSettings.fqdn}&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>base64<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>NOTE:</strong> Please keep in mind that we only use the <code>LoadTextContent</code> function because we want to substitute parameters. If your cloud-init config file contain static values you can leverage the <code>loadFileAsBase64</code> function instead. This function loads the file directly as a base64 string without the need of calling the <code>base64</code> function
+separately.</div>
+        </div>
+    </div>
+<p>And then deploy your bicep file e.g.:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">az deployment group create \
+</span></span><span class="line"><span class="cl">  -g $rg \
+</span></span><span class="line"><span class="cl">  -f main.bicep \
+</span></span><span class="line"><span class="cl">  -p patToken=&lt;insertValue&gt; \
+</span></span><span class="line"><span class="cl">  -p adminUsername=&lt;insertValue&gt; \
+</span></span><span class="line"><span class="cl">  -p adminPasswordOrKey=&lt;insertValue&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>See my github repo for all files used in this post: <a href="https://github.com/jeroen-t/cloud-init-demo" target="_blank" rel="noopener noreffer">cloud-init-demo</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In summary, cloud-init is a powerful tool for automating the deployment and configuration of Azure Linux virtual machines, helping to streamline the process and ensure consistent and reliable instance setups.</p>
+<p>Have a very nice day! 👍</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blog/">Blog</a>
+                </span><span><a href="/tags/azure/">Azure</a>
+                </span><span><a href="/tags/bicep/">Bicep</a>
+                </span><span><a href="/tags/cloud-init/">cloud-init</a>
+                </span><span><a href="/tags/devops/">DevOps</a>
+                </span><span><a href="/tags/linux/">Linux</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 12-02-2023</span>
+            </div><div class="post-info-mod"></div>
+        </div><div class="post-info-share">
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-title="Customize Azure Linux VMs with cloud-init" data-hashtags="Blog,Azure,Bicep,cloud-init,DevOps,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-title="Customize Azure Linux VMs with cloud-init" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/"><i class="fab fa-reddit fa-fw"></i></a></span>
+        </div></div><div class="post-nav"><a href="/2022/07/powershell-parameter-splatting/" class="prev" rel="prev" title="Splatting parameters in PowerShell"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
+            </noscript></div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Hosted on GitHub</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.min.js?version=1.0.1', { scope: '/' })
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Registered');
+        }, err => console.error('Jeroen Trimbach\u00A0Service Worker registration failed: ', err));
+
+    navigator.serviceWorker
+        .ready
+        .then(() => {
+            console.info('Jeroen Trimbach\u00A0Service Worker Ready');
+        });
+}
+</script>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment-alt fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Customize Azure Linux VMs with cloud-init"}},"data":{"id-1":"cd ~","id-2":"cd ~"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>

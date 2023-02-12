@@ -3,7 +3,13 @@
         <title>Blog - Tag - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/tags/blog/</link>
         <description>Blog - Tag - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/blog/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/blog/" rel="self" type="application/rss+xml" /><item>
+    <title>Customize Azure Linux VMs with cloud-init</title>
+    <link>https://jeroentrimbach.com/2023/02/cloud-init-ado/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/2023/02/cloud-init-ado/</guid>
+    <description><![CDATA[<p>Cloud-init is a popular open-source tool that automates the initial setup of a cloud instance, such as an Azure Linux virtual machine (VM). It allows administrators to define custom configurations, such as users, disk layout, and network settings, that will be applied to the instance when it is first launched. This way, you can quickly and consistently provision new instances with your desired configurations, eliminating the need for manual setup and configuration. In this post, we will explore how to use cloud-init on Azure Linux VMs to configure your instances according to your needs.</p>]]></description>
+</item>
+<item>
     <title>Splatting parameters in PowerShell</title>
     <link>https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/</link>
     <pubDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</pubDate><guid>https://jeroentrimbach.com/2022/07/powershell-parameter-splatting/</guid>
