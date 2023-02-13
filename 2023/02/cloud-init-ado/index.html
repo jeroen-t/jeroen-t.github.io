@@ -45,7 +45,7 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/azure-cloud-init.webp",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, cloud-init, Azure DevOps, Linux","wordcount":  1722 ,
+                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, cloud-init, Azure DevOps, Linux","wordcount":  1862 ,
         "url": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/","datePublished": "2023-02-12T11:07:52+01:00","dateModified": "2023-02-12T11:07:52+01:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
@@ -138,7 +138,7 @@ if (!doNotTrack) {
         alt="/2023/02/cloud-init-ado/azure-cloud-init.webp"
         title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Customize Azure Linux VMs with cloud-init</h2><h2 class="single-subtitle">Customize Azure Linux VMs with cloud-init on first boot</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="12-02-2023">12-02-2023</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1722 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="12-02-2023">12-02-2023</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1862 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;9 minutes</span>&nbsp;</div>
             </div>
             
@@ -287,6 +287,25 @@ if (!doNotTrack) {
 </span><span class="lnt">31
 </span><span class="lnt">32
 </span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c">#cloud-config</span><span class="w">
@@ -300,14 +319,33 @@ if (!doNotTrack) {
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default_user</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">docker]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">sources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># https://canonical-cloud-init.readthedocs-hosted.com/en/latest/reference/examples.html#additional-apt-configuration-and-repositories</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">docker.list</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># Creates a file in /etc/apt/sources.list.d/ for the sources list entry</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># based on the key: &#34;/etc/apt/sources.list.d/docker.list&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># One can specify [signed-by=$KEY_FILE] in the source definition, which</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># will make the key be installed in the directory /etc/cloud-init.gpg.d/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># and the $KEY_FILE replacement variable will be replaced with the path</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># to the specified key. If $KEY_FILE is used, but no key is specified,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># apt update will (rightfully) fail due to an invalid value.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;deb [arch=amd64 signed-by=$KEY_FILE] https://download.docker.com/linux/ubuntu focal stable&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># keyid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># Importing a gpg key for a given key id. Used keyserver defaults to</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># keyserver.ubuntu.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">keyid</span><span class="p">:</span><span class="w"> </span><span class="l">8D81803C0EBFCD88</span><span class="w"> </span><span class="c"># GPG key ID published on a key server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">packages</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># docker</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">docker.io</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">docker-ce</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">docker-ce-cli</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">containerd.io</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">unattended-upgrades</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># ado</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">zlib1g</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">libssl1.1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">libicu60</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">libkrb5-3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">liblttng-ust-ctl4 </span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">liblttng-ust0 </span><span class="w">
@@ -541,7 +579,7 @@ if (!doNotTrack) {
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">publicIpId</span><span class="p">:</span><span class="w"> </span>publicIP<span class="p">.</span>id<span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">networkSecurityGroupId</span><span class="p">:</span><span class="w"> </span>nsg<span class="p">.</span>id<span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;sshPublicKey&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">customData</span><span class="p">:</span><span class="w"> </span><span class="nf">base64</span><span class="p">(</span><span class="nf">format</span><span class="p">(</span>cloudInit<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoOrganizationUrl<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoPatToken<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoPoolName<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoAgentName<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoUser<span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">customData</span><span class="p">:</span><span class="w"> </span><span class="nf">base64</span><span class="p">(</span><span class="nf">format</span><span class="p">(</span>cloudInit<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoVersion<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoOrganizationUrl<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoPatToken<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoPoolName<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoAgentName<span class="err">,</span><span class="w"> </span>values<span class="p">.</span>adoUser<span class="p">))</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
