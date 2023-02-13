@@ -12,10 +12,10 @@
             <loc>https://jeroentrimbach.com/2021/07/powershell-module-ci/</loc><lastmod>2022-06-18T12:00:05&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://jeroentrimbach.com/2021/06/site-setup/</loc><lastmod>2022-06-19T14:08:42&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/azure/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jeroentrimbach.com/tags/azure-devops/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/bicep/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/blog/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/cloud-init/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://jeroentrimbach.com/tags/devops/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://jeroentrimbach.com/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://jeroentrimbach.com/posts/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/</loc><lastmod>2023-02-12T11:07:52&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
@@ -31,7 +31,6 @@
             <loc>https://jeroentrimbach.com/tags/network-security-group/</loc><lastmod>2022-06-18T10:30:20&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/nsg/</loc><lastmod>2022-06-18T10:30:20&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/azure-boards/</loc><lastmod>2022-06-18T10:49:21&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://jeroentrimbach.com/tags/azure-devops/</loc><lastmod>2022-06-18T10:49:21&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/microsoft-excel/</loc><lastmod>2022-06-18T10:49:21&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://jeroentrimbach.com/categories/planning/</loc><lastmod>2022-06-18T10:49:21&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://jeroentrimbach.com/tags/wiql/</loc><lastmod>2022-06-18T10:49:21&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
