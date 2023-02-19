@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Customize Azure Linux VMs with cloud-init - Jeroen Trimbach</title><meta name="description" content="Update Azure Network Security Groups using Bicep"><meta property="og:title" content="Customize Azure Linux VMs with cloud-init" />
-<meta property="og:description" content="Update Azure Network Security Groups using Bicep" />
+        <title>Customize Azure Linux Virtual Machines with cloud-init - Jeroen Trimbach</title><meta name="description" content="Customize Azure Linux Virtual Machines (VMs) with cloud-init and bicep on first boot"><meta property="og:title" content="Customize Azure Linux Virtual Machines with cloud-init" />
+<meta property="og:description" content="Customize Azure Linux Virtual Machines (VMs) with cloud-init and bicep on first boot" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jeroentrimbach.com/2023/02/cloud-init-ado/" /><meta property="og:image" content="https://jeroentrimbach.com/2023/02/cloud-init-ado/azure-cloud-init.webp"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-12T11:07:52+01:00" />
-<meta property="article:modified_time" content="2023-02-12T11:07:52+01:00" />
+<meta property="article:modified_time" content="2023-02-19T09:44:50+00:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jeroentrimbach.com/2023/02/cloud-init-ado/azure-cloud-init.webp"/>
-<meta name="twitter:title" content="Customize Azure Linux VMs with cloud-init"/>
-<meta name="twitter:description" content="Update Azure Network Security Groups using Bicep"/>
+<meta name="twitter:title" content="Customize Azure Linux Virtual Machines with cloud-init"/>
+<meta name="twitter:description" content="Customize Azure Linux Virtual Machines (VMs) with cloud-init and bicep on first boot"/>
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -35,7 +35,7 @@ if (!doNotTrack) {
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Customize Azure Linux VMs with cloud-init",
+        "headline": "Customize Azure Linux Virtual Machines with cloud-init",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -45,13 +45,13 @@ if (!doNotTrack) {
                             "url": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/azure-cloud-init.webp",
                             "width":  1000 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, cloud-init, Azure DevOps, Linux","wordcount":  1862 ,
-        "url": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/","datePublished": "2023-02-12T11:07:52+01:00","dateModified": "2023-02-12T11:07:52+01:00","publisher": {
+                        }],"genre": "posts","keywords": "Blog, Azure, Bicep, cloud-init, Azure DevOps, Linux","wordcount":  1931 ,
+        "url": "https:\/\/jeroentrimbach.com\/2023\/02\/cloud-init-ado\/","datePublished": "2023-02-12T11:07:52+01:00","dateModified": "2023-02-19T09:44:50+00:00","publisher": {
             "@type": "Organization",
             "name": "Jeroen Trimbach"},"author": {
                 "@type": "Person",
                 "name": "Jeroen Trimbach"
-            },"description": "Update Azure Network Security Groups using Bicep"
+            },"description": "Customize Azure Linux Virtual Machines (VMs) with cloud-init and bicep on first boot"
     }
     </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZDT366YND"></script>
@@ -136,10 +136,10 @@ if (!doNotTrack) {
         data-srcset="/2023/02/cloud-init-ado/azure-cloud-init.webp, /2023/02/cloud-init-ado/azure-cloud-init.webp 1.5x, /2023/02/cloud-init-ado/azure-cloud-init.webp 2x"
         data-sizes="auto"
         alt="/2023/02/cloud-init-ado/azure-cloud-init.webp"
-        title="Update Azure Network Security Groups using Bicep" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Customize Azure Linux VMs with cloud-init</h2><h2 class="single-subtitle">Customize Azure Linux VMs with cloud-init on first boot</h2><div class="post-meta">
+        title="Customize Azure Linux Virtual Machines (VMs) with cloud-init and bicep on first boot" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Customize Azure Linux Virtual Machines with cloud-init</h2><h2 class="single-subtitle">Customize Azure Linux VMs with cloud-init on first boot</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="https://jeroentrimbach.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Jeroen Trimbach</a></span>&nbsp;<span class="post-category">published in <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="12-02-2023">12-02-2023</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1862 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;9 minutes</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="12-02-2023">12-02-2023</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1931 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;10 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -149,11 +149,11 @@ if (!doNotTrack) {
                     </div>
                     <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-linux-distros-on-azure">Supported Linux distros on Azure</a></li>
+    <li><a href="#cloud-init-supported-linux-distros-on-azure">cloud-init supported Linux distros on Azure</a></li>
     <li><a href="#cloud-init-config-file">cloud-init config file</a></li>
-    <li><a href="#deploy-an-azure-linux-vm-with-cloud-init-config">Deploy an Azure Linux VM with cloud-init config</a></li>
+    <li><a href="#deploy-an-azure-linux-virtual-machine-with-cloud-init-config">Deploy an Azure Linux Virtual Machine with cloud-init config</a></li>
     <li><a href="#paramterize-cloud-init-with-bicep">Paramterize cloud-init with Bicep</a></li>
-    <li><a href="#debugging">Debugging</a></li>
+    <li><a href="#debugging-cloud-init">Debugging cloud-init</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
@@ -168,7 +168,7 @@ if (!doNotTrack) {
 <li>and much more!</li>
 </ul>
 <p>By using cloud-init, you can automate the process of deploying and configuring Azure Linux virtual machines, saving time and reducing the risk of errors that can occur when manually setting up instances. This can also help to standardize the configuration of instances, ensuring that they are consistently set up and ready to use.</p>
-<h2 id="supported-linux-distros-on-azure">Supported Linux distros on Azure</h2>
+<h2 id="cloud-init-supported-linux-distros-on-azure">cloud-init supported Linux distros on Azure</h2>
 <p>Not all Linux distros have cloud-init enabled images available in the Azure Marketplace. <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init#cloud-init-overview" target="_blank" rel="noopener noreffer">More information</a>.</p>
 <h2 id="cloud-init-config-file">cloud-init config file</h2>
 <p>The cloud-init configuration file is a YAML-formatted file that specifies the initial configuration for a cloud instance. Cloud-init uses it to set up the instance and can contain a variety of different sections that define different aspects of your desired configuration.</p>
@@ -228,7 +228,7 @@ if (!doNotTrack) {
             <div class="admonition-content"><strong>WARNING:</strong> Since the configuration is applied during the initial boot process, you cannot change the configuration afterwards. Trying to do so will result in a error message.</div>
         </div>
     </div>
-<h2 id="deploy-an-azure-linux-vm-with-cloud-init-config">Deploy an Azure Linux VM with cloud-init config</h2>
+<h2 id="deploy-an-azure-linux-virtual-machine-with-cloud-init-config">Deploy an Azure Linux Virtual Machine with cloud-init config</h2>
 <p>Using the <code>az vm create</code> command to deploy an Azure VM, you can specify the cloud-init configuration using the <code>--custom-data</code> flag option. For example:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -364,6 +364,7 @@ if (!doNotTrack) {
 </div>
 </div><p>Note that for some of the values in the cloud-init file I have given {0}, {1}, etc. These values will be replaced by the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-string#format" target="_blank" rel="noopener noreffer">format string function</a> in bicep.</p>
 <p>In the <code>main.bicep</code> you can leverage the <code>loadTextContent</code> function to load in the content of the specified file as a string. Next you can call the format function to substitute the parameters in the cloud-config file. And then as a last step you can use the <code>base64</code> function to convert the string to base64 and pass it in.</p>
+<p>In this sample bicep file im calling a module for the virtual machine deployment. The referenced module can be found in my github repository: <a href="https://github.com/jeroen-t/cloud-init-demo/blob/main/modules/virtualMachines/main.bicep" target="_blank" rel="noopener noreffer">virtualMachines/main.bicep</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
@@ -586,12 +587,12 @@ if (!doNotTrack) {
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">output</span><span class="w"> </span>sshCommand<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;ssh ${adminUsername}@${publicIP.properties.dnsSettings.fqdn}&#39;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><div class="details admonition note open">
+</div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>base64<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw"></i>base64<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><strong>NOTE:</strong> Please keep in mind that we only use the <code>LoadTextContent</code> function because we want to substitute parameters. If your cloud-init config file contain static values you can leverage the <code>loadFileAsBase64</code> function instead. This function loads the file directly as a base64 string without the need of calling the <code>base64</code> function
+            <div class="admonition-content"><strong>TIP:</strong> Please keep in mind that we only use the <code>LoadTextContent</code> bicep function because we want to substitute parameters. If your cloud-init config file contain static values you can leverage the <code>loadFileAsBase64</code> bicep function instead. This function loads the file directly as a base64 string without the need of calling the <code>base64</code> function
 separately.</div>
         </div>
     </div>
@@ -635,8 +636,9 @@ separately.</div>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>See my github repo for all files used in this post: <a href="https://github.com/jeroen-t/cloud-init-demo" target="_blank" rel="noopener noreffer">cloud-init-demo</a>.</p>
-<h2 id="debugging">Debugging</h2>
+<h2 id="debugging-cloud-init">Debugging cloud-init</h2>
 <p>A log file can be found in the following location: <code>/var/log/cloud-init-output.log</code>.</p>
+<p>Keep in mind that for Azure Linux Virtual Machines cloud-init only runs on first boot. In case you found an error and fixed it then in order to fix the configuration you will have to redeploy the Virtual Machine.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In summary, cloud-init is a powerful tool for automating the deployment and configuration of Azure Linux virtual machines, helping to streamline the process and ensure consistent and reliable instance setups.</p>
 <p>Have a very nice day! 👍</p></div><div class="post-footer" id="post-footer">
@@ -647,10 +649,10 @@ separately.</div>
                 </span><span><a href="/tags/azure-devops/">Azure DevOps</a>
                 </span><span><a href="/tags/linux/">Linux</a>
                 </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 12-02-2023</span>
+                <span>Updated on 19-02-2023</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-title="Customize Azure Linux VMs with cloud-init" data-hashtags="Blog,Azure,Bicep,cloud-init,Azure DevOps,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-title="Customize Azure Linux VMs with cloud-init" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/"><i class="fab fa-reddit fa-fw"></i></a></span>
+            <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-title="Customize Azure Linux Virtual Machines with cloud-init" data-hashtags="Blog,Azure,Bicep,cloud-init,Azure DevOps,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-hashtag="Blog"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/" data-title="Customize Azure Linux Virtual Machines with cloud-init" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://jeroentrimbach.com/2023/02/cloud-init-ado/"><i class="fab fa-reddit fa-fw"></i></a></span>
         </div></div><div class="post-nav"><a href="/2022/07/powershell-parameter-splatting/" class="prev" rel="prev" title="Splatting parameters in PowerShell"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
 </div><div id="comments" class="single-card"><div id="vssue"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/meteorlxy/vssue">Vssue</a>.
@@ -680,4 +682,4 @@ if ('serviceWorker' in navigator) {
                 <i class="fas fa-chevron-up fa-fw"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment-alt fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Customize Azure Linux VMs with cloud-init"}},"data":{"id-1":"cd ~","id-2":"cd ~"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/vue/vssue/vssue.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/vue/vue.runtime.min.js"></script><script src="/lib/vue/vssue/vssue.github.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"vssue":{"clientID":"af13e32b9a2ab81c4025","clientSecret":"237ea8b4e8aadc30b75ea5e941da285b7b908100","owner":"jeroen-t","repo":"comments","title":"Customize Azure Linux Virtual Machines with cloud-init"}},"data":{"id-1":"cd ~","id-2":"cd ~"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":500,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":0,"speed":100}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://jeroentrimbach.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>
