@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Jeroen Trimbach&#39;s index - Category - Jeroen Trimbach</title>
+        <link>https://jeroentrimbach.com/categories/</link>
+        <description>Jeroen Trimbach&#39;s index - Category - Jeroen Trimbach</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</lastBuildDate><atom:link href="https://jeroentrimbach.com/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Learning</title>
+    <link>https://jeroentrimbach.com/categories/learning/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/categories/learning/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Planning</title>
+    <link>https://jeroentrimbach.com/categories/planning/</link>
+    <pubDate>Fri, 13 May 2022 17:53:55 &#43;0200</pubDate><guid>https://jeroentrimbach.com/categories/planning/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Documentation</title>
+    <link>https://jeroentrimbach.com/categories/documentation/</link>
+    <pubDate>Wed, 28 Jul 2021 19:06:05 &#43;0200</pubDate><guid>https://jeroentrimbach.com/categories/documentation/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Career</title>
+    <link>https://jeroentrimbach.com/categories/career/</link>
+    <pubDate>Fri, 18 Jun 2021 23:30:25 &#43;0200</pubDate><guid>https://jeroentrimbach.com/categories/career/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

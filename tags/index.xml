@@ -1,0 +1,67 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Jeroen Trimbach &#39;s tags - Tag - Jeroen Trimbach</title>
+        <link>https://jeroentrimbach.com/tags/</link>
+        <description>Jeroen Trimbach &#39;s tags - Tag - Jeroen Trimbach</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Azure</title>
+    <link>https://jeroentrimbach.com/tags/azure/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/tags/azure/</guid>
+    <description><![CDATA[Azure ]]></description>
+</item>
+<item>
+    <title>Azure DevOps</title>
+    <link>https://jeroentrimbach.com/tags/azure-devops/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/tags/azure-devops/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Bicep</title>
+    <link>https://jeroentrimbach.com/tags/bicep/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/tags/bicep/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Blog</title>
+    <link>https://jeroentrimbach.com/tags/blog/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/tags/blog/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>cloud-init</title>
+    <link>https://jeroentrimbach.com/tags/cloud-init/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/tags/cloud-init/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux</title>
+    <link>https://jeroentrimbach.com/tags/linux/</link>
+    <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/tags/linux/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>PowerShell</title>
+    <link>https://jeroentrimbach.com/tags/powershell/</link>
+    <pubDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/powershell/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Scripting</title>
+    <link>https://jeroentrimbach.com/tags/scripting/</link>
+    <pubDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/scripting/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Cost Management</title>
+    <link>https://jeroentrimbach.com/tags/cost-management/</link>
+    <pubDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/cost-management/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>REST API</title>
+    <link>https://jeroentrimbach.com/tags/rest-api/</link>
+    <pubDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/rest-api/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>
