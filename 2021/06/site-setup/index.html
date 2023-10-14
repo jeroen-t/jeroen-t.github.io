@@ -846,8 +846,8 @@ You can then add the theme to your sites repository as a submodule just like we 
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">submodule</span> <span class="nv">add</span>  <span class="nv">https</span><span class="p">:</span><span class="c1">//github.com/khusika/FeelIt themes/FeelIt
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git submodule add  https://github.com/khusika/FeelIt themes/FeelIt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>And in your <code>config.toml</code> file update the theme to the name of your new theme. For me that is:</p>
 <div class="highlight"><div class="chroma">
@@ -895,10 +895,10 @@ You can do so by running the following commands from your site&rsquo;s home dire
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">submodule</span> <span class="nv">deinit</span> <span class="err">\</span><span class="nv">themes</span><span class="err">\</span><span class="p">&lt;</span><span class="nv">oldtheme</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">rm</span> <span class="err">\</span><span class="nv">themes</span><span class="err">\</span><span class="p">&lt;</span><span class="nv">oldtheme</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">git</span> <span class="nv">commit</span> <span class="o">-</span><span class="nv">m</span> <span class="s2">&#34;removed old themes submodule&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">rm</span> <span class="o">-</span><span class="nv">r</span> <span class="o">-</span><span class="nv">f</span> <span class="p">.</span><span class="nv">git</span><span class="o">/</span><span class="nv">modules</span><span class="o">/</span><span class="nv">themes</span><span class="o">/</span><span class="p">&lt;</span><span class="nv">oldtheme</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git submodule deinit \themes\&lt;oldtheme&gt;
+</span></span><span class="line"><span class="cl">git rm \themes\&lt;oldtheme&gt;
+</span></span><span class="line"><span class="cl">git commit -m &#34;removed old themes submodule&#34;
+</span></span><span class="line"><span class="cl">rm -r -f .git/modules/themes/&lt;oldtheme&gt;
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Poof.. done with our cleanup 🧹</p>
