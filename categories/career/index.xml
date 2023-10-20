@@ -7,7 +7,8 @@
     <title>About Me</title>
     <link>https://jeroentrimbach.com/about/</link>
     <pubDate>Fri, 18 Jun 2021 23:30:25 &#43;0200</pubDate><guid>https://jeroentrimbach.com/about/</guid>
-    <description><![CDATA[ABOUT ME EXPERIENCE Deloitte | Azure Cloud Engineer July 2021 - Present
+    <description><![CDATA[ABOUT ME EXPERIENCE Nederlandse Spoorwegen | Azure Platform Expert September 2023 - present
+Deloitte | Azure Cloud Engineer July 2021 - September 2023
 Deploy and maintain Infrastructure using Infrastructure as Code (IaC) tools such as Azure Resource Manager (ARM) and Bicep templates Develop and maintain cloud solutions Configuring/Maintaining Microsoft Azure Virtual Desktop (AVD) infrastructure Configuring/Maintaining/Monitoring Azure Kubernetes Services (AKS) infrastructure using the GitOps principles; ArgoCD, Prometheus, Grafana Identify, analyze and resolve infrastructure vulnerabilities and application deployment issues Work on automation using scripting languages such as PowerShell and Bash Setup CI/CD Pipelines in YAML using Azure Pipelines Review existing systems and make/recommend improvements Work as Scrum Master to ensure that sprints go smoothly and the backlog is up-to-date Implement automation workloads using Azure Automation, Functions and Logic Apps Deloitte | SQL DBA Azure Engineer March 2019 - July 2021]]></description>
 </item>
 </channel>
