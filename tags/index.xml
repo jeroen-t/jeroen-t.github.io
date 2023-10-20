@@ -3,7 +3,25 @@
         <title>Jeroen Trimbach &#39;s tags - Tag - Jeroen Trimbach</title>
         <link>https://jeroentrimbach.com/tags/</link>
         <description>Jeroen Trimbach &#39;s tags - Tag - Jeroen Trimbach</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 20 Oct 2023 13:52:49 &#43;0000</lastBuildDate><atom:link href="https://jeroentrimbach.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Race Report</title>
+    <link>https://jeroentrimbach.com/tags/race-report/</link>
+    <pubDate>Fri, 20 Oct 2023 13:52:49 &#43;0000</pubDate><guid>https://jeroentrimbach.com/tags/race-report/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Running</title>
+    <link>https://jeroentrimbach.com/tags/running/</link>
+    <pubDate>Fri, 20 Oct 2023 13:42:00 &#43;0000</pubDate><guid>https://jeroentrimbach.com/tags/running/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Race Report</title>
+    <link>https://jeroentrimbach.com/tags/race-report/</link>
+    <pubDate>Fri, 20 Oct 2023 13:40:52 &#43;0000</pubDate><guid>https://jeroentrimbach.com/tags/race-report/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Azure</title>
     <link>https://jeroentrimbach.com/tags/azure/</link>
     <pubDate>Sun, 12 Feb 2023 11:07:52 &#43;0100</pubDate><guid>https://jeroentrimbach.com/tags/azure/</guid>
@@ -43,24 +61,6 @@
     <title>PowerShell</title>
     <link>https://jeroentrimbach.com/tags/powershell/</link>
     <pubDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/powershell/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Scripting</title>
-    <link>https://jeroentrimbach.com/tags/scripting/</link>
-    <pubDate>Mon, 04 Jul 2022 13:44:04 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/scripting/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Cost Management</title>
-    <link>https://jeroentrimbach.com/tags/cost-management/</link>
-    <pubDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/cost-management/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>REST API</title>
-    <link>https://jeroentrimbach.com/tags/rest-api/</link>
-    <pubDate>Sat, 11 Jun 2022 14:59:32 &#43;0200</pubDate><guid>https://jeroentrimbach.com/tags/rest-api/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
