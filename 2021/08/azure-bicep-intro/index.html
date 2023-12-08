@@ -7,12 +7,12 @@
         <title>Azure Bicep: An introduction on how to get started - Jeroen Trimbach</title><meta name="description" content="A write-up on what I have learned so far about Azure Bicep Lang"><meta property="og:title" content="Azure Bicep: An introduction on how to get started" />
 <meta property="og:description" content="A write-up on what I have learned so far about Azure Bicep Lang" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/azure-bicep-intro.webp"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/" /><meta property="og:image" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/azure-bicep-intro.webp" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-05T19:41:50+02:00" />
 <meta property="article:modified_time" content="2023-02-19T14:06:04+00:00" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/azure-bicep-intro.webp"/>
-<meta name="twitter:title" content="Azure Bicep: An introduction on how to get started"/>
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://jeroentrimbach.com/2021/08/azure-bicep-intro/azure-bicep-intro.webp" /><meta name="twitter:title" content="Azure Bicep: An introduction on how to get started"/>
 <meta name="twitter:description" content="A write-up on what I have learned so far about Azure Bicep Lang"/>
 <meta name="application-name" content="jTrimbach">
 <meta name="apple-mobile-web-app-title" content="jTrimbach"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -675,10 +675,10 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="kd">resource</span><span class="w"> </span>Identifier<span class="w"> </span><span class="s">&#39;Provider/Type@Version&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;name&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;location&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="kd">resource</span><span class="w"> </span><span class="nv">Identifier</span><span class="w"> </span><span class="s">&#39;Provider/Type@Version&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;name&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;location&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
@@ -699,14 +699,14 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="kd">resource</span><span class="w"> </span>acr<span class="w"> </span><span class="s">&#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;nicelookingacrbro&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;West Europe&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;Basic&#39;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="kd">resource</span><span class="w"> </span><span class="nv">acr</span><span class="w"> </span><span class="s">&#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nicelookingacrbro&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;West Europe&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Basic&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">adminUserEnabled</span><span class="p">:</span><span class="w"> </span>true<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">adminUserEnabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
@@ -748,34 +748,34 @@ You can also use functions in your ARM template. Checkout <a href="https://docs.
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="p">@</span><span class="nd">minLength</span><span class="p">(</span>5<span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">maxLength</span><span class="p">(</span>30<span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The name of the container registry&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>acrName<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;acrgiveanyname&#39;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="p">@</span><span class="nf">minLength</span><span class="p">(</span><span class="nv">5</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">maxLength</span><span class="p">(</span><span class="nv">30</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;The name of the container registry&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">acrName</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;acrgiveanyname&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The value that indicates whether the admin user is enabled.&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>acrAdminUserEnabled<span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>false<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;The value that indicates whether the admin user is enabled.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">acrAdminUserEnabled</span><span class="w"> </span><span class="nv">bool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The location of the resource. This cannot be changed after the resource is created.&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>location<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">resourceGroup</span><span class="p">().</span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;The location of the resource. This cannot be changed after the resource is created.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">resourceGroup</span><span class="p">().</span><span class="nv">location</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">allowed</span><span class="p">([</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;Basic&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;Standard&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;Premium&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">allowed</span><span class="p">([</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#39;Basic&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#39;Standard&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#39;Premium&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">])</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The SKU of the container registry.&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>acrSku<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;Basic&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;The SKU of the container registry.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">acrSku</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;Basic&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// azure container registry</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>acr<span class="w"> </span><span class="s">&#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>acrName<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>acrSku<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span><span class="nv">acr</span><span class="w"> </span><span class="s">&#39;Microsoft.ContainerRegistry/registries@2019-12-01-preview&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="nv">acrName</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="nv">acrSku</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">adminUserEnabled</span><span class="p">:</span><span class="w"> </span>acrAdminUserEnabled<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">adminUserEnabled</span><span class="p">:</span><span class="w"> </span><span class="nv">acrAdminUserEnabled</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
@@ -835,7 +835,7 @@ I thought of displaying the whole code here however we only need to add one line
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bicep" data-lang="bicep"><span class="line"><span class="cl"><span class="kd">output</span><span class="w"> </span>acrLoginServer<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>acr<span class="p">.</span>properties<span class="p">.</span>loginServer<span class="w">
+<pre tabindex="0" class="chroma"><code class="language-bicep" data-lang="bicep"><span class="line"><span class="cl"><span class="kd">output</span><span class="w"> </span><span class="nv">acrLoginServer</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nv">acr</span><span class="p">.</span><span class="nv">properties</span><span class="p">.</span><span class="nv">loginServer</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>We are saying give me the output value for the login Server which in our case will be <code>theirontemple.azurecr.io</code> and store it in <code>acrLoginServer</code>.
@@ -911,46 +911,46 @@ If you would like to report any issues or inaccurate conversions, please see <a 
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;Unique name of the app to create or update.&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">minLength</span><span class="p">(</span>2<span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>webAppName<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;webApp-${uniqueString(resourceGroup().id)}&#39;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-Bicep" data-lang="Bicep"><span class="line"><span class="cl"><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;Unique name of the app to create or update.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">minLength</span><span class="p">(</span><span class="nv">2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">webAppName</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;webApp-</span><span class="si">${</span><span class="nf">uniqueString</span><span class="p">(</span><span class="nf">resourceGroup</span><span class="p">().</span><span class="nv">id</span><span class="p">)</span><span class="si">}</span><span class="s">&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;Location of the resources. Default is RG location.&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>location<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">resourceGroup</span><span class="p">().</span>location<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;Location of the resources. Default is RG location.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">resourceGroup</span><span class="p">().</span><span class="nv">location</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The SKU of App Service Plan.&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">allowed</span><span class="p">([</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;B1&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;B2&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;B3&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="si">&#39;F1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;The SKU of App Service Plan.&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">allowed</span><span class="p">([</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#39;B1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#39;B2&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#39;B3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#39;F1&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">])</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>sku<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="si">&#39;F1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">sku</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;F1&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nd">description</span><span class="p">(</span><span class="s">&#39;The Runtime stack of current web app&#39;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span>linuxFxVersion<span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;DOTNETCORE|3.0&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">@</span><span class="nf">description</span><span class="p">(</span><span class="s">&#39;The Runtime stack of current web app&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">param</span><span class="w"> </span><span class="nv">linuxFxVersion</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;DOTNETCORE|3.0&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">var</span><span class="w"> </span>appServicePlanPortalName_var<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;AppServicePlan-${webAppName}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">var</span><span class="w"> </span><span class="nv">appServicePlanPortalName_var</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;AppServicePlan-</span><span class="si">${</span><span class="nv">webAppName</span><span class="si">}</span><span class="s">&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>appServicePlanPortalName<span class="w"> </span><span class="s">&#39;Microsoft.Web/serverfarms@2020-06-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>appServicePlanPortalName_var<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>sku<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span><span class="nv">appServicePlanPortalName</span><span class="w"> </span><span class="s">&#39;Microsoft.Web/serverfarms@2020-06-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="nv">appServicePlanPortalName_var</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="nv">sku</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">kind</span><span class="p">:</span><span class="w"> </span><span class="si">&#39;linux&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">reserved</span><span class="p">:</span><span class="w"> </span>true<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;linux&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">reserved</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span>webAppName_resource<span class="w"> </span><span class="s">&#39;Microsoft.Web/sites@2020-06-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span>webAppName<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">location</span><span class="p">:</span><span class="w"> </span>location<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">serverFarmId</span><span class="p">:</span><span class="w"> </span>appServicePlanPortalName<span class="p">.</span>id<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="py">siteConfig</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="py">linuxFxVersion</span><span class="p">:</span><span class="w"> </span>linuxFxVersion<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">resource</span><span class="w"> </span><span class="nv">webAppName_resource</span><span class="w"> </span><span class="s">&#39;Microsoft.Web/sites@2020-06-01&#39;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="nv">webAppName</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nv">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">serverFarmId</span><span class="p">:</span><span class="w"> </span><span class="nv">appServicePlanPortalName</span><span class="p">.</span><span class="nv">id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nv">siteConfig</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nv">linuxFxVersion</span><span class="p">:</span><span class="w"> </span><span class="nv">linuxFxVersion</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
